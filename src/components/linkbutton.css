@@ -144,10 +144,6 @@
 /* Mobile */
 
 @media (max-width: 480px) {
-  .links {
-    gap: 9px;
-  }
-
   .link-button {
     min-height: 56px;
 
