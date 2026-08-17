@@ -3,7 +3,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 
 import { featuredProducts } from "../data/featuredProducts";
 
-import "./featuredProducts.css";
+import "./FeaturedProducts.css";
 
 const FeaturedProducts = () => {
   const [activeCategory, setActiveCategory] = useState("All");
