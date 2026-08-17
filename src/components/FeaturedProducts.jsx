@@ -82,12 +82,6 @@ const FeaturedProducts = () => {
 
     sliderRef.current.classList.remove("is-dragging");
 
-    /*
-      Delay reset sedikit supaya click
-      tidak langsung membuka product
-      setelah selesai drag.
-    */
-
     setTimeout(() => {
       hasDragged.current = false;
     }, 50);

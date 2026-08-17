@@ -24,6 +24,8 @@ const SocialLinks = () => {
       {socials.map((social) => {
         const data = socialData[social.name];
 
+        if (!data) return null;
+
         return (
           <a
             key={social.name}
@@ -44,7 +46,6 @@ const SocialLinks = () => {
         );
       })}
 
-      {/* EMAIL */}
       <a
         href="mailto:izzudinfasya@gmail.com"
         className="social-links__item"
