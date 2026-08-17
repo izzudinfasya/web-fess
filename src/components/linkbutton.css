@@ -1,0 +1,160 @@
+/* =========================
+   LINKS
+========================= */
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link-button {
+  position: relative;
+
+  width: 100%;
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  overflow: hidden;
+
+  border: 1px solid #252525;
+  border-radius: 14px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 255, 255, 0.055),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #111, #090909);
+
+  color: #ddd;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
+/* Top line */
+
+.link-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 15px;
+  right: 15px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.13),
+    transparent
+  );
+}
+
+/* Grid */
+
+.link-button::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+
+  background-size: 28px 28px;
+
+  mask-image: linear-gradient(to right, black, transparent 75%);
+
+  pointer-events: none;
+}
+
+/* Icon */
+
+.link-button svg {
+  position: relative;
+  z-index: 1;
+
+  flex-shrink: 0;
+
+  color: #555;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Hover */
+
+@media (hover: hover) {
+  .link-button:hover {
+    transform: translateY(-2px);
+
+    border-color: #3d3d3d;
+
+    background:
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(255, 255, 255, 0.085),
+        transparent 45%
+      ),
+      linear-gradient(135deg, #171717, #0b0b0b);
+
+    color: #fff;
+
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  }
+
+  .link-button:hover svg {
+    color: #fff;
+    transform: translate(2px, -2px);
+  }
+}
+
+.link-button:active {
+  transform: scale(0.985);
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .links {
+    gap: 9px;
+  }
+
+  .link-button {
+    min-height: 56px;
+
+    padding: 0 15px;
+
+    border-radius: 13px;
+
+    font-size: 12px;
+  }
+}

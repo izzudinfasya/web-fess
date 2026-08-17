@@ -1,0 +1,209 @@
+/* =========================
+   PAGE — PREMIUM TECH BACKGROUND
+========================= */
+
+.page {
+  position: relative;
+  min-height: 100svh;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  padding: 32px;
+
+  background:
+    /* TOP CENTER LIGHT */
+    radial-gradient(
+      ellipse 85% 45% at 50% -5%,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.035) 35%,
+      transparent 70%
+    ),
+    /* LEFT LIGHT */
+    radial-gradient(
+        ellipse 45% 65% at -10% 35%,
+        rgba(255, 255, 255, 0.035),
+        transparent 70%
+      ),
+    /* RIGHT LIGHT */
+    radial-gradient(
+        ellipse 45% 65% at 110% 55%,
+        rgba(255, 255, 255, 0.03),
+        transparent 70%
+      ),
+    /* CENTER LOWER LIGHT */
+    radial-gradient(
+        ellipse 60% 50% at 50% 85%,
+        rgba(255, 255, 255, 0.025),
+        transparent 70%
+      ),
+    /* BOTTOM LIGHT */
+    radial-gradient(
+        ellipse 90% 35% at 50% 115%,
+        rgba(255, 255, 255, 0.065),
+        transparent 65%
+      ),
+    #050505;
+}
+
+/* =========================
+   TECH GRID
+========================= */
+
+.page::before {
+  content: "";
+
+  position: fixed;
+  inset: -100px;
+
+  z-index: -3;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+
+  background-size: 42px 42px;
+
+  transform: perspective(900px) rotateX(2deg) scale(1.05);
+
+  mask-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    black 0%,
+    rgba(0, 0, 0, 0.75) 55%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+}
+
+/* =========================
+   LIGHT BEAMS
+========================= */
+
+.page::after {
+  content: "";
+
+  position: fixed;
+
+  z-index: -2;
+
+  width: 900px;
+  height: 180px;
+
+  top: 32%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) rotate(-18deg);
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.015) 25%,
+    rgba(255, 255, 255, 0.055) 50%,
+    rgba(255, 255, 255, 0.015) 75%,
+    transparent 100%
+  );
+
+  filter: blur(35px);
+
+  opacity: 0.8;
+
+  pointer-events: none;
+}
+
+/* =========================
+   EXTRA AMBIENT GLOW
+========================= */
+
+.page {
+  --glow-size: 420px;
+}
+
+.page .container::before {
+  content: "";
+
+  position: fixed;
+
+  z-index: -1;
+
+  width: var(--glow-size);
+  height: var(--glow-size);
+
+  left: 50%;
+  top: 72%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.045) 0%,
+    rgba(255, 255, 255, 0.018) 30%,
+    transparent 70%
+  );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+/* =========================
+   SUBTLE VIGNETTE
+========================= */
+
+.page .container::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(0, 0, 0, 0.22) 100%
+  );
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .page {
+    padding: 32px 32px;
+  }
+
+  .container {
+    max-width: 430px;
+  }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media (min-width: 768px) {
+  .page {
+    padding: 60px 62px;
+  }
+}
