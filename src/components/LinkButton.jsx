@@ -1,6 +1,6 @@
 import { FiArrowUpRight } from "react-icons/fi";
 
-import "./LinkButton.css";
+import "./linkbutton.css";
 
 const LinkButton = ({ title, url, featured = false }) => {
   return (

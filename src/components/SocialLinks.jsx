@@ -3,7 +3,7 @@ import { FiMail } from "react-icons/fi";
 
 import { socials } from "../data/links";
 
-import "./SocialLinks.css";
+import "./sociallinks.css";
 
 const socialData = {
   TikTok: {
