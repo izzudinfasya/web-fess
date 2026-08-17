@@ -838,6 +838,14 @@
     box-shadow 0.45s ease;
 }
 
+.theme-toggle svg {
+  display: block;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.25s ease;
+}
+
 .theme-toggle:active {
   transform: scale(0.92);
 }
@@ -853,6 +861,10 @@
     box-shadow:
       0 10px 25px var(--links-hover-shadow),
       inset 0 1px 0 var(--links-hover-highlight);
+  }
+
+  .theme-toggle:hover svg {
+    transform: rotate(15deg);
   }
 }
 

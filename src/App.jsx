@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Sun, Moon } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -72,7 +72,11 @@ function App() {
         onClick={toggleTheme}
         aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
       >
-        <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+        {theme === "dark" ? (
+          <Sun size={14} strokeWidth={1.8} />
+        ) : (
+          <Moon size={14} strokeWidth={1.8} />
+        )}
       </button>
 
       <div className="container">
