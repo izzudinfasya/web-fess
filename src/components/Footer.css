@@ -13,16 +13,22 @@
   margin-top: 42px;
   padding: 18px 0 6px;
 
-  border-top: 1px solid #202020;
+  border-top: 1px solid var(--footer-border);
   border-right: none;
   border-left: none;
 
   box-shadow: none;
 
   font-family: "Space Grotesk", sans-serif;
+
+  transition:
+    border-color 0.45s ease,
+    color 0.45s ease;
 }
 
-/* Accent line */
+/* =========================
+   ACCENT LINE
+========================= */
 
 .site-footer::before {
   content: "";
@@ -35,7 +41,7 @@
   width: 70px;
   height: 1px;
 
-  background: #555;
+  background: var(--footer-accent);
 
   transition:
     width 0.3s ease,
@@ -56,7 +62,7 @@
 }
 
 .site-footer__name {
-  color: #aaa;
+  color: var(--footer-name);
 
   font-size: 11px;
   font-weight: 700;
@@ -69,7 +75,7 @@
 }
 
 .site-footer__tagline {
-  color: #3d3d3d;
+  color: var(--footer-muted);
 
   font-size: 7px;
   font-weight: 500;
@@ -90,7 +96,7 @@
 
   flex-shrink: 0;
 
-  color: #3d3d3d;
+  color: var(--footer-muted);
 
   font-size: 8px;
   font-weight: 500;
@@ -108,12 +114,12 @@
 
 @media (hover: hover) {
   .site-footer:hover .site-footer__name {
-    color: #eee;
+    color: var(--footer-name-hover);
   }
 
   .site-footer:hover::before {
     width: 100px;
-    background: #888;
+    background: var(--footer-accent-hover);
   }
 }
 
@@ -124,7 +130,6 @@
 @media (max-width: 480px) {
   .site-footer {
     margin-top: 36px;
-
     padding-top: 16px;
     padding-bottom: 6px;
   }
@@ -143,5 +148,17 @@
 
   .site-footer__copyright {
     font-size: 7px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer,
+  .site-footer::before,
+  .site-footer__name {
+    transition: none;
   }
 }

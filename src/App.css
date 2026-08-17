@@ -1,54 +1,658 @@
-/* =========================
-   PAGE — PREMIUM TECH BACKGROUND
-========================= */
+/* =========================================================
+   THEME VARIABLES
+========================================================= */
+
+:root {
+  /* =======================================================
+     PAGE
+  ======================================================= */
+
+  --page-bg: #050505;
+  --text: #f5f5f5;
+
+  --grid-line: rgba(255, 255, 255, 0.022);
+
+  --glow-top: rgba(255, 255, 255, 0.1);
+  --glow-top-soft: rgba(255, 255, 255, 0.035);
+  --glow-left: rgba(255, 255, 255, 0.035);
+  --glow-right: rgba(255, 255, 255, 0.03);
+  --glow-center: rgba(255, 255, 255, 0.025);
+  --glow-bottom: rgba(255, 255, 255, 0.065);
+
+  --beam-soft: rgba(255, 255, 255, 0.015);
+  --beam: rgba(255, 255, 255, 0.055);
+
+  --ambient-glow: rgba(255, 255, 255, 0.045);
+  --ambient-glow-soft: rgba(255, 255, 255, 0.018);
+
+  --vignette: rgba(0, 0, 0, 0.22);
+
+  /* =======================================================
+     COMMON
+  ======================================================= */
+
+  --border: #252525;
+  --muted: #666;
+  --subtle: #444;
+
+  /* =======================================================
+     SOCIAL
+  ======================================================= */
+
+  --social-bg: #0d0d0d;
+  --social-border: #252525;
+  --social-text: #ddd;
+  --social-muted: #666;
+
+  --social-icon-bg: rgba(255, 255, 255, 0.035);
+  --social-icon-border: #2c2c2c;
+
+  --social-shadow: rgba(0, 0, 0, 0.12);
+  --social-highlight: rgba(255, 255, 255, 0.02);
+  --social-top-line: rgba(255, 255, 255, 0.15);
+
+  --social-hover-border: #444;
+  --social-hover-bg: #171717;
+  --social-hover-shadow: rgba(0, 0, 0, 0.3);
+  --social-hover-highlight: rgba(255, 255, 255, 0.035);
+
+  --social-icon-hover-bg: rgba(255, 255, 255, 0.07);
+  --social-label-hover: #999;
+
+  /* =======================================================
+     PROFILE
+  ======================================================= */
+
+  --profile-bg: #080808;
+  --profile-border: #303030;
+
+  --profile-title: #f5f5f5;
+  --profile-bio: #777;
+
+  --profile-shadow: rgba(0, 0, 0, 0.45);
+  --profile-glow: rgba(255, 255, 255, 0.035);
+
+  --profile-scan: rgba(255, 255, 255, 0.7);
+  --profile-scan-soft: rgba(255, 255, 255, 0.02);
+  --profile-scan-light: rgba(255, 255, 255, 0.08);
+
+  --profile-shine: rgba(255, 255, 255, 0.07);
+
+  --profile-hover-shadow: rgba(0, 0, 0, 0.5);
+  --profile-hover-glow: rgba(255, 255, 255, 0.06);
+
+  /* =======================================================
+     TRANSITION
+  ======================================================= */
+
+  --theme-transition:
+    background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease,
+    box-shadow 0.45s ease;
+
+  --transition-bg: #080808;
+  --transition-text: #f5f5f5;
+  --transition-muted: #555;
+  --transition-subtle: #444;
+
+  /* =======================================================
+     COLLAB CTA
+  ======================================================= */
+
+  --cta-border: #d2d2d2;
+
+  --cta-glow-top: rgba(255, 255, 255, 0.95);
+  --cta-glow-bottom: rgba(0, 0, 0, 0.08);
+
+  --cta-gradient-1: #a9a9a9;
+  --cta-gradient-2: #f7f7f7;
+  --cta-gradient-3: #cfcfcf;
+  --cta-gradient-4: #eeeeee;
+  --cta-gradient-5: #aaaaaa;
+  --cta-gradient-6: #f3f3f3;
+
+  --cta-text: #050505;
+
+  --cta-shadow: rgba(0, 0, 0, 0.4);
+  --cta-highlight: rgba(255, 255, 255, 0.95);
+  --cta-bottom-highlight: rgba(0, 0, 0, 0.18);
+
+  --cta-grid: rgba(0, 0, 0, 0.055);
+  --cta-streak: rgba(255, 255, 255, 0.22);
+
+  --cta-label: #777;
+  --cta-label-dot: #111;
+  --cta-label-dot-ring: rgba(0, 0, 0, 0.06);
+  --cta-label-dot-glow: rgba(0, 0, 0, 0.25);
+
+  --cta-title: #050505;
+  --cta-description: #666;
+
+  --cta-primary-border: #050505;
+  --cta-primary-bg-1: #151515;
+  --cta-primary-bg-2: #000;
+  --cta-primary-text: #fff;
+
+  --cta-primary-shadow: rgba(0, 0, 0, 0.3);
+  --cta-primary-highlight: rgba(255, 255, 255, 0.08);
+  --cta-primary-shine: rgba(255, 255, 255, 0.12);
+
+  --cta-secondary-border: rgba(0, 0, 0, 0.18);
+  --cta-secondary-bg-1: rgba(255, 255, 255, 0.65);
+  --cta-secondary-bg-2: rgba(255, 255, 255, 0.3);
+  --cta-secondary-text: #111;
+  --cta-secondary-highlight: rgba(255, 255, 255, 0.9);
+
+  /* =======================================================
+     EXCLUSIVE DISCOUNT
+  ======================================================= */
+
+  --discount-card-border: #292929;
+  --discount-card-bg: linear-gradient(145deg, #151515 0%, #090909 100%);
+  --discount-card-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --discount-card-hover-border: #444;
+  --discount-card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+  --discount-top-line: #666;
+
+  --discount-image-bg: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.09) 0%,
+    rgba(255, 255, 255, 0.035) 35%,
+    transparent 72%
+  );
+
+  --discount-grid: rgba(255, 255, 255, 0.035);
+
+  --discount-vignette-side: rgba(0, 0, 0, 0.35);
+  --discount-vignette-top: rgba(0, 0, 0, 0.25);
+  --discount-vignette-bottom: rgba(0, 0, 0, 0.5);
+
+  --discount-image-shadow: rgba(0, 0, 0, 0.7);
+  --discount-image-glow: rgba(255, 255, 255, 0.06);
+
+  --discount-image-shadow-hover: rgba(0, 0, 0, 0.75);
+  --discount-image-glow-hover: rgba(255, 255, 255, 0.08);
+
+  --discount-percentage: #aaa;
+  --discount-title: #f2f2f2;
+
+  --discount-code-border: #333;
+  --discount-code-bg: #151515;
+  --discount-code-text: #ddd;
+
+  --discount-button-border: #e5e5e5;
+  --discount-button-bg: linear-gradient(135deg, #f5f5f5 0%, #cfcfcf 100%);
+  --discount-button-hover: linear-gradient(135deg, #ffffff 0%, #e2e2e2 100%);
+  --discount-button-text: #050505;
+  --discount-button-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  --discount-button-active: linear-gradient(135deg, #dedede 0%, #bdbdbd 100%);
+
+  --discount-indicator: #303030;
+  --discount-indicator-active: #999;
+
+  /* =======================================================
+     FEATURED PRODUCTS
+  ======================================================= */
+
+  --featured-text: #f5f5f5;
+  --featured-muted: #666;
+  --featured-subtle: #555;
+
+  /* Filter */
+
+  --featured-filter-border: #242424;
+  --featured-filter-bg-start: rgba(255, 255, 255, 0.035);
+  --featured-filter-bg-end: rgba(255, 255, 255, 0.008);
+
+  --featured-filter-text: #555;
+
+  --featured-filter-hover-border: #303030;
+  --featured-filter-hover-bg: rgba(255, 255, 255, 0.035);
+  --featured-filter-hover-text: #aaa;
+
+  --featured-filter-active-border: #383838;
+  --featured-filter-active-bg: linear-gradient(135deg, #f4f4f4, #dcdcdc);
+  --featured-filter-active-hover-bg: linear-gradient(135deg, #ffffff, #e8e8e8);
+  --featured-filter-active-text: #080808;
+
+  /* Card */
+
+  --featured-card-border: #242424;
+
+  --featured-card-bg:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 255, 255, 0.05),
+      transparent 55%
+    ),
+    #0b0b0b;
+
+  --featured-card-text: #fff;
+
+  --featured-card-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  --featured-card-hover-border: #3a3a3a;
+
+  --featured-card-hover-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* Image */
+
+  --featured-image-bg:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 255, 255, 0.075),
+      transparent 65%
+    ),
+    #101010;
+
+  /* Arrow */
+
+  --featured-arrow-border: rgba(255, 255, 255, 0.14);
+  --featured-arrow-bg: rgba(5, 5, 5, 0.68);
+  --featured-arrow-text: #aaa;
+
+  --featured-arrow-hover-bg: #fff;
+  --featured-arrow-hover-text: #000;
+
+  /* Info */
+
+  --featured-info-bg: #141414;
+  --featured-brand: #555;
+  --featured-title: #c9c9c9;
+  --featured-title-hover: #fff;
+
+  /* Empty */
+
+  --featured-empty-border: #282828;
+  --featured-empty-text: #555;
+
+  /* Shadows */
+
+  --featured-filter-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 6px 20px rgba(0, 0, 0, 0.12);
+
+  --featured-filter-active-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  /* =======================================================
+     LINKS
+  ======================================================= */
+
+  --links-bg: #0d0d0d;
+  --links-border: #252525;
+  --links-text: #ddd;
+  --links-muted: #666;
+
+  --links-shadow: rgba(0, 0, 0, 0.15);
+  --links-highlight: rgba(255, 255, 255, 0.02);
+  --links-top-line: rgba(255, 255, 255, 0.13);
+
+  --links-hover-border: #3d3d3d;
+  --links-hover-bg: #171717;
+  --links-hover-shadow: rgba(0, 0, 0, 0.3);
+  --links-hover-highlight: rgba(255, 255, 255, 0.035);
+
+  --links-grid: rgba(255, 255, 255, 0.012);
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  --footer-border: #202020;
+  --footer-accent: #555;
+  --footer-name: #aaa;
+  --footer-muted: #3d3d3d;
+  --footer-name-hover: #eee;
+  --footer-accent-hover: #888;
+}
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+[data-theme="light"] {
+  /* =======================================================
+     PAGE
+  ======================================================= */
+
+  --page-bg: #f4f4f2;
+  --text: #171717;
+
+  --grid-line: rgba(0, 0, 0, 0.035);
+
+  --glow-top: rgba(255, 255, 255, 0.9);
+  --glow-top-soft: rgba(255, 255, 255, 0.5);
+  --glow-left: rgba(255, 255, 255, 0.55);
+  --glow-right: rgba(255, 255, 255, 0.45);
+  --glow-center: rgba(255, 255, 255, 0.4);
+  --glow-bottom: rgba(255, 255, 255, 0.75);
+
+  --beam-soft: rgba(255, 255, 255, 0);
+  --beam: rgba(255, 255, 255, 0.18);
+
+  --ambient-glow: rgba(255, 255, 255, 0.75);
+  --ambient-glow-soft: rgba(255, 255, 255, 0.4);
+
+  --vignette: rgba(0, 0, 0, 0.06);
+
+  /* =======================================================
+     COMMON
+  ======================================================= */
+
+  --border: #dedede;
+  --muted: #777;
+  --subtle: #999;
+
+  /* =======================================================
+     SOCIAL
+  ======================================================= */
+
+  --social-bg: #ffffff;
+  --social-border: #e3e3e3;
+  --social-text: #222;
+  --social-muted: #888;
+
+  --social-icon-bg: rgba(0, 0, 0, 0.025);
+  --social-icon-border: #d8d8d8;
+
+  --social-shadow: rgba(0, 0, 0, 0.06);
+  --social-highlight: rgba(255, 255, 255, 0.8);
+  --social-top-line: rgba(0, 0, 0, 0.08);
+
+  --social-hover-border: #c8c8c8;
+  --social-hover-bg: #f7f7f7;
+  --social-hover-shadow: rgba(0, 0, 0, 0.1);
+  --social-hover-highlight: rgba(255, 255, 255, 0.9);
+
+  --social-icon-hover-bg: rgba(0, 0, 0, 0.045);
+  --social-label-hover: #666;
+
+  /* =======================================================
+     PROFILE
+  ======================================================= */
+
+  --profile-bg: #f7f7f7;
+  --profile-border: #d8d8d8;
+
+  --profile-title: #171717;
+  --profile-bio: #777;
+
+  --profile-shadow: rgba(0, 0, 0, 0.12);
+  --profile-glow: rgba(0, 0, 0, 0.035);
+
+  --profile-scan: rgba(0, 0, 0, 0.55);
+  --profile-scan-soft: rgba(0, 0, 0, 0.02);
+  --profile-scan-light: rgba(0, 0, 0, 0.08);
+
+  --profile-shine: rgba(0, 0, 0, 0.05);
+
+  --profile-hover-shadow: rgba(0, 0, 0, 0.18);
+  --profile-hover-glow: rgba(0, 0, 0, 0.05);
+
+  /* =======================================================
+     TRANSITION
+  ======================================================= */
+
+  --transition-bg: #f4f4f2;
+  --transition-text: #171717;
+  --transition-muted: #aaa;
+  --transition-subtle: #999;
+
+  /* =======================================================
+     COLLAB CTA
+  ======================================================= */
+
+  --cta-border: #383838;
+
+  --cta-glow-top: rgba(255, 255, 255, 0.14);
+  --cta-glow-bottom: rgba(0, 0, 0, 0.18);
+
+  --cta-gradient-1: #3a3a3a;
+  --cta-gradient-2: #666666;
+  --cta-gradient-3: #474747;
+  --cta-gradient-4: #707070;
+  --cta-gradient-5: #393939;
+  --cta-gradient-6: #5a5a5a;
+
+  --cta-text: #fff;
+
+  --cta-shadow: rgba(0, 0, 0, 0.22);
+  --cta-highlight: rgba(255, 255, 255, 0.18);
+  --cta-bottom-highlight: rgba(0, 0, 0, 0.35);
+
+  --cta-grid: rgba(255, 255, 255, 0.045);
+  --cta-streak: rgba(255, 255, 255, 0.08);
+
+  --cta-label: #c2c2c2;
+  --cta-label-dot: #f5f5f5;
+  --cta-label-dot-ring: rgba(255, 255, 255, 0.08);
+  --cta-label-dot-glow: rgba(255, 255, 255, 0.2);
+
+  --cta-title: #fff;
+  --cta-description: #bdbdbd;
+
+  --cta-primary-border: #f0f0f0;
+  --cta-primary-bg-1: #f5f5f5;
+  --cta-primary-bg-2: #d0d0d0;
+  --cta-primary-text: #050505;
+
+  --cta-primary-shadow: rgba(0, 0, 0, 0.2);
+  --cta-primary-highlight: rgba(255, 255, 255, 0.8);
+  --cta-primary-shine: rgba(255, 255, 255, 0.4);
+
+  --cta-secondary-border: rgba(255, 255, 255, 0.2);
+  --cta-secondary-bg-1: rgba(255, 255, 255, 0.1);
+  --cta-secondary-bg-2: rgba(255, 255, 255, 0.035);
+  --cta-secondary-text: #eee;
+
+  --cta-secondary-highlight: rgba(255, 255, 255, 0.12);
+
+  /* =======================================================
+     EXCLUSIVE DISCOUNT
+  ======================================================= */
+
+  --discount-card-border: #d5d5d5;
+  --discount-card-bg: linear-gradient(145deg, #ffffff 0%, #eeeeec 100%);
+  --discount-card-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+
+  --discount-card-hover-border: #bcbcbc;
+  --discount-card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+
+  --discount-top-line: #aaa;
+
+  --discount-image-bg: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(245, 245, 243, 0.9) 40%,
+    transparent 75%
+  );
+
+  --discount-grid: rgba(0, 0, 0, 0.035);
+
+  --discount-vignette-side: rgba(0, 0, 0, 0.08);
+  --discount-vignette-top: rgba(0, 0, 0, 0.04);
+  --discount-vignette-bottom: rgba(0, 0, 0, 0.12);
+
+  --discount-image-shadow: rgba(0, 0, 0, 0.18);
+  --discount-image-glow: rgba(0, 0, 0, 0.025);
+
+  --discount-image-shadow-hover: rgba(0, 0, 0, 0.22);
+  --discount-image-glow-hover: rgba(0, 0, 0, 0.04);
+
+  --discount-percentage: #777;
+  --discount-title: #171717;
+
+  --discount-code-border: #d0d0d0;
+  --discount-code-bg: #f2f2f0;
+  --discount-code-text: #333;
+
+  --discount-button-border: #171717;
+  --discount-button-bg: linear-gradient(135deg, #292929 0%, #111111 100%);
+  --discount-button-hover: linear-gradient(135deg, #3a3a3a 0%, #171717 100%);
+  --discount-button-text: #fff;
+
+  --discount-button-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+  --discount-button-active: linear-gradient(135deg, #252525 0%, #0d0d0d 100%);
+
+  --discount-indicator: #d0d0d0;
+  --discount-indicator-active: #555;
+
+  /* =======================================================
+     FEATURED PRODUCTS
+  ======================================================= */
+
+  --featured-text: #171717;
+  --featured-muted: #777;
+  --featured-subtle: #777;
+
+  --featured-filter-border: #d8d8d8;
+  --featured-filter-bg-start: rgba(0, 0, 0, 0.025);
+  --featured-filter-bg-end: rgba(0, 0, 0, 0.008);
+
+  --featured-filter-text: #999;
+
+  --featured-filter-hover-border: #c8c8c8;
+  --featured-filter-hover-bg: rgba(0, 0, 0, 0.035);
+  --featured-filter-hover-text: #555;
+
+  --featured-filter-active-border: #bdbdbd;
+  --featured-filter-active-bg: linear-gradient(135deg, #292929, #111111);
+  --featured-filter-active-hover-bg: linear-gradient(135deg, #3a3a3a, #171717);
+  --featured-filter-active-text: #fff;
+
+  --featured-card-border: #dedede;
+
+  --featured-card-bg:
+    radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.035), transparent 55%),
+    #ffffff;
+
+  --featured-card-text: #171717;
+
+  --featured-card-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  --featured-card-hover-border: #c2c2c2;
+
+  --featured-card-hover-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  --featured-image-bg:
+    radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0.035), transparent 65%),
+    #f3f3f1;
+
+  --featured-arrow-border: rgba(0, 0, 0, 0.12);
+  --featured-arrow-bg: rgba(255, 255, 255, 0.78);
+  --featured-arrow-text: #777;
+
+  --featured-arrow-hover-bg: #171717;
+  --featured-arrow-hover-text: #fff;
+
+  --featured-info-bg: #f1f1f1;
+  --featured-brand: #999;
+  --featured-title: #333;
+  --featured-title-hover: #111;
+
+  --featured-empty-border: #d5d5d5;
+  --featured-empty-text: #999;
+
+  --featured-filter-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 6px 20px rgba(0, 0, 0, 0.06);
+
+  --featured-filter-active-shadow:
+    0 2px 7px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  /* =======================================================
+     LINKS
+  ======================================================= */
+
+  --links-bg: #ffffff;
+  --links-border: #e3e3e3;
+  --links-text: #222;
+  --links-muted: #888;
+
+  --links-shadow: rgba(0, 0, 0, 0.06);
+  --links-highlight: rgba(255, 255, 255, 0.8);
+  --links-top-line: rgba(0, 0, 0, 0.08);
+
+  --links-hover-border: #c8c8c8;
+  --links-hover-bg: #f7f7f7;
+  --links-hover-shadow: rgba(0, 0, 0, 0.1);
+  --links-hover-highlight: rgba(255, 255, 255, 0.9);
+
+  --links-grid: rgba(0, 0, 0, 0.012);
+
+  /* =======================================================
+     FOOTER
+  ======================================================= */
+
+  --footer-border: #dedede;
+  --footer-accent: #aaa;
+
+  --footer-name: #555;
+  --footer-muted: #999;
+
+  --footer-name-hover: #171717;
+  --footer-accent-hover: #777;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 .page {
+  --glow-size: 420px;
+
   position: relative;
+
   min-height: 100svh;
+
+  padding: 32px;
 
   overflow: hidden;
   isolation: isolate;
 
-  padding: 32px;
+  color: var(--text);
 
   background:
-    /* TOP CENTER LIGHT */
     radial-gradient(
       ellipse 85% 45% at 50% -5%,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.035) 35%,
+      var(--glow-top) 0%,
+      var(--glow-top-soft) 35%,
       transparent 70%
     ),
-    /* LEFT LIGHT */
     radial-gradient(
-        ellipse 45% 65% at -10% 35%,
-        rgba(255, 255, 255, 0.035),
-        transparent 70%
-      ),
-    /* RIGHT LIGHT */
+      ellipse 45% 65% at -10% 35%,
+      var(--glow-left),
+      transparent 70%
+    ),
     radial-gradient(
-        ellipse 45% 65% at 110% 55%,
-        rgba(255, 255, 255, 0.03),
-        transparent 70%
-      ),
-    /* CENTER LOWER LIGHT */
+      ellipse 45% 65% at 110% 55%,
+      var(--glow-right),
+      transparent 70%
+    ),
     radial-gradient(
-        ellipse 60% 50% at 50% 85%,
-        rgba(255, 255, 255, 0.025),
-        transparent 70%
-      ),
-    /* BOTTOM LIGHT */
+      ellipse 60% 50% at 50% 85%,
+      var(--glow-center),
+      transparent 70%
+    ),
     radial-gradient(
-        ellipse 90% 35% at 50% 115%,
-        rgba(255, 255, 255, 0.065),
-        transparent 65%
-      ),
-    #050505;
+      ellipse 90% 35% at 50% 115%,
+      var(--glow-bottom),
+      transparent 65%
+    ),
+    var(--page-bg);
+
+  transition:
+    background 0.45s ease,
+    color 0.45s ease;
 }
 
-/* =========================
-   TECH GRID
-========================= */
+/* =========================================================
+   PAGE EFFECTS
+========================================================= */
 
 .page::before {
   content: "";
@@ -59,12 +663,19 @@
   z-index: -3;
 
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
 
   background-size: 42px 42px;
 
   transform: perspective(900px) rotateX(2deg) scale(1.05);
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    black 0%,
+    rgba(0, 0, 0, 0.75) 55%,
+    transparent 100%
+  );
 
   mask-image: radial-gradient(
     ellipse 90% 90% at 50% 50%,
@@ -74,11 +685,9 @@
   );
 
   pointer-events: none;
-}
 
-/* =========================
-   LIGHT BEAMS
-========================= */
+  transition: opacity 0.45s ease;
+}
 
 .page::after {
   content: "";
@@ -98,9 +707,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.015) 25%,
-    rgba(255, 255, 255, 0.055) 50%,
-    rgba(255, 255, 255, 0.015) 75%,
+    var(--beam-soft) 25%,
+    var(--beam) 50%,
+    var(--beam-soft) 75%,
     transparent 100%
   );
 
@@ -109,14 +718,10 @@
   opacity: 0.8;
 
   pointer-events: none;
-}
 
-/* =========================
-   EXTRA AMBIENT GLOW
-========================= */
-
-.page {
-  --glow-size: 420px;
+  transition:
+    opacity 0.45s ease,
+    background 0.45s ease;
 }
 
 .page .container::before {
@@ -129,8 +734,8 @@
   width: var(--glow-size);
   height: var(--glow-size);
 
-  left: 50%;
   top: 72%;
+  left: 50%;
 
   transform: translate(-50%, -50%);
 
@@ -138,19 +743,19 @@
 
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.045) 0%,
-    rgba(255, 255, 255, 0.018) 30%,
+    var(--ambient-glow) 0%,
+    var(--ambient-glow-soft) 30%,
     transparent 70%
   );
 
   filter: blur(25px);
 
   pointer-events: none;
-}
 
-/* =========================
-   SUBTLE VIGNETTE
-========================= */
+  transition:
+    background 0.45s ease,
+    opacity 0.45s ease;
+}
 
 .page .container::after {
   content: "";
@@ -165,13 +770,15 @@
   background: radial-gradient(
     ellipse at center,
     transparent 35%,
-    rgba(0, 0, 0, 0.22) 100%
+    var(--vignette) 100%
   );
+
+  transition: background 0.45s ease;
 }
 
-/* =========================
+/* =========================================================
    CONTAINER
-========================= */
+========================================================= */
 
 .container {
   position: relative;
@@ -184,26 +791,112 @@
   margin: 0 auto;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
 
-@media (max-width: 480px) {
-  .page {
-    padding: 32px 32px;
-  }
+.theme-toggle {
+  position: fixed;
+  top: 22px;
+  right: 22px;
 
-  .container {
-    max-width: 430px;
+  z-index: 9999;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  background: var(--links-bg);
+  color: var(--text);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 20px var(--links-shadow),
+    inset 0 1px 0 var(--links-highlight);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+@media (hover: hover) {
+  .theme-toggle:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--links-hover-border);
+
+    background: var(--links-hover-bg);
+
+    box-shadow:
+      0 10px 25px var(--links-hover-shadow),
+      inset 0 1px 0 var(--links-hover-highlight);
   }
 }
 
-/* =========================
-   DESKTOP
-========================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 480px) {
+  .page {
+    padding: 32px;
+  }
+
+  .theme-toggle {
+    top: 20px;
+    right: 20px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 13px;
+  }
+}
 
 @media (min-width: 768px) {
   .page {
     padding: 60px 62px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .page::before,
+  .page::after,
+  .page .container::before,
+  .page .container::after,
+  .theme-toggle,
+  .exclusive-discount__card,
+  .exclusive-discount__image img,
+  .exclusive-discount__button,
+  .exclusive-discount__indicator button {
+    transition: none;
   }
 }

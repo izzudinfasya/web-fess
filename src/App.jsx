@@ -19,28 +19,61 @@ import "./App.css";
 function App() {
   const [transitionDone, setTransitionDone] = useState(false);
 
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      return savedTheme;
+    }
+
+    const hour = new Date().getHours();
+
+    return hour >= 6 && hour < 18 ? "light" : "dark";
+  });
+
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+
     window.history.scrollRestoration = "manual";
-
     window.scrollTo(0, 0);
 
-    if (!transitionDone) return;
+    if (transitionDone) {
+      AOS.init({
+        duration: 350,
+        easing: "ease-out",
+        once: true,
+        offset: 0,
+      });
 
-    AOS.init({
-      duration: 350,
-      easing: "ease-out",
-      once: true,
-      offset: 0,
+      AOS.refreshHard();
+    }
+  }, [theme, transitionDone]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const nextTheme = prev === "dark" ? "light" : "dark";
+
+      localStorage.setItem("theme", nextTheme);
+
+      return nextTheme;
     });
-
-    AOS.refreshHard();
-
-    window.scrollTo(0, 0);
-  }, [transitionDone]);
+  };
 
   return (
     <main className="page">
-      <PageTransition onComplete={() => setTransitionDone(true)} />
+      <PageTransition
+        theme={theme}
+        onComplete={() => setTransitionDone(true)}
+      />
+
+      <button
+        type="button"
+        className="theme-toggle"
+        onClick={toggleTheme}
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      >
+        <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+      </button>
 
       <div className="container">
         <div data-aos="fade-up">

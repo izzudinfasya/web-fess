@@ -31,23 +31,19 @@
 
   overflow: hidden;
 
-  border: 1px solid #252525;
+  border: 1px solid var(--social-border);
   border-radius: 14px;
 
   background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(255, 255, 255, 0.055),
-      transparent 55%
-    ),
-    linear-gradient(135deg, #111, #090909);
+    radial-gradient(circle at 100% 0%, var(--social-glow), transparent 55%),
+    var(--social-bg);
 
-  color: #fff;
+  color: var(--social-text);
   text-decoration: none;
 
   box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    0 6px 20px var(--social-shadow),
+    inset 0 1px 0 var(--social-highlight);
 
   transition:
     transform 0.25s ease,
@@ -74,7 +70,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.15),
+    var(--social-top-line),
     transparent
   );
 }
@@ -93,12 +89,12 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #2c2c2c;
+  border: 1px solid var(--social-icon-border);
   border-radius: 9px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--social-icon-bg);
 
-  color: #aaa;
+  color: var(--social-muted);
 
   font-size: 14px;
 
@@ -126,7 +122,7 @@
 ========================= */
 
 .social-links__value {
-  color: #ddd;
+  color: var(--social-text);
 
   font-family: "Space Grotesk", sans-serif;
 
@@ -148,7 +144,7 @@
 ========================= */
 
 .social-links__label {
-  color: #666;
+  color: var(--social-muted);
 
   font-family: "Space Grotesk", sans-serif;
 
@@ -175,35 +171,35 @@
   .social-links__item:hover {
     transform: translateY(-2px);
 
-    border-color: #444;
+    border-color: var(--social-hover-border);
 
     background:
       radial-gradient(
         circle at 100% 0%,
-        rgba(255, 255, 255, 0.09),
+        var(--social-hover-glow),
         transparent 55%
       ),
-      linear-gradient(135deg, #171717, #0b0b0b);
+      var(--social-hover-bg);
 
     box-shadow:
-      0 10px 30px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+      0 10px 30px var(--social-hover-shadow),
+      inset 0 1px 0 var(--social-hover-highlight);
   }
 
   .social-links__item:hover .social-links__icon {
-    color: #fff;
+    color: var(--social-text);
 
-    border-color: #444;
+    border-color: var(--social-hover-border);
 
-    background: rgba(255, 255, 255, 0.07);
+    background: var(--social-icon-hover-bg);
   }
 
   .social-links__item:hover .social-links__value {
-    color: #fff;
+    color: var(--social-text);
   }
 
   .social-links__item:hover .social-links__label {
-    color: #999;
+    color: var(--social-label-hover);
   }
 }
 

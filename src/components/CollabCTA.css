@@ -10,39 +10,47 @@
 
   overflow: hidden;
 
-  border: 1px solid #d8d8d8;
+  border: 1px solid var(--cta-border);
   border-radius: 19px;
 
   background:
     radial-gradient(
       ellipse 70% 100% at 100% 0%,
-      rgba(255, 255, 255, 0.95),
+      var(--cta-glow-top),
       transparent 50%
     ),
     radial-gradient(
       ellipse 60% 80% at 0% 100%,
-      rgba(0, 0, 0, 0.08),
+      var(--cta-glow-bottom),
       transparent 65%
     ),
     linear-gradient(
       125deg,
-      #bdbdbd 0%,
-      #fafafa 20%,
-      #d8d8d8 42%,
-      #f3f3f3 58%,
-      #bdbdbd 80%,
-      #f5f5f5 100%
+      var(--cta-gradient-1) 0%,
+      var(--cta-gradient-2) 20%,
+      var(--cta-gradient-3) 42%,
+      var(--cta-gradient-4) 58%,
+      var(--cta-gradient-5) 80%,
+      var(--cta-gradient-6) 100%
     );
 
-  color: #000;
+  color: var(--cta-text);
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    0 20px 50px var(--cta-shadow),
+    inset 0 1px 0 var(--cta-highlight),
+    inset 0 -1px 0 var(--cta-bottom-highlight);
+
+  transition:
+    background 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    color 0.45s ease;
 }
 
-/* Grid */
+/* =========================
+   GRID
+========================= */
 
 .collab-cta::before {
   content: "";
@@ -51,10 +59,18 @@
   inset: 0;
 
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+    linear-gradient(var(--cta-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cta-grid) 1px, transparent 1px);
 
   background-size: 22px 22px;
+
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    transparent 5%,
+    black 45%,
+    black 70%,
+    transparent 100%
+  );
 
   mask-image: linear-gradient(
     135deg,
@@ -69,7 +85,9 @@
   pointer-events: none;
 }
 
-/* Light streak */
+/* =========================
+   LIGHT STREAK
+========================= */
 
 .collab-cta::after {
   content: "";
@@ -85,7 +103,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.22),
+    var(--cta-streak),
     transparent
   );
 
@@ -114,7 +132,7 @@
 
   margin-bottom: 8px;
 
-  color: #777;
+  color: var(--cta-label);
 
   font-family: "Space Grotesk", sans-serif;
 
@@ -134,17 +152,17 @@
 
   border-radius: 50%;
 
-  background: #111;
+  background: var(--cta-label-dot);
 
   box-shadow:
-    0 0 0 3px rgba(0, 0, 0, 0.06),
-    0 0 10px rgba(0, 0, 0, 0.25);
+    0 0 0 3px var(--cta-label-dot-ring),
+    0 0 10px var(--cta-label-dot-glow);
 }
 
 .collab-cta h2 {
   margin: 0;
 
-  color: #050505;
+  color: var(--cta-title);
 
   font-family: "Space Grotesk", sans-serif;
 
@@ -161,7 +179,7 @@
 
   margin: 8px 0 0;
 
-  color: #666;
+  color: var(--cta-description);
 
   font-family: "Space Grotesk", sans-serif;
 
@@ -212,21 +230,28 @@
     transform 0.25s ease,
     background 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    color 0.25s ease;
 }
 
-/* Primary */
+/* =========================
+   PRIMARY
+========================= */
 
 .collab-cta__button--primary {
-  border: 1px solid #050505;
+  border: 1px solid var(--cta-primary-border);
 
-  background: linear-gradient(135deg, #151515, #000);
+  background: linear-gradient(
+    135deg,
+    var(--cta-primary-bg-1),
+    var(--cta-primary-bg-2)
+  );
 
-  color: #fff;
+  color: var(--cta-primary-text);
 
   box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 5px 15px var(--cta-primary-shadow),
+    inset 0 1px 0 var(--cta-primary-highlight);
 }
 
 .collab-cta__button--primary::before {
@@ -243,7 +268,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.12),
+    var(--cta-primary-shine),
     transparent
   );
 
@@ -252,27 +277,31 @@
   transition: left 0.5s ease;
 }
 
-/* Secondary */
+/* =========================
+   SECONDARY
+========================= */
 
 .collab-cta__button--secondary {
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--cta-secondary-border);
 
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.65),
-    rgba(255, 255, 255, 0.3)
+    var(--cta-secondary-bg-1),
+    var(--cta-secondary-bg-2)
   );
 
-  color: #111;
+  color: var(--cta-secondary-text);
 
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 var(--cta-secondary-highlight);
 }
 
 .collab-cta__button--secondary svg {
   transition: transform 0.25s ease;
 }
 
-/* Hover */
+/* =========================
+   HOVER
+========================= */
 
 @media (hover: hover) {
   .collab-cta__button:hover {
@@ -280,11 +309,11 @@
   }
 
   .collab-cta__button--primary:hover {
-    background: linear-gradient(135deg, #222, #050505);
+    filter: brightness(1.08);
 
     box-shadow:
-      0 8px 20px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      0 8px 20px var(--cta-primary-shadow),
+      inset 0 1px 0 var(--cta-primary-highlight);
   }
 
   .collab-cta__button--primary:hover::before {
@@ -292,13 +321,15 @@
   }
 
   .collab-cta__button--secondary:hover {
-    border-color: rgba(0, 0, 0, 0.35);
-
-    background: #fff;
+    filter: brightness(1.08);
 
     box-shadow:
-      0 6px 18px rgba(0, 0, 0, 0.12),
-      inset 0 1px 0 #fff;
+      0 6px 18px var(--cta-shadow),
+      inset 0 1px 0 var(--cta-secondary-highlight);
+  }
+
+  .collab-cta__button--secondary svg {
+    transition: transform 0.25s ease;
   }
 
   .collab-cta__button--secondary:hover svg {
@@ -310,7 +341,9 @@
   transform: scale(0.97);
 }
 
-/* Mobile */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 480px) {
   .collab-cta {
@@ -333,5 +366,18 @@
   .collab-cta__button {
     min-height: 40px;
     font-size: 8.5px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .collab-cta,
+  .collab-cta__button,
+  .collab-cta__button--primary::before,
+  .collab-cta__button--secondary svg {
+    transition: none;
   }
 }

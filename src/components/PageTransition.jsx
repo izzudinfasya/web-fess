@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
+import logoBlack from "../assets/logo-black.png";
 import "./PageTransition.css";
 
-const PageTransition = ({ onComplete }) => {
+const PageTransition = ({ theme, onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
 
+  const currentLogo = theme === "light" ? logoBlack : logo;
+
   useEffect(() => {
-    // Always start the page from the top
     window.scrollTo(0, 0);
 
     const leaveTimer = setTimeout(() => {
@@ -35,7 +37,7 @@ const PageTransition = ({ onComplete }) => {
     >
       <div className="page-transition__content">
         <div className="page-transition__logo">
-          <img src={logo} alt="Fess" />
+          <img src={currentLogo} alt="Fess" />
         </div>
 
         <span className="page-transition__line" />

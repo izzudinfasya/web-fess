@@ -21,7 +21,7 @@
 
   margin-bottom: 6px;
 
-  color: #666;
+  color: var(--featured-muted);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 9px;
@@ -34,7 +34,7 @@
 .featured-products__header h2 {
   margin: 0;
 
-  color: #f5f5f5;
+  color: var(--featured-text);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 22px;
@@ -47,7 +47,7 @@
 .featured-products__header p {
   margin: 8px 0 0;
 
-  color: #666;
+  color: var(--featured-muted);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 11px;
@@ -67,18 +67,16 @@
 
   overflow: hidden;
 
-  border: 1px solid #242424;
+  border: 1px solid var(--featured-filter-border);
   border-radius: 10px;
 
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.035),
-    rgba(255, 255, 255, 0.008)
+    var(--featured-filter-bg-start),
+    var(--featured-filter-bg-end)
   );
 
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.035),
-    0 6px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--featured-filter-shadow);
 }
 
 .featured-products__filter-track {
@@ -116,7 +114,7 @@
 
   background: transparent;
 
-  color: #555;
+  color: var(--featured-filter-text);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 7.5px;
@@ -134,28 +132,26 @@
 }
 
 .featured-products__filter--active {
-  border-color: #383838;
+  border-color: var(--featured-filter-active-border);
 
-  background: linear-gradient(135deg, #f4f4f4, #dcdcdc);
+  background: var(--featured-filter-active-bg);
 
-  color: #080808;
+  color: var(--featured-filter-active-text);
 
-  box-shadow:
-    0 2px 7px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: var(--featured-filter-active-shadow);
 }
 
 @media (hover: hover) {
   .featured-products__filter:not(.featured-products__filter--active):hover {
-    border-color: #303030;
+    border-color: var(--featured-filter-hover-border);
 
-    background: rgba(255, 255, 255, 0.035);
+    background: var(--featured-filter-hover-bg);
 
-    color: #aaa;
+    color: var(--featured-filter-hover-text);
   }
 
   .featured-products__filter--active:hover {
-    background: linear-gradient(135deg, #ffffff, #e8e8e8);
+    background: var(--featured-filter-active-hover-bg);
   }
 }
 
@@ -217,6 +213,7 @@
 
 .featured-products__filtered {
   display: flex;
+
   gap: 9px;
 
   width: 100%;
@@ -225,8 +222,7 @@
 }
 
 /* =========================
-   3+ PRODUCTS
-   HORIZONTAL DRAG SLIDER
+   SLIDER
 ========================= */
 
 .featured-products__filtered--slider {
@@ -241,7 +237,6 @@
   cursor: grab;
 
   user-select: none;
-
   -webkit-user-select: none;
 }
 
@@ -251,6 +246,7 @@
 
 .featured-products__filtered--slider.is-dragging {
   cursor: grabbing;
+
   scroll-behavior: auto;
 }
 
@@ -263,7 +259,6 @@
 }
 
 /* =========================
-   1–2 PRODUCTS
    STATIC
 ========================= */
 
@@ -287,28 +282,21 @@
 
   overflow: hidden;
 
-  border: 1px solid #242424;
+  border: 1px solid var(--featured-card-border);
   border-radius: 13px;
 
-  background:
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(255, 255, 255, 0.05),
-      transparent 55%
-    ),
-    #0b0b0b;
+  background: var(--featured-card-bg);
 
-  color: #fff;
+  color: var(--featured-card-text);
+
   text-decoration: none;
 
-  box-shadow:
-    0 7px 20px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  /* box-shadow: var(--featured-card-shadow); */
 
-  transition:
+  /* transition:
     transform 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease; */
 }
 
 /* =========================
@@ -323,13 +311,7 @@
 
   overflow: hidden;
 
-  background:
-    radial-gradient(
-      circle at 50% 40%,
-      rgba(255, 255, 255, 0.075),
-      transparent 65%
-    ),
-    #101010;
+  background: var(--featured-image-bg);
 }
 
 .featured-product__image img {
@@ -362,15 +344,15 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--featured-arrow-border);
   border-radius: 50%;
 
-  background: rgba(5, 5, 5, 0.68);
+  background: var(--featured-arrow-bg);
 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
-  color: #aaa;
+  color: var(--featured-arrow-text);
 
   transition:
     background 0.2s ease,
@@ -389,14 +371,16 @@
 
 .featured-product__info {
   padding: 10px 10px 11px;
+  background: var(--featured-info-bg);
 }
 
 .featured-product__brand {
   display: block;
+
   margin-top: 5px;
   margin-bottom: 3px;
 
-  color: #555;
+  color: var(--featured-brand);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 7px;
@@ -409,9 +393,13 @@
 }
 
 .featured-product h3 {
+  display: -webkit-box;
+
   margin: 0;
 
-  color: #c9c9c9;
+  overflow: hidden;
+
+  color: var(--featured-title);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 13px;
@@ -420,11 +408,8 @@
   line-height: 1.3;
   letter-spacing: -0.01em;
 
-  display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-
-  overflow: hidden;
 
   transition: color 0.2s ease;
 }
@@ -437,11 +422,9 @@
   .featured-product:hover {
     transform: translateY(-3px);
 
-    border-color: #3a3a3a;
+    border-color: var(--featured-card-hover-border);
 
-    box-shadow:
-      0 12px 28px rgba(0, 0, 0, 0.32),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    /* box-shadow: var(--featured-card-hover-shadow); */
   }
 
   .featured-product:hover img {
@@ -451,15 +434,15 @@
   }
 
   .featured-product:hover .featured-product__arrow {
-    background: #fff;
+    background: var(--featured-arrow-hover-bg);
 
-    color: #000;
+    color: var(--featured-arrow-hover-text);
 
     transform: translate(1px, -1px);
   }
 
   .featured-product:hover h3 {
-    color: #fff;
+    color: var(--featured-title-hover);
   }
 }
 
@@ -488,10 +471,10 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px dashed #282828;
+  border: 1px dashed var(--featured-empty-border);
   border-radius: 12px;
 
-  color: #555;
+  color: var(--featured-empty-text);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 8px;
@@ -532,12 +515,19 @@
     font-size: 12px;
   }
 }
+
 /* =========================
    REDUCED MOTION
 ========================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .featured-products__track {
+  .featured-products__track,
+  .featured-product,
+  .featured-product__image img,
+  .featured-product__arrow,
+  .featured-product h3,
+  .featured-products__filter {
     animation: none;
+    transition: none;
   }
 }
