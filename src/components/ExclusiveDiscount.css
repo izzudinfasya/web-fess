@@ -1,3 +1,7 @@
+/* =========================
+   EXCLUSIVE DISCOUNT
+========================= */
+
 .exclusive-discount {
   margin-top: 32px;
   margin-bottom: 26px;
@@ -88,6 +92,8 @@
   overscroll-behavior-x: contain;
 
   touch-action: pan-x;
+
+  padding-bottom: 3px;
 }
 
 .exclusive-discount__slider::-webkit-scrollbar {
@@ -114,10 +120,17 @@
 
   background: linear-gradient(145deg, #121212 0%, #090909 100%);
 
+  /* Safari / iOS clipping fix */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+  isolation: isolate;
+
   transition:
     border-color 0.25s ease,
     transform 0.25s ease;
 }
+
+/* top highlight */
 
 .exclusive-discount__card::after {
   content: "";
@@ -133,10 +146,14 @@
   background: linear-gradient(90deg, transparent, #555, transparent);
 
   opacity: 0.5;
+
+  z-index: 5;
+
+  pointer-events: none;
 }
 
 /* =========================
-   PREMIUM IMAGE
+   IMAGE
 ========================= */
 
 .exclusive-discount__image {
@@ -161,6 +178,7 @@
 }
 
 /* subtle grid */
+
 .exclusive-discount__image::before {
   content: "";
 
@@ -173,12 +191,19 @@
 
   background-size: 32px 32px;
 
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 0%,
+    transparent 75%
+  );
+
   mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
 
   z-index: -2;
 }
 
 /* cinematic vignette */
+
 .exclusive-discount__image::after {
   content: "";
 
@@ -206,16 +231,22 @@
   z-index: 2;
 }
 
-/* product */
+/* product image */
+
 .exclusive-discount__image img {
   position: relative;
 
   z-index: 1;
 
+  display: block;
+
   width: 100%;
   height: 100%;
 
   object-fit: cover;
+
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 
   filter: drop-shadow(0 18px 20px rgba(0, 0, 0, 0.7))
     drop-shadow(0 0 30px rgba(255, 255, 255, 0.06));
@@ -225,7 +256,10 @@
     filter 0.5s ease;
 }
 
-/* floating effect */
+/* =========================
+   IMAGE HOVER
+========================= */
+
 @media (hover: hover) {
   .exclusive-discount__card:hover .exclusive-discount__image img {
     transform: scale(1.04) translateY(-3px);
@@ -249,7 +283,7 @@
   top: 13px;
   right: 15px;
 
-  z-index: 2;
+  z-index: 4;
 
   color: #444;
 
@@ -265,16 +299,21 @@
 
 .exclusive-discount__content {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
 
-  gap: 12px;
+  gap: 18px;
 
   padding: 17px 17px 18px;
 }
 
+/* =========================
+   INFO
+========================= */
+
 .exclusive-discount__info {
-  flex: 1;
+  flex: 1 1 auto;
+
   min-width: 0;
 }
 
@@ -313,7 +352,8 @@
 .exclusive-discount__code {
   display: inline-block;
 
-  margin-top: 8px;
+  margin-top: 9px;
+
   padding: 4px 7px;
 
   border: 1px solid #333;
@@ -339,8 +379,9 @@
 ========================= */
 
 .exclusive-discount__button {
-  flex-shrink: 0;
+  flex: 0 0 auto;
 
+  min-width: 72px;
   min-height: 38px;
 
   display: flex;
@@ -368,6 +409,8 @@
 
   text-decoration: none;
 
+  white-space: nowrap;
+
   transition:
     transform 0.2s ease,
     background 0.2s ease;
@@ -386,8 +429,8 @@
 .exclusive-discount__indicator {
   display: flex;
 
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   gap: 5px;
 
@@ -418,6 +461,82 @@
   border-radius: 10px;
 
   background: #999;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 600px) {
+  .exclusive-discount__content {
+    gap: 16px;
+
+    padding: 16px 15px 17px;
+  }
+
+  .exclusive-discount h3 {
+    font-size: 17px;
+  }
+
+  .exclusive-discount__button {
+    min-width: 70px;
+
+    padding: 0 11px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .exclusive-discount__card {
+    flex-basis: 72%;
+    width: 72%;
+
+    border-radius: 16px;
+  }
+
+  .exclusive-discount__image {
+    height: 190px;
+  }
+
+  .exclusive-discount__content {
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 15px 14px 16px;
+  }
+
+  .exclusive-discount__info {
+    min-width: 0;
+  }
+
+  .exclusive-discount h3 {
+    font-size: 16px;
+
+    line-height: 1.25;
+  }
+
+  .exclusive-discount__percentage {
+    font-size: 8px;
+  }
+
+  .exclusive-discount__code {
+    margin-top: 8px;
+  }
+
+  .exclusive-discount__button {
+    min-width: 68px;
+    min-height: 36px;
+
+    padding: 0 10px;
+
+    border-radius: 8px;
+
+    font-size: 8px;
+  }
 }
 
 /* =========================
