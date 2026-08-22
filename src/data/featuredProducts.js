@@ -9,7 +9,7 @@ import ATKHorizon from "../assets/atk-horizon.webp";
 import MAD68 from "../assets/MAD68.webp";
 import ModelX from "../assets/model-x.png";
 import Lampu from "../assets/lampu.webp";
-import Ying from "../assets/ying.png";
+import Ying from "../assets/Ying.png";
 import ZDP1118 from "../assets/zdp1118.png";
 
 export const featuredProducts = [
