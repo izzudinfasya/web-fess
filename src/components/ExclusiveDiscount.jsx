@@ -86,13 +86,15 @@ const ExclusiveDiscount = () => {
             <div className="exclusive-discount__content">
               <div className="exclusive-discount__info">
                 <span className="exclusive-discount__percentage">
-                  {product.discount}
+                  {product.discount || "—"}
                 </span>
 
                 <h3>{product.title}</h3>
 
                 <span className="exclusive-discount__code">
-                  USE CODE "{product.code}"
+                  {product.code
+                    ? `USE CODE "${product.code}"`
+                    : "NO DISCOUNT CODE AVAILABLE"}
                 </span>
               </div>
 

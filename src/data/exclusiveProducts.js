@@ -3,6 +3,7 @@ import ModelX from "../assets/model-x.png";
 import ATKHorizon from "../assets/atk-horizon.webp";
 import VXEDragonfly from "../assets/vxe-dragonfly-v3.webp";
 import WLMouse from "../assets/wlmouse-beast-x-pro.png";
+import ventionDashPro from "../assets/vention-dash-pro.png";
 import Win11 from "../assets/win-11-pro.png";
 import Office2021 from "../assets/office-2021.png";
 
@@ -56,9 +57,16 @@ export const products = [
         link:
             "https://shop.beacons.ai/fesnotyours/5c10fc71-1ddc-47f2-9b37-2f4298a54895",
     },
-
     {
         id: 6,
+        title: "Vention Dash Pro",
+        code: "",
+        image: ventionDashPro,
+        url: "https://shopee.co.id/product/391830606/43829817522/?smtt=9&uls_trackid=56djohbm00im&utm_campaign=s391830606_ss_id_ttip_fesnotyours&utm_medium=seller&utm_source=tiktok",
+    },
+
+    {
+        id: 7,
         title: "Win 11 Pro",
         discount: "52% OFF",
         code: "FES52",
@@ -68,7 +76,7 @@ export const products = [
     },
 
     {
-        id: 7,
+        id: 8,
         title: "Office 2021 Pro Plus",
         discount: "62% OFF",
         code: "FES62",

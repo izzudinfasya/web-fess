@@ -172,6 +172,50 @@
   transition: color 0.25s ease;
 }
 
+.profile__name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  margin-bottom: 7px;
+}
+
+.profile__name h1 {
+  margin: 0;
+}
+
+.profile__verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+
+  flex-shrink: 0;
+
+  transform: translateY(1px);
+}
+
+.profile__verified svg {
+  width: 100%;
+  height: 100%;
+}
+
+.profile__verified svg > path:first-child {
+  fill: #0095f6;
+}
+
+.profile__verified-check {
+  fill: none !important;
+
+  stroke: #fff;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* =========================
    BIO
 ========================= */

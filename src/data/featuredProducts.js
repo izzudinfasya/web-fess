@@ -2,9 +2,15 @@ import nakas from "../assets/nakas.png";
 import xiaomiG24i from "../assets/xiaomi-g24i.png";
 import fifineAM8 from "../assets/fifine-am8.png";
 import thunderbolt5 from "../assets/thunderbolt5.jpg";
-import ventionDashPro from "../assets/vention-dash-pro.png";
+import WLMouse from "../assets/wlmouse-beast-x-pro.png";
 import XG27ACMES from "../assets/XG27ACMES.png";
 import jmary from "../assets/jmary-mt49.png";
+import ATKHorizon from "../assets/atk-horizon.webp";
+import MAD68 from "../assets/MAD68.webp";
+import ModelX from "../assets/model-x.png";
+import Lampu from "../assets/lampu.webp";
+import Ying from "../assets/ying.png";
+import ZDP1118 from "../assets/zdp1118.png";
 
 export const featuredProducts = [
     {
@@ -57,10 +63,58 @@ export const featuredProducts = [
     },
     {
         id: 7,
-        brand: "Vention",
-        title: "Dash Pro",
+        brand: "WLMouse",
+        title: "Beast X Pro",
+        category: "Mouse",
+        image: WLMouse,
+        url: "https://shop.beacons.ai/fesnotyours/5c10fc71-1ddc-47f2-9b37-2f4298a54895",
+    },
+    {
+        id: 8,
+        brand: "ATK",
+        title: "Horizon",
+        category: "Audio",
+        image: ATKHorizon,
+        url: "https://shop.beacons.ai/fesnotyours/e8b39f9b-3228-465e-92bb-5ae38066d6f7",
+    },
+    {
+        id: 9,
+        brand: "Madlions",
+        title: "MAD 68 HE Flagship",
+        category: "Keyboard",
+        image: MAD68,
+        url: "https://s.shopee.co.id/2gAYFtJyFj",
+    },
+    {
+        id: 10,
+        brand: "STXND",
+        title: "Model-X Stand",
         category: "Other",
-        image: ventionDashPro,
-        url: "https://shopee.co.id/product/391830606/43829817522/?smtt=9&uls_trackid=56djohbm00im&utm_campaign=s391830606_ss_id_ttip_fesnotyours&utm_medium=seller&utm_source=tiktok",
+        image: ModelX,
+        url: "https://stxnd.com/products/laptop-stand-model-x?variant=45217096859889?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
+    },
+    {
+        id: 11,
+        brand: "CAMERA LIGHT",
+        title: "Lampu LED",
+        category: "Other",
+        image: Lampu,
+        url: "https://s.shopee.co.id/4VcCSSZxrV",
+    },
+    {
+        id: 12,
+        brand: "SPACEPAD",
+        title: "YING V2",
+        category: "Mouse Pad",
+        image: Ying,
+        url: "https://s.shopee.co.id/60R0FNGnSE",
+    },
+    {
+        id: 13,
+        brand: "OXIMUS",
+        title: "ZDP1118",
+        category: "Bracket",
+        image: ZDP1118,
+        url: "https://s.shopee.co.id/7pseR56LvW",
     },
 ];

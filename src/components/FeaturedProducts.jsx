@@ -8,6 +8,10 @@ import "./FeaturedProducts.css";
 const FeaturedProducts = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
+  const [randomizedProducts] = useState(() => {
+    return [...featuredProducts].sort(() => Math.random() - 0.5);
+  });
+
   const sliderRef = useRef(null);
   const isDragging = useRef(false);
   const hasDragged = useRef(false);
@@ -26,13 +30,13 @@ const FeaturedProducts = () => {
 
   const filteredProducts = useMemo(() => {
     if (activeCategory === "All") {
-      return featuredProducts;
+      return randomizedProducts;
     }
 
-    return featuredProducts.filter(
+    return randomizedProducts.filter(
       (product) => product.category === activeCategory,
     );
-  }, [activeCategory]);
+  }, [activeCategory, randomizedProducts]);
 
   const isAll = activeCategory === "All";
   const isSlider = !isAll && filteredProducts.length > 2;
@@ -112,11 +116,11 @@ const FeaturedProducts = () => {
       ========================= */}
 
       <header className="featured-products__header">
-        <span className="featured-products__eyebrow">CURATED TECH</span>
+        <span className="featured-products__eyebrow">MY SETUP</span>
 
-        <h2>Selected Gear</h2>
+        <h2>What's in My Setup?</h2>
 
-        <p>Things I use, test, and genuinely recommend.</p>
+        <p>My current gear, tools, and everyday essentials.</p>
       </header>
 
       {/* =========================
@@ -129,23 +133,29 @@ const FeaturedProducts = () => {
         aria-label="Product categories"
       >
         <div className="featured-products__filter-track">
-          {categories.map((category) => {
-            const isActive = activeCategory === category;
+          {[...categories]
+            .sort((a, b) => {
+              if (a === "Other") return 1;
+              if (b === "Other") return -1;
+              return 0;
+            })
+            .map((category) => {
+              const isActive = activeCategory === category;
 
-            return (
-              <button
-                key={category}
-                type="button"
-                className={`featured-products__filter ${
-                  isActive ? "featured-products__filter--active" : ""
-                }`}
-                aria-pressed={isActive}
-                onClick={() => handleCategoryChange(category)}
-              >
-                {category}
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  className={`featured-products__filter ${
+                    isActive ? "featured-products__filter--active" : ""
+                  }`}
+                  aria-pressed={isActive}
+                  onClick={() => handleCategoryChange(category)}
+                >
+                  {category}
+                </button>
+              );
+            })}
         </div>
       </div>
 
