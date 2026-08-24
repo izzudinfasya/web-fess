@@ -1,3 +1,4 @@
+import Essential60 from "../assets/essential60.png";
 import CMDX from "../assets/cmd-x.webp";
 import ModelX from "../assets/model-x.png";
 import ATKHorizon from "../assets/atk-horizon.webp";
@@ -10,6 +11,15 @@ import Office2021 from "../assets/office-2021.png";
 export const products = [
     {
         id: 1,
+        title: "Essential60 HE",
+        discount: "NEW ARRIVAL",
+        code: "",
+        image: Essential60,
+        link:
+            "https://pressplayid.com/products/essential60-he-60-rapid-trigger-mechanical-keyboard",
+    },
+    {
+        id: 2,
         title: "CMD-X Keyboard + Mouse",
         discount: "10% OFF",
         code: "FESS10",
@@ -19,7 +29,7 @@ export const products = [
     },
 
     {
-        id: 2,
+        id: 3,
         title: "Model-X 2.0 Stand",
         discount: "10% OFF",
         code: "FESS10",
@@ -29,7 +39,7 @@ export const products = [
     },
 
     {
-        id: 3,
+        id: 4,
         title: "ATK Horizon IEM",
         discount: "5% OFF",
         code: "FESS",
@@ -39,7 +49,7 @@ export const products = [
     },
 
     {
-        id: 4,
+        id: 5,
         title: "VXE Dragonfly V3 Series",
         discount: "5% OFF",
         code: "FESS",
@@ -49,7 +59,7 @@ export const products = [
     },
 
     {
-        id: 5,
+        id: 6,
         title: "WLMouse Beast X Pro",
         discount: "2% OFF",
         code: "FESS",
@@ -58,7 +68,7 @@ export const products = [
             "https://shop.beacons.ai/fesnotyours/5c10fc71-1ddc-47f2-9b37-2f4298a54895",
     },
     {
-        id: 6,
+        id: 7,
         title: "Vention Dash Pro",
         code: "",
         image: ventionDashPro,
@@ -66,7 +76,7 @@ export const products = [
     },
 
     {
-        id: 7,
+        id: 8,
         title: "Win 11 Pro",
         discount: "52% OFF",
         code: "FES52",
@@ -76,7 +86,7 @@ export const products = [
     },
 
     {
-        id: 8,
+        id: 9,
         title: "Office 2021 Pro Plus",
         discount: "62% OFF",
         code: "FES62",
