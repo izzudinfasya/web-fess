@@ -94,7 +94,7 @@ const ExclusiveDiscount = () => {
                 <span className="exclusive-discount__code">
                   {product.code
                     ? `USE CODE "${product.code}"`
-                    : "NO DISCOUNT CODE AVAILABLE"}
+                    : "NO DISCOUNT CODE"}
                 </span>
               </div>
 
