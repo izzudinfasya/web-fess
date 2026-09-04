@@ -1,24 +1,14 @@
 import { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { Routes, Route } from "react-router-dom";
 
-import Profile from "./components/Profile";
-import SocialLinks from "./components/SocialLinks";
-import CollabCTA from "./components/CollabCTA";
-import ExclusiveDiscount from "./components/ExclusiveDiscount";
-import FeaturedProducts from "./components/FeaturedProducts";
-import LinkButton from "./components/LinkButton";
-import Footer from "./components/Footer";
-import PageTransition from "./components/PageTransition";
+import PersonalHub from "./pages/PersonalHub";
+import ExReview from "./pages/ExReview";
 
-import { links } from "./data/links";
+import ThemeToggle from "./components/ThemeToggle";
 
 import "./App.css";
 
-function App() {
-  const [transitionDone, setTransitionDone] = useState(false);
-
+const App = () => {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
 
@@ -33,85 +23,28 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-
-    window.history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
-
-    if (transitionDone) {
-      AOS.init({
-        duration: 350,
-        easing: "ease-out",
-        once: true,
-        offset: 0,
-      });
-
-      AOS.refreshHard();
-    }
-  }, [theme, transitionDone]);
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prev) => {
-      const nextTheme = prev === "dark" ? "light" : "dark";
+      const next = prev === "dark" ? "light" : "dark";
 
-      localStorage.setItem("theme", nextTheme);
+      localStorage.setItem("theme", next);
 
-      return nextTheme;
+      return next;
     });
   };
 
   return (
-    <main className="page">
-      <PageTransition
-        theme={theme}
-        onComplete={() => setTransitionDone(true)}
-      />
+    <>
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
-      <button
-        type="button"
-        className="theme-toggle"
-        onClick={toggleTheme}
-        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-      >
-        {theme === "dark" ? (
-          <Sun size={14} strokeWidth={1.8} />
-        ) : (
-          <Moon size={14} strokeWidth={1.8} />
-        )}
-      </button>
-
-      <div className="container">
-        <div data-aos="fade-up">
-          <Profile />
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="40">
-          <SocialLinks />
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="80">
-          <CollabCTA />
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="120">
-          <ExclusiveDiscount />
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="160">
-          <FeaturedProducts />
-        </div>
-
-        <section className="links" data-aos="fade-up" data-aos-delay="200">
-          {links.map((link) => (
-            <LinkButton key={link.title} title={link.title} url={link.url} />
-          ))}
-        </section>
-
-        <div data-aos="fade-up" data-aos-delay="240">
-          <Footer />
-        </div>
-      </div>
-    </main>
+      <Routes>
+        <Route path="/" element={<PersonalHub />} />
+        <Route path="/ex-review" element={<ExReview />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;

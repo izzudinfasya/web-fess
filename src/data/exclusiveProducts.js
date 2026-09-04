@@ -1,3 +1,4 @@
+import thunderbolt5 from "../assets/thunderbolt5.jpg";
 import Essential60 from "../assets/essential60.png";
 import CMDX from "../assets/cmd-x.webp";
 import ModelX from "../assets/model-x.png";
@@ -10,7 +11,14 @@ import Office2021 from "../assets/office-2021.png";
 
 export const products = [
     {
-        id: 1,
+        title: "Razer Thunderbolt™ 5 Dock",
+        discount: "",
+        code: "",
+        image: thunderbolt5,
+        link:
+            "https://www.razer.com/gaming-pc-accessories/razer-thunderbolt-5-dock/RC21-02290100-R3U1?irclickid=RQ8UVTygtxyZWcYXSWRas2onUkr0o909qUmXT00&irgwc=1&afsrc=1&utm_source=Fess&utm_medium=affiliate&utm_content=7545630&utm_term=Fess&utm_sharedid=&cid=Fess-affiliate",
+    },
+    {
         title: "Essential60 HE",
         discount: "NEW ARRIVAL",
         code: "",
@@ -19,7 +27,6 @@ export const products = [
             "https://pressplayid.com/products/essential60-he-60-rapid-trigger-mechanical-keyboard",
     },
     {
-        id: 2,
         title: "CMD-X Keyboard + Mouse",
         discount: "10% OFF",
         code: "FESS10",
@@ -27,9 +34,7 @@ export const products = [
         link:
             "https://stxnd.com/products/cmd-x-keyboard-combo?variant=47254584164593?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
-
     {
-        id: 3,
         title: "Model-X 2.0 Stand",
         discount: "10% OFF",
         code: "FESS10",
@@ -37,9 +42,7 @@ export const products = [
         link:
             "https://stxnd.com/products/laptop-stand-model-x?variant=45217096859889?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
-
     {
-        id: 4,
         title: "ATK Horizon IEM",
         discount: "5% OFF",
         code: "FESS",
@@ -47,9 +50,7 @@ export const products = [
         link:
             "https://shop.beacons.ai/fesnotyours/e8b39f9b-3228-465e-92bb-5ae38066d6f7",
     },
-
     {
-        id: 5,
         title: "VXE Dragonfly V3 Series",
         discount: "5% OFF",
         code: "FESS",
@@ -57,9 +58,7 @@ export const products = [
         link:
             "https://shop.beacons.ai/fesnotyours/34e41707-916d-4801-bd74-efcad84db0f1",
     },
-
     {
-        id: 6,
         title: "WLMouse Beast X Pro",
         discount: "2% OFF",
         code: "FESS",
@@ -68,15 +67,13 @@ export const products = [
             "https://shop.beacons.ai/fesnotyours/5c10fc71-1ddc-47f2-9b37-2f4298a54895",
     },
     {
-        id: 7,
         title: "Vention Dash Pro",
         code: "",
         image: ventionDashPro,
-        url: "https://shopee.co.id/product/391830606/43829817522/?smtt=9&uls_trackid=56djohbm00im&utm_campaign=s391830606_ss_id_ttip_fesnotyours&utm_medium=seller&utm_source=tiktok",
+        link:
+            "https://shopee.co.id/product/391830606/43829817522/?smtt=9&uls_trackid=56djohbm00im&utm_campaign=s391830606_ss_id_ttip_fesnotyours&utm_medium=seller&utm_source=tiktok",
     },
-
     {
-        id: 8,
         title: "Win 11 Pro",
         discount: "52% OFF",
         code: "FES52",
@@ -84,9 +81,7 @@ export const products = [
         link:
             "https://shop.beacons.ai/fesnotyours/125b0f98-ef74-487c-b0f3-814f8a7310ae",
     },
-
     {
-        id: 9,
         title: "Office 2021 Pro Plus",
         discount: "62% OFF",
         code: "FES62",
@@ -94,4 +89,7 @@ export const products = [
         link:
             "https://shop.beacons.ai/fesnotyours/adf02488-8376-428c-9791-97699f6787e2",
     },
-];
+].map((product, index) => ({
+    ...product,
+    id: index + 1,
+}));

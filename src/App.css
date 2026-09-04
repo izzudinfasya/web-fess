@@ -306,6 +306,23 @@
   --footer-muted: #3d3d3d;
   --footer-name-hover: #eee;
   --footer-accent-hover: #888;
+
+  /* =========================
+   EX-REVIEW BANNER
+========================= */
+
+  --ex-review-bg:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 255, 255, 0.045),
+      transparent 55%
+    ),
+    #0b0b0b;
+
+  --ex-review-border: #242424;
+
+  --ex-review-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
 /* =========================================================
@@ -596,6 +613,19 @@
 
   --footer-name-hover: #171717;
   --footer-accent-hover: #777;
+
+  /* =========================
+   EX-REVIEW BANNER
+========================= */
+
+  --ex-review-bg:
+    radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.035), transparent 55%),
+    #ffffff;
+
+  --ex-review-border: #dedede;
+
+  --ex-review-shadow:
+    0 7px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 /* =========================================================

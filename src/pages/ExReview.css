@@ -1,0 +1,1371 @@
+/* =========================================================
+   EX-REVIEW
+   MONOCHROME / PERSONAL HUB SYSTEM
+========================================================= */
+
+.ex-review {
+  --ex-bg: var(--page-bg);
+  --ex-text: var(--text);
+  --ex-border: var(--border);
+  --ex-muted: var(--muted);
+  --ex-subtle: var(--subtle);
+
+  min-height: 100svh;
+  padding: 24px 16px 48px;
+
+  background: var(--ex-bg);
+  color: var(--ex-text);
+
+  overflow: hidden;
+
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.ex-review__container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   NOISE
+========================================================= */
+
+.ex-review__noise {
+  position: fixed;
+  inset: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+
+  opacity: 0.035;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+  mix-blend-mode: overlay;
+}
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.ex-review__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: var(--ex-muted);
+}
+
+.ex-review__eyebrow i {
+  width: 5px;
+  height: 5px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: var(--ex-text);
+
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ex-text) 8%, transparent);
+}
+
+/* =========================================================
+   TOP NAV
+========================================================= */
+
+.ex-review__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 38px;
+
+  margin-bottom: 72px;
+
+  border-bottom: 1px solid var(--ex-border);
+}
+
+.ex-review__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding-bottom: 13px;
+
+  color: var(--ex-text);
+  text-decoration: none;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+
+  transition: opacity 0.2s ease;
+}
+
+.ex-review__back svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ex-review__back:hover {
+  opacity: 0.55;
+}
+
+.ex-review__nav-label {
+  padding-bottom: 13px;
+
+  color: var(--ex-muted);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.ex-review__hero {
+  position: relative;
+
+  min-height: 540px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 0 0 34px;
+
+  border-bottom: 1px solid var(--ex-border);
+}
+
+.ex-review__hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  top: -120px;
+  right: -180px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.065),
+    transparent 68%
+  );
+
+  pointer-events: none;
+}
+
+[data-theme="light"] .ex-review__hero::after {
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.045), transparent 68%);
+}
+
+.ex-review__hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ex-review__hero-index {
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+.ex-review__hero h1 {
+  position: relative;
+  z-index: 1;
+
+  margin: auto 0;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(64px, 12vw, 150px);
+  font-weight: 500;
+  line-height: 0.84;
+
+  letter-spacing: -0.075em;
+
+  color: var(--ex-text);
+}
+
+.ex-review__hero h1 span {
+  font-weight: 500;
+  color: var(--ex-muted);
+}
+
+.ex-review__hero-bottom {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.ex-review__hero-bottom p {
+  max-width: 330px;
+
+  margin: 0;
+
+  color: var(--ex-muted);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.ex-review__scroll {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+.ex-review__scroll span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  border: 1px solid var(--ex-border);
+  border-radius: 50%;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   SECTION TOP
+========================================================= */
+
+.ex-review__section-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 38px;
+}
+
+.ex-review__section-top h2 {
+  margin: 12px 0 0;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(30px, 5vw, 56px);
+  font-weight: 500;
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+}
+
+.ex-review__drop {
+  padding: 100px 0;
+}
+
+.ex-review__drop-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ex-review__drop-title span {
+  display: inline-flex;
+  align-items: center;
+
+  height: 22px;
+  padding: 0 9px;
+
+  border: 1px solid var(--ex-border);
+  border-radius: 999px;
+
+  color: var(--ex-text);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.ex-review__drop-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+
+  letter-spacing: 0.1em;
+}
+
+.ex-review__drop-meta strong {
+  color: var(--ex-muted);
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.ex-review__products {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid var(--ex-border);
+}
+
+.product {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 42px minmax(260px, 0.9fr) minmax(340px, 1fr);
+
+  min-height: 360px;
+
+  border-bottom: 1px solid var(--ex-border);
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.product:hover {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+[data-theme="light"] .product:hover {
+  background: rgba(0, 0, 0, 0.018);
+}
+
+.product__number {
+  padding-top: 20px;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+/* =========================================================
+   PRODUCT VISUAL
+========================================================= */
+
+.product__visual {
+  position: relative;
+
+  min-height: 360px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-left: 1px solid var(--ex-border);
+  border-right: 1px solid var(--ex-border);
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, 0.075),
+      transparent 60%
+    ),
+    rgba(255, 255, 255, 0.012);
+}
+
+[data-theme="light"] .product__visual {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 0.045), transparent 60%),
+    rgba(0, 0, 0, 0.012);
+}
+
+.product__visual::before {
+  content: "";
+
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.035);
+
+  pointer-events: none;
+}
+
+[data-theme="light"] .product__visual::before {
+  border-color: rgba(0, 0, 0, 0.035);
+}
+
+.product__image {
+  position: relative;
+  z-index: 1;
+
+  width: 78%;
+  height: 78%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.3))
+    drop-shadow(0 0 25px rgba(255, 255, 255, 0.025));
+
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.45s ease;
+}
+
+.product:hover .product__image img {
+  transform: scale(1.045);
+
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 35px rgba(255, 255, 255, 0.05));
+}
+
+.product__status {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--ex-muted);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+.product__status svg {
+  width: 11px;
+  height: 11px;
+
+  color: var(--ex-text);
+}
+
+.product__visual-category {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   PRODUCT CONTENT
+========================================================= */
+
+.product__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 28px 30px;
+}
+
+.product__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.product__brand {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--ex-muted);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.13em;
+}
+
+.product__heading h3 {
+  margin: 0;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 500;
+  line-height: 0.9;
+
+  letter-spacing: -0.06em;
+}
+
+.product__type {
+  flex-shrink: 0;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+.product__details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-top: auto;
+  margin-bottom: 32px;
+
+  border-top: 1px solid var(--ex-border);
+  border-bottom: 1px solid var(--ex-border);
+}
+
+.product__detail {
+  min-height: 82px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 14px 12px;
+
+  border-right: 1px solid var(--ex-border);
+}
+
+.product__detail:first-child {
+  padding-left: 0;
+}
+
+.product__detail:last-child {
+  border-right: 0;
+}
+
+.product__detail span {
+  margin-bottom: 7px;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.product__detail strong {
+  color: white;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  line-height: 1.4;
+}
+
+.product__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.product__price {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.product__price span {
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.product__price strong {
+  color: var(--ex-text);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+
+  letter-spacing: -0.04em;
+}
+
+.product__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product__actions a {
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0 14px;
+
+  border: 1px solid var(--ex-border);
+
+  color: var(--ex-text);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.product__actions svg {
+  width: 12px;
+  height: 12px;
+}
+
+.product__review {
+  color: var(--ex-muted) !important;
+}
+
+.product__actions a:hover {
+  background: var(--ex-text);
+
+  border-color: var(--ex-text);
+
+  color: var(--ex-bg) !important;
+}
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.ex-review__philosophy {
+  padding: 110px 0;
+  border-top: 1px solid var(--ex-review-border);
+}
+
+.ex-review__philosophy-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 70px;
+}
+
+.ex-review__philosophy-index {
+  color: var(--subtle);
+
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.ex-review__philosophy-statement {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 60px;
+  align-items: end;
+
+  margin-bottom: 90px;
+}
+
+.ex-review__philosophy-statement h2 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 500;
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+}
+
+.ex-review__philosophy-statement h2 span {
+  color: var(--muted);
+}
+
+.ex-review__philosophy-statement p {
+  max-width: 330px;
+  margin: 0 0 4px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.ex-review__process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid var(--ex-review-border);
+  border-bottom: 1px solid var(--ex-review-border);
+}
+
+.process-card {
+  min-height: 155px;
+  padding: 22px 20px;
+
+  border-right: 1px solid var(--ex-review-border);
+}
+
+.process-card:last-child {
+  border-right: 0;
+}
+
+.process-card__number {
+  display: block;
+
+  margin-bottom: 45px;
+
+  color: var(--subtle);
+
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.process-card__body h3 {
+  margin: 0 0 6px;
+
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.process-card__body p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   TRUST
+========================================================= */
+
+.ex-review__trust {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 28px;
+
+  color: var(--subtle);
+
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.ex-review__trust-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: 1px solid var(--ex-review-border);
+  border-radius: 50%;
+}
+
+.ex-review__trust-mark svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+.ex-review__archive-section {
+  padding: 100px 0;
+}
+
+.ex-review__archive-count {
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.ex-review__archive {
+  border-top: 1px solid var(--ex-border);
+}
+
+.archive-item {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+
+  min-height: 86px;
+
+  gap: 30px;
+
+  border-bottom: 1px solid var(--ex-border);
+
+  color: var(--ex-text);
+  text-decoration: none;
+
+  transition:
+    padding 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.archive-item:hover {
+  padding: 0 18px;
+
+  background: rgba(255, 255, 255, 0.018);
+}
+
+[data-theme="light"] .archive-item:hover {
+  background: rgba(0, 0, 0, 0.018);
+}
+
+.archive-item__drop {
+  color: var(--ex-muted);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+.archive-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.archive-item__info strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+}
+
+.archive-item__info span {
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+
+  letter-spacing: 0.1em;
+}
+
+.archive-item__status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--ex-subtle);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+.archive-item__status svg {
+  width: 13px;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.ex-review__cta {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 34px 50px;
+
+  border: 1px solid var(--ex-border);
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 255, 255, 0.07),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.005)
+    );
+
+  text-align: center;
+}
+
+[data-theme="light"] .ex-review__cta {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.045), transparent 45%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.005));
+}
+
+.ex-review__cta-glow {
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  top: -250px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+[data-theme="light"] .ex-review__cta-glow {
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.ex-review__cta > *:not(.ex-review__cta-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.ex-review__cta h2 {
+  margin: 24px 0 18px;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 500;
+  line-height: 0.94;
+
+  letter-spacing: -0.06em;
+}
+
+.ex-review__cta h2 span {
+  color: var(--ex-muted);
+}
+
+.ex-review__cta p {
+  max-width: 470px;
+
+  margin: 0 auto 30px;
+
+  color: var(--ex-muted);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.ex-review__cta-button {
+  height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 0 20px;
+
+  border: 1px solid var(--ex-text);
+
+  background: var(--ex-text);
+
+  color: var(--ex-bg);
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.ex-review__cta-button svg {
+  width: 13px;
+}
+
+.ex-review__cta-button:hover {
+  transform: translateY(-2px);
+
+  opacity: 0.8;
+}
+
+/* =========================================================
+   FOOTER SPACING
+========================================================= */
+
+.ex-review > .ex-review__container > footer {
+  margin-top: 30px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .ex-review {
+    padding: 18px 36px 36px;
+  }
+
+  .ex-review__nav {
+    margin-bottom: 55px;
+  }
+
+  .ex-review__nav-label {
+    font-size: 8px;
+  }
+
+  .ex-review__hero {
+    min-height: 470px;
+
+    padding-bottom: 28px;
+  }
+
+  .ex-review__hero h1 {
+    font-size: clamp(64px, 19vw, 105px);
+  }
+
+  .ex-review__hero-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .ex-review__hero-bottom p {
+    font-size: 13px;
+  }
+
+  .ex-review__scroll {
+    align-self: flex-end;
+  }
+
+  /* PRODUCT */
+
+  .product {
+    display: block;
+
+    min-height: auto;
+  }
+
+  .product__number {
+    position: absolute;
+
+    top: 16px;
+    left: 0;
+
+    z-index: 5;
+
+    padding: 0;
+  }
+
+  .product__visual {
+    min-height: 310px;
+
+    border-right: 0;
+    border-left: 0;
+  }
+
+  .product__visual::before {
+    inset: 12px;
+  }
+
+  .product__image {
+    width: 75%;
+    height: 75%;
+  }
+
+  .product__status {
+    top: 18px;
+    left: 18px;
+  }
+
+  .product__visual-category {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .product__content {
+    padding: 25px 0 30px;
+  }
+
+  .product__heading h3 {
+    font-size: 42px;
+  }
+
+  .product__type {
+    font-size: 7px;
+  }
+
+  .product__details {
+    grid-template-columns: 1fr;
+
+    margin-top: 32px;
+    margin-bottom: 28px;
+  }
+
+  .product__detail {
+    min-height: auto;
+
+    display: grid;
+    grid-template-columns: 90px 1fr;
+
+    gap: 12px;
+
+    padding: 13px 0;
+
+    border-right: 0;
+    border-bottom: 1px solid var(--ex-border);
+  }
+
+  .product__detail:last-child {
+    border-bottom: 0;
+  }
+
+  .product__detail span {
+    margin: 0;
+  }
+
+  .product__detail strong {
+    font-size: 10px;
+  }
+
+  .product__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .product__price strong {
+    font-size: 22px;
+  }
+
+  .product__actions {
+    width: 100%;
+  }
+
+  .product__actions a {
+    flex: 1;
+  }
+
+  /* PHILOSOPHY */
+
+  .ex-review__philosophy {
+    padding: 34px 0;
+  }
+
+  .ex-review__philosophy-top {
+    margin-bottom: 50px;
+  }
+
+  .ex-review__philosophy-statement {
+    display: block;
+
+    margin-bottom: 60px;
+  }
+
+  .ex-review__philosophy-statement h2 {
+    font-size: clamp(3.8rem, 16vw, 5.5rem);
+  }
+
+  .ex-review__philosophy-statement p {
+    max-width: 300px;
+    margin-top: 30px;
+
+    font-size: 13px;
+  }
+
+  .ex-review__process {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-card {
+    min-height: 135px;
+  }
+
+  .process-card:nth-child(2) {
+    border-right: 0;
+  }
+
+  .process-card:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--ex-review-border);
+  }
+
+  .process-card__number {
+    margin-bottom: 30px;
+  }
+
+  .ex-review__trust {
+    align-items: flex-start;
+
+    line-height: 1.5;
+  }
+
+  /* ARCHIVE */
+
+  .ex-review__archive-section {
+    padding: 70px 0;
+  }
+
+  .archive-item {
+    grid-template-columns: 55px 1fr auto;
+
+    gap: 12px;
+
+    min-height: 76px;
+  }
+
+  .archive-item:hover {
+    padding: 0 8px;
+  }
+
+  .archive-item__status {
+    font-size: 0;
+  }
+
+  .archive-item__status svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* CTA */
+
+  .ex-review__cta {
+    padding: 65px 22px;
+  }
+
+  .ex-review__cta h2 {
+    font-size: 40px;
+  }
+
+  .ex-review__cta p {
+    font-size: 12px;
+  }
+
+  .ex-review__cta-button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .ex-review__hero h1 {
+    font-size: 61px;
+  }
+
+  .product__heading h3 {
+    font-size: 36px;
+  }
+
+  .process-card__bottom h3 {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-review *,
+  .ex-review *::before,
+  .ex-review *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
