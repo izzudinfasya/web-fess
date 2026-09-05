@@ -40,8 +40,9 @@ const App = () => {
       <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
       <Routes>
-        <Route path="/" element={<PersonalHub />} />
-        <Route path="/ex-review" element={<ExReview />} />
+        <Route path="/" element={<PersonalHub theme={theme} />} />
+
+        <Route path="/ex-review" element={<ExReview theme={theme} />} />
       </Routes>
     </>
   );

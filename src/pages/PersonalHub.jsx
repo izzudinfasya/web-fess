@@ -14,7 +14,7 @@ import PageTransition from "../components/PageTransition";
 
 import { links } from "../data/links";
 
-const PersonalHub = () => {
+const PersonalHub = ({ theme }) => {
   const [transitionDone, setTransitionDone] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,10 @@ const PersonalHub = () => {
 
   return (
     <main className="page">
-      <PageTransition onComplete={() => setTransitionDone(true)} />
+      <PageTransition
+        theme={theme}
+        onComplete={() => setTransitionDone(true)}
+      />
 
       <div className="container">
         <div data-aos="fade-up">
