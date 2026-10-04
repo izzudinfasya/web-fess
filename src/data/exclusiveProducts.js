@@ -1,3 +1,4 @@
+import fifineH9 from "../assets/fifineH9.png";
 import thunderbolt5 from "../assets/thunderbolt5.jpg";
 import Essential60 from "../assets/essential60.png";
 import CMDX from "../assets/cmd-x.webp";
@@ -10,6 +11,14 @@ import Win11 from "../assets/win-11-pro.png";
 import Office2021 from "../assets/office-2021.png";
 
 export const products = [
+    {
+        title: "FIFINE H9 Headset",
+        discount: "",
+        code: "",
+        image: fifineH9,
+        link:
+            "https://s.shopee.co.id/7Ae3amkDrk",
+    },
     {
         title: "Razer Thunderbolt™ 5 Dock",
         discount: "",
@@ -27,14 +36,6 @@ export const products = [
             "https://pressplayid.com/products/essential60-he-60-rapid-trigger-mechanical-keyboard",
     },
     {
-        title: "CMD-X Keyboard + Mouse",
-        discount: "10% OFF",
-        code: "FESS10",
-        image: CMDX,
-        link:
-            "https://stxnd.com/products/cmd-x-keyboard-combo?variant=47254584164593?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
-    },
-    {
         title: "Model-X 2.0 Stand",
         discount: "10% OFF",
         code: "FESS10",
@@ -43,12 +44,12 @@ export const products = [
             "https://stxnd.com/products/laptop-stand-model-x?variant=45217096859889?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
     {
-        title: "ATK Horizon IEM",
-        discount: "5% OFF",
-        code: "FESS",
-        image: ATKHorizon,
+        title: "CMD-X Keyboard + Mouse",
+        discount: "10% OFF",
+        code: "FESS10",
+        image: CMDX,
         link:
-            "https://shop.beacons.ai/fesnotyours/e8b39f9b-3228-465e-92bb-5ae38066d6f7",
+            "https://stxnd.com/products/cmd-x-keyboard-combo?variant=47254584164593?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
     {
         title: "VXE Dragonfly V3 Series",
@@ -57,6 +58,14 @@ export const products = [
         image: VXEDragonfly,
         link:
             "https://shop.beacons.ai/fesnotyours/34e41707-916d-4801-bd74-efcad84db0f1",
+    },
+    {
+        title: "ATK Horizon IEM",
+        discount: "5% OFF",
+        code: "FESS",
+        image: ATKHorizon,
+        link:
+            "https://shop.beacons.ai/fesnotyours/e8b39f9b-3228-465e-92bb-5ae38066d6f7",
     },
     {
         title: "WLMouse Beast X Pro",
