@@ -326,7 +326,7 @@
   color: #fff;
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
 
   letter-spacing: 0.08em;
@@ -1099,7 +1099,7 @@
 
     padding: 4px 6px;
 
-    font-size: 5.5px;
+    font-size: 7px;
 
     letter-spacing: 0.07em;
   }
@@ -1408,7 +1408,7 @@
   }
 
   .shop-card__price strong {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   /* CTA */
@@ -1416,7 +1416,7 @@
   .shop-card__cta {
     height: 30px;
 
-    font-size: 5.5px;
+    font-size: 7px;
   }
 
   /* IMAGE */
@@ -1427,7 +1427,7 @@
 
     padding: 3px 5px;
 
-    font-size: 5px;
+    font-size: 7px;
   }
 
   .shop-card__number {

@@ -156,8 +156,6 @@
 
   overflow: hidden;
 
-  border: 1px solid var(--ex-border);
-
   background:
     radial-gradient(
       circle at 50% 45%,
@@ -1041,7 +1039,8 @@
 
   .ex-detail__back {
     gap: 7px;
-    font-size: 8px;
+    padding: 8px 10px;
+    font-size: 9px;
   }
 
   .ex-detail__back svg {
@@ -1050,7 +1049,8 @@
   }
 
   .ex-detail__nav-label {
-    font-size: 6px;
+    padding: 7px 9px;
+    font-size: 7px;
   }
 
   .ex-detail__product {
@@ -1062,8 +1062,6 @@
   .ex-detail__image {
     aspect-ratio: 4 / 3;
     max-width: none;
-
-    /* Keep horizontal swipe gesture available */
     touch-action: pan-y;
   }
 
@@ -1074,12 +1072,12 @@
   .ex-detail__image-number {
     right: 10px;
     bottom: 10px;
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .ex-detail__arrow {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
 
   .ex-detail__arrow--prev {
@@ -1091,95 +1089,125 @@
   }
 
   .ex-detail__sold span {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .ex-detail__thumbs {
     gap: 6px;
   }
 
+  /* =====================================================
+     INFO
+  ===================================================== */
+
   .ex-detail__heading {
-    padding-bottom: 13px;
+    padding-bottom: 14px;
   }
 
   .ex-detail__eyebrow {
-    gap: 6px;
-    font-size: 6px;
+    gap: 7px;
+    font-size: 8px;
+    letter-spacing: 0.09em;
+  }
+
+  .ex-detail__dot {
+    width: 3px;
+    height: 3px;
   }
 
   .ex-detail__id {
-    font-size: 6px;
+    font-size: 8px;
   }
 
+  /* TITLE */
+
   .ex-detail__title {
-    padding: 26px 0 22px;
+    padding: 28px 0 24px;
   }
 
   .ex-detail__title > span {
-    margin-bottom: 8px;
-    font-size: 8px;
+    margin-bottom: 9px;
+    font-size: 10px;
   }
 
   .ex-detail__title h1 {
-    font-size: clamp(42px, 14vw, 64px);
+    font-size: clamp(46px, 15vw, 68px);
   }
 
+  /* PRICE */
+
   .ex-detail__price {
-    padding: 14px 0;
+    padding: 16px 0;
   }
 
   .ex-detail__price span {
-    font-size: 6px;
-  }
-
-  .ex-detail__price strong {
-    font-size: 17px;
-  }
-
-  .ex-detail__meta div {
-    padding: 13px 8px 13px 0;
-  }
-
-  .ex-detail__meta div:nth-child(even) {
-    padding-left: 8px;
-  }
-
-  .ex-detail__meta span {
-    margin-bottom: 5px;
-    font-size: 5px;
-  }
-
-  .ex-detail__meta strong {
-    font-size: 7px;
-  }
-
-  .ex-detail__description {
-    padding: 22px 0;
-  }
-
-  .ex-detail__label {
-    font-size: 6px;
-  }
-
-  .ex-detail__description p {
-    font-size: 9px;
-    line-height: 1.65;
-  }
-
-  .ex-detail__review-btn {
-    min-height: 44px;
     font-size: 8px;
   }
 
+  .ex-detail__price strong {
+    font-size: 16px;
+  }
+
+  /* META */
+
+  .ex-detail__meta div {
+    padding: 15px 10px 15px 0;
+  }
+
+  .ex-detail__meta div:nth-child(even) {
+    padding-left: 10px;
+  }
+
+  .ex-detail__meta span {
+    margin-bottom: 6px;
+    font-size: 7px;
+  }
+
+  .ex-detail__meta strong {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  /* DESCRIPTION */
+
+  .ex-detail__description {
+    padding: 24px 0;
+  }
+
+  .ex-detail__label {
+    margin-bottom: 11px;
+    font-size: 7px;
+  }
+
+  .ex-detail__description p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  /* REVIEW */
+
+  .ex-detail__review-btn {
+    min-height: 46px;
+    padding: 0 13px;
+    font-size: 10px;
+  }
+
+  .ex-detail__review-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* BUY ACTIONS */
+
   .ex-detail__actions {
-    gap: 6px;
+    gap: 7px;
   }
 
   .ex-detail__action {
-    min-height: 44px;
-    padding: 0 8px;
-    font-size: 6px;
-    letter-spacing: 0.06em;
+    min-height: 46px;
+    padding: 0 9px;
+    font-size: 10px;
+    letter-spacing: 0.07em;
   }
 
   .ex-detail__action svg {
@@ -1188,18 +1216,20 @@
   }
 
   .ex-detail__sold-button {
-    min-height: 44px;
+    min-height: 46px;
+    font-size: 9px;
   }
 
   .ex-detail__container > footer {
     margin-top: 10px;
   }
 
-  /* LIGHTBOX */
+  /* =====================================================
+     LIGHTBOX
+  ===================================================== */
 
   .ex-detail__lightbox {
     padding: 20px;
-
     touch-action: pan-y;
   }
 
@@ -1211,10 +1241,8 @@
   .ex-detail__lightbox-close {
     top: 12px;
     right: 12px;
-
     width: 34px;
     height: 34px;
-
     font-size: 24px;
   }
 
@@ -1234,7 +1262,7 @@
   .ex-detail__lightbox-count {
     right: 16px;
     bottom: 14px;
-    font-size: 7px;
+    font-size: 8px;
   }
 }
 
@@ -1262,7 +1290,7 @@
   }
 
   .ex-detail__title h1 {
-    font-size: 42px;
+    font-size: 32px;
   }
 
   .ex-detail__actions {
