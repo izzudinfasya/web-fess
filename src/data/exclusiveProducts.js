@@ -1,3 +1,4 @@
+import fifineK688 from "../assets/fifineK688.png";
 import fifineH9 from "../assets/fifineH9.png";
 import thunderbolt5 from "../assets/thunderbolt5.jpg";
 import Essential60 from "../assets/essential60.png";
@@ -11,6 +12,14 @@ import Win11 from "../assets/win-11-pro.png";
 import Office2021 from "../assets/office-2021.png";
 
 export const products = [
+    {
+        title: "FIFINE K688 Mic",
+        discount: "",
+        code: "",
+        image: fifineK688,
+        link:
+            "https://link.fifinedesign.com/K688-fesnotyours",
+    },
     {
         title: "FIFINE H9 Headset",
         discount: "",

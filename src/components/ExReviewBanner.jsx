@@ -16,7 +16,7 @@ const ExReviewBanner = () => {
             <h2>
               Previously mine.
               <br />
-              <span>Ready again.</span>
+              <span>Now Yours.</span>
             </h2>
           </div>
 

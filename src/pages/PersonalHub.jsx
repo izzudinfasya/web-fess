@@ -6,7 +6,7 @@ import Profile from "../components/Profile";
 import SocialLinks from "../components/SocialLinks";
 import CollabCTA from "../components/CollabCTA";
 import ExclusiveDiscount from "../components/ExclusiveDiscount";
-// import ExReviewBanner from "../components/ExReviewBanner";
+import ExReviewBanner from "../components/ExReviewBanner";
 import FeaturedProducts from "../components/FeaturedProducts";
 import LinkButton from "../components/LinkButton";
 import Footer from "../components/Footer";
@@ -57,9 +57,9 @@ const PersonalHub = ({ theme }) => {
           <ExclusiveDiscount />
         </div>
 
-        {/* <div data-aos="fade-up" data-aos-delay="160">
+        <div data-aos="fade-up" data-aos-delay="160">
           <ExReviewBanner />
-        </div> */}
+        </div>
 
         <div data-aos="fade-up" data-aos-delay="160">
           <FeaturedProducts />

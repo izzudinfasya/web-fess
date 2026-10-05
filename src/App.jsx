@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import PersonalHub from "./pages/PersonalHub";
 import ExReview from "./pages/ExReview";
+import ExReviewDetail from "./pages/ExReviewDetail";
 
 import ThemeToggle from "./components/ThemeToggle";
 
@@ -43,6 +44,11 @@ const App = () => {
         <Route path="/" element={<PersonalHub theme={theme} />} />
 
         <Route path="/ex-review" element={<ExReview theme={theme} />} />
+
+        <Route
+          path="/ex-review/:slug"
+          element={<ExReviewDetail theme={theme} />}
+        />
       </Routes>
     </>
   );
