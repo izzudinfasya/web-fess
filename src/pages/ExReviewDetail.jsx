@@ -173,17 +173,19 @@ const ExReviewDetail = ({ theme }) => {
             <div className="ex-detail__visual">
               <div
                 className="ex-detail__image"
-                onClick={() => {
-                  if (!isImageOpen) {
-                    openImage();
-                  }
+                onClick={(event) => {
+                  // Jangan buka lightbox kalau yang diklik adalah control
+                  if (event.target.closest("button")) return;
+
+                  openImage();
                 }}
                 onTouchStart={handleTouchStart}
-                onTouchEnd={(event) => handleTouchEnd(event, true)}
+                onTouchEnd={handleTouchEnd}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(event) => {
                   if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
                     openImage();
                   }
                 }}

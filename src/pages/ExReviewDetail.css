@@ -465,7 +465,7 @@
   color: var(--ex-muted);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
 
   letter-spacing: 0.14em;
@@ -477,7 +477,7 @@
   color: var(--ex-text);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(54px, 6vw, 82px);
+  font-size: clamp(54px, 6vw, 62px);
   font-weight: 500;
 
   line-height: 0.85;
@@ -506,7 +506,7 @@
   color: var(--ex-subtle);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 700;
 
   letter-spacing: 0.12em;
@@ -516,7 +516,7 @@
   color: var(--ex-text);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 22px;
+  font-size: 32px;
   font-weight: 600;
 
   letter-spacing: -0.04em;
@@ -558,7 +558,7 @@
   color: var(--ex-subtle);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 7px;
+  font-size: 12px;
   font-weight: 700;
 
   letter-spacing: 0.1em;
@@ -572,7 +572,7 @@
   color: var(--ex-text);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 500;
 
   line-height: 1.4;
@@ -600,7 +600,7 @@
   color: var(--ex-subtle);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 7px;
+  font-size: 12px;
   font-weight: 700;
 
   letter-spacing: 0.12em;
@@ -611,10 +611,10 @@
 
   margin: 0;
 
-  color: #fff;
+  color: var(--ex-text);
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 11px;
+  font-size: 16px;
 
   line-height: 1.7;
 }
@@ -639,7 +639,7 @@
   background: transparent;
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
 
   letter-spacing: 0.1em;
@@ -700,7 +700,7 @@
   background: transparent;
 
   font-family: "Space Grotesk", sans-serif;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 700;
 
   letter-spacing: 0.08em;
@@ -1145,7 +1145,7 @@
   }
 
   .ex-detail__price strong {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   /* META */
