@@ -17,7 +17,7 @@ export const products = [
         code: "",
         image: fifineH9,
         link:
-            "https://s.shopee.co.id/7Ae3amkDrk",
+            "https://link.fifinedesign.com/H9-fesnotyours",
     },
     {
         title: "Razer Thunderbolt™ 5 Dock",
