@@ -34,6 +34,50 @@
 }
 
 /* =========================
+   PRODUCT IMAGE
+========================= */
+
+.ex-review-banner__image {
+  position: absolute;
+  z-index: 0;
+
+  top: 0;
+  right: -4%;
+  bottom: 0;
+
+  width: 68%;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  filter: grayscale(100%);
+  opacity: 0.78;
+
+  transform: scale(1.02);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s ease;
+
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 14%,
+    rgba(0, 0, 0, 0.8) 28%,
+    #000 42%
+  );
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 14%,
+    rgba(0, 0, 0, 0.8) 28%,
+    #000 42%
+  );
+}
+
+/* =========================
    DECORATIVE GRID
 ========================= */
 
@@ -43,13 +87,15 @@
   position: absolute;
   inset: 0;
 
+  z-index: 1;
+
   background-image:
     linear-gradient(var(--links-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--links-grid) 1px, transparent 1px);
 
   background-size: 28px 28px;
 
-  opacity: 0.8;
+  opacity: 0.55;
 
   pointer-events: none;
 }
@@ -62,6 +108,8 @@
   content: "001";
 
   position: absolute;
+
+  z-index: 1;
 
   right: -8px;
   bottom: -28px;
@@ -88,7 +136,7 @@
 
 .ex-review-banner__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   min-height: 100px;
 
@@ -120,32 +168,6 @@
   letter-spacing: 0.16em;
 
   color: var(--text);
-}
-
-.ex-review-banner__status {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-
-  font-family: "Space Grotesk", sans-serif;
-
-  font-size: 6px;
-  font-weight: 700;
-
-  letter-spacing: 0.14em;
-
-  color: var(--muted);
-}
-
-.ex-review-banner__status::before {
-  content: "";
-
-  width: 4px;
-  height: 4px;
-
-  border-radius: 50%;
-
-  background: var(--text);
 }
 
 /* =========================
@@ -186,16 +208,18 @@
 
   gap: 3px;
 
-  color: var(--muted);
+  color: var(--text);
 
   font-family: "Space Grotesk", sans-serif;
 
   font-size: 7px;
-  font-weight: 600;
+  font-weight: 700;
 
   line-height: 1.3;
 
   letter-spacing: 0.08em;
+
+  opacity: 0.72;
 }
 
 /* =========================
@@ -227,15 +251,15 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid var(--border);
+  border: none;
   border-radius: 50%;
 
-  color: var(--text);
+  background: color-mix(in srgb, var(--text) 100%, transparent);
+  color: var(--page-bg);
 
   transition:
     transform 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
+    opacity 0.25s ease;
 }
 
 .ex-review-banner__arrow svg {
@@ -256,13 +280,16 @@
     background: var(--links-hover-bg);
   }
 
+  .ex-review-banner:hover .ex-review-banner__image {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+
   .ex-review-banner:hover .ex-review-banner__arrow {
     transform: translate(2px, -2px);
 
-    background: var(--text);
-    color: var(--page-bg);
-
-    border-color: var(--text);
+    background: var(--page-bg);
+    color: var(--text);
   }
 }
 
@@ -277,6 +304,25 @@
     padding: 15px 16px;
 
     border-radius: 13px;
+  }
+
+  .ex-review-banner__image {
+    width: 68%;
+
+    opacity: 0.5;
+
+    background-position: center;
+  }
+
+  .ex-review-banner__image::after {
+    background: linear-gradient(
+      90deg,
+      var(--ex-review-bg) 0%,
+      var(--ex-review-bg) 15%,
+      color-mix(in srgb, var(--ex-review-bg) 88%, transparent) 40%,
+      color-mix(in srgb, var(--ex-review-bg) 30%, transparent) 70%,
+      transparent 100%
+    );
   }
 
   .ex-review-banner__content {
@@ -304,6 +350,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ex-review-banner,
+  .ex-review-banner__image,
   .ex-review-banner__arrow {
     transition: none;
   }

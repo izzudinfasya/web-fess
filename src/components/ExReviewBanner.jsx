@@ -1,28 +1,28 @@
 import { FiArrowUpRight } from "react-icons/fi";
 import "./ExReviewBanner.css";
 
+import bannerImage from "../assets/peripherals.png";
+
 const ExReviewBanner = () => {
   return (
     <a href="/ex-review" className="ex-review-banner">
+      <div
+        className="ex-review-banner__image"
+        style={{ backgroundImage: `url(${bannerImage})` }}
+      />
+
       <div className="ex-review-banner__content">
         <div className="ex-review-banner__top">
           <span className="ex-review-banner__eyebrow">PRE-LOVED / 001</span>
-
-          <span className="ex-review-banner__status">AVAILABLE</span>
         </div>
 
         <div className="ex-review-banner__main">
           <div>
             <h2>
-              Previously mine.
+              Gear From My Setup.
               <br />
-              <span>Now Yours.</span>
+              <span>Reviewed &amp; Used.</span>
             </h2>
-          </div>
-
-          <div className="ex-review-banner__info">
-            <span>GEAR FROM MY SETUP</span>
-            <span>REVIEWED &amp; USED</span>
           </div>
         </div>
 

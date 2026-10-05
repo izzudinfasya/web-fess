@@ -33,7 +33,7 @@ const rawDrops = [
                 usedFor: "Used for review",
                 price: "Rp450.000",
                 condition: "9/10",
-                included: "Original box, Accessories",
+                included: "Original box, Keycaps WOB, Accessories",
                 whatsapp: "https://wa.me/+6285179583850",
                 shopee: "https://shopee.co.id/your-link",
                 reviewUrl:
