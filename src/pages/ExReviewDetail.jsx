@@ -371,12 +371,11 @@ const ExReviewDetail = ({ theme }) => {
 
               {/* DESCRIPTION */}
               <div className="ex-detail__description">
-                <span className="ex-detail__label">ABOUT THIS ITEM</span>
+                <span className="ex-detail__label">NOTES</span>
 
                 <p>
-                  Ini sebelumnya aku pakai buat konten dan review. Sebelum aku
-                  jual, barangnya udah aku cek dan tes lagi. Untuk kondisi, bisa
-                  langsung lihat dari foto yang ada yaa.
+                  Sebelum aku jual, barangnya udah aku cek dan tes lagi. Untuk
+                  kondisi, bisa langsung lihat dari foto yang ada yaa.
                 </p>
               </div>
 
