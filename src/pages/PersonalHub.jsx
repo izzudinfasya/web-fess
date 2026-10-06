@@ -8,6 +8,7 @@ import SocialLinks from "../components/SocialLinks";
 import CollabCTA from "../components/CollabCTA";
 import ExclusiveDiscount from "../components/ExclusiveDiscount";
 import ExReviewBanner from "../components/ExReviewBanner";
+import ReactSetupBanner from "../components/ReactSetupBanner";
 import FeaturedProducts from "../components/FeaturedProducts";
 import LinkButton from "../components/LinkButton";
 import Footer from "../components/Footer";
@@ -22,6 +23,8 @@ const PersonalHub = ({ theme }) => {
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+
+  const totalSlides = 3;
 
   /* =========================
      AOS
@@ -53,12 +56,10 @@ const PersonalHub = ({ theme }) => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      setActiveCTA((current) => (current === 0 ? 1 : 0));
+      setActiveCTA((current) => (current + 1) % totalSlides);
     }, 4000);
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, [isPaused]);
 
   /* =========================
@@ -69,8 +70,14 @@ const PersonalHub = ({ theme }) => {
     setActiveCTA(index);
   };
 
-  const toggleSlide = () => {
-    setActiveCTA((current) => (current === 0 ? 1 : 0));
+  const toggleSlide = (direction) => {
+    setActiveCTA((current) => {
+      if (direction === "next") {
+        return (current + 1) % totalSlides;
+      }
+
+      return (current - 1 + totalSlides) % totalSlides;
+    });
   };
 
   /* =========================
@@ -93,7 +100,13 @@ const PersonalHub = ({ theme }) => {
     const minSwipeDistance = 50;
 
     if (Math.abs(distance) >= minSwipeDistance) {
-      toggleSlide();
+      if (distance > 0) {
+        // Swipe left
+        toggleSlide("next");
+      } else {
+        // Swipe right
+        toggleSlide("prev");
+      }
     }
 
     setTimeout(() => {
@@ -145,70 +158,65 @@ const PersonalHub = ({ theme }) => {
               <div
                 className="home-cta-slider__track"
                 style={{
-                  transform: `translateX(-${activeCTA * 50}%)`,
+                  transform: `translateX(-${activeCTA * 33.333333}%)`,
                 }}
               >
+                {/* SLIDE 01 */}
                 <div className="home-cta-slider__item">
                   <CollabCTA />
                 </div>
 
+                {/* SLIDE 02 */}
                 <div className="home-cta-slider__item">
                   <ExReviewBanner />
+                </div>
+
+                {/* SLIDE 03 */}
+                <div className="home-cta-slider__item">
+                  <ReactSetupBanner />
                 </div>
               </div>
             </div>
 
             {/* DOTS */}
             <div className="home-cta-slider__dots">
-              <button
-                type="button"
-                aria-label="Show collaboration"
-                onClick={() => goToSlide(0)}
-                style={{
-                  width: activeCTA === 0 ? "16px" : "5px",
-                  height: "5px",
-                  minWidth: activeCTA === 0 ? "16px" : "5px",
-                  padding: 0,
-                  margin: 0,
-                  border: 0,
-                  borderRadius: "999px",
-                  background:
-                    activeCTA === 0
-                      ? "var(--discount-indicator-active)"
-                      : "var(--discount-indicator);",
-                  opacity: activeCTA === 0 ? 1 : 0.3,
-                  cursor: "pointer",
-                  appearance: "none",
-                  WebkitAppearance: "none",
-                  transition:
-                    "width 0.25s ease, min-width 0.25s ease, opacity 0.25s ease, background 0.25s ease",
-                }}
-              />
-
-              <button
-                type="button"
-                aria-label="Show pre-loved gear"
-                onClick={() => goToSlide(1)}
-                style={{
-                  width: activeCTA === 1 ? "16px" : "5px",
-                  height: "5px",
-                  minWidth: activeCTA === 1 ? "16px" : "5px",
-                  padding: 0,
-                  margin: 0,
-                  border: 0,
-                  borderRadius: "999px",
-                  background:
-                    activeCTA === 0
-                      ? "var(--discount-indicator-active)"
-                      : "var(--discount-indicator);",
-                  opacity: activeCTA === 1 ? 1 : 0.3,
-                  cursor: "pointer",
-                  appearance: "none",
-                  WebkitAppearance: "none",
-                  transition:
-                    "width 0.25s ease, min-width 0.25s ease, opacity 0.25s ease, background 0.25s ease",
-                }}
-              />
+              {[
+                {
+                  label: "Show collaboration",
+                },
+                {
+                  label: "Show pre-loved gear",
+                },
+                {
+                  label: "Show React setup",
+                },
+              ].map((slide, index) => (
+                <button
+                  key={slide.label}
+                  type="button"
+                  aria-label={slide.label}
+                  onClick={() => goToSlide(index)}
+                  style={{
+                    width: activeCTA === index ? "16px" : "5px",
+                    height: "5px",
+                    minWidth: activeCTA === index ? "16px" : "5px",
+                    padding: 0,
+                    margin: 0,
+                    border: 0,
+                    borderRadius: "999px",
+                    background:
+                      activeCTA === index
+                        ? "var(--discount-indicator-active)"
+                        : "var(--discount-indicator)",
+                    opacity: activeCTA === index ? 1 : 0.3,
+                    cursor: "pointer",
+                    appearance: "none",
+                    WebkitAppearance: "none",
+                    transition:
+                      "width 0.25s ease, min-width 0.25s ease, opacity 0.25s ease, background 0.25s ease",
+                  }}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -226,7 +234,12 @@ const PersonalHub = ({ theme }) => {
         {/* LINKS */}
         <section className="links" data-aos="fade-up" data-aos-delay="200">
           {links.map((link) => (
-            <LinkButton key={link.title} title={link.title} url={link.url} />
+            <LinkButton
+              key={link.title}
+              title={link.title}
+              url={link.url}
+              id={link.title === "React Setup" ? "react-setup" : undefined}
+            />
           ))}
         </section>
 

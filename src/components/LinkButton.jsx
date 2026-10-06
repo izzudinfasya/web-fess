@@ -1,10 +1,10 @@
 import { FiArrowUpRight } from "react-icons/fi";
-
 import "./linkbutton.css";
 
-const LinkButton = ({ title, url, featured = false }) => {
+const LinkButton = ({ title, url, featured = false, id }) => {
   return (
     <a
+      id={id}
       href={url}
       target="_blank"
       rel="noopener noreferrer"
@@ -25,7 +25,6 @@ const LinkButton = ({ title, url, featured = false }) => {
       ) : (
         <>
           <span>{title}</span>
-
           <FiArrowUpRight />
         </>
       )}

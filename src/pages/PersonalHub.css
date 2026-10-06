@@ -1,7 +1,6 @@
 /* =========================
    CTA SLIDER
 ========================= */
-
 .home-cta-slider {
   width: 100%;
 }
@@ -25,10 +24,10 @@
 
 .home-cta-slider__track {
   display: flex;
-
-  width: 200%;
+  width: 300%;
 
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 /* =========================
@@ -36,14 +35,16 @@
 ========================= */
 
 .home-cta-slider__item {
-  width: 50%;
-  flex: 0 0 50%;
+  flex: 0 0 33.333333%;
+  width: 33.333333%;
+  min-width: 33.333333%;
 }
 
-/* Remove default spacing from banner
+/* Remove default spacing from banners
    because slider controls the spacing */
 
-.home-cta-slider .ex-review-banner {
+.home-cta-slider .ex-review-banner,
+.home-cta-slider .react-setup-banner {
   margin-bottom: 0;
 }
 
@@ -57,9 +58,18 @@
   justify-content: center;
 
   gap: 6px;
-
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.home-cta-slider__dots button {
+  flex: 0 0 auto;
+  display: block;
+
+  border: 0;
+  outline: none;
+
+  background: var(--discount-indicator);
 }
 
 @media (hover: hover) {
