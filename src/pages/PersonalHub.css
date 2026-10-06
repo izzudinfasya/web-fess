@@ -1,0 +1,79 @@
+/* =========================
+   CTA SLIDER
+========================= */
+
+.home-cta-slider {
+  width: 100%;
+}
+
+/* =========================
+   VIEWPORT
+========================= */
+
+.home-cta-slider__viewport {
+  width: 100%;
+  overflow: hidden;
+
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =========================
+   TRACK
+========================= */
+
+.home-cta-slider__track {
+  display: flex;
+
+  width: 200%;
+
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================
+   SLIDE
+========================= */
+
+.home-cta-slider__item {
+  width: 50%;
+  flex: 0 0 50%;
+}
+
+/* Remove default spacing from banner
+   because slider controls the spacing */
+
+.home-cta-slider .ex-review-banner {
+  margin-bottom: 0;
+}
+
+/* =========================
+   DOTS
+========================= */
+
+.home-cta-slider__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (hover: hover) {
+  .home-cta-slider__dots button:hover {
+    opacity: 0.75 !important;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-cta-slider__track {
+    transition: none;
+  }
+}

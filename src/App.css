@@ -10,6 +10,10 @@
   --page-bg: #050505;
   --text: #f5f5f5;
 
+  --toast-bg: #111;
+  --toast-text: #fff;
+  --toast-muted: #aaa;
+
   --grid-line: rgba(255, 255, 255, 0.022);
 
   --glow-top: rgba(255, 255, 255, 0.1);
@@ -341,6 +345,10 @@
 
   --page-bg: #f4f4f2;
   --text: #171717;
+
+  --toast-bg: #fff;
+  --toast-text: #111;
+  --toast-muted: #666;
 
   --grid-line: rgba(0, 0, 0, 0.035);
 

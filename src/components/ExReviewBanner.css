@@ -5,10 +5,11 @@
 .ex-review-banner {
   position: relative;
 
-  display: block;
+  display: flex;
+  align-items: center;
 
   width: 100%;
-  min-height: 132px;
+  min-height: 173px;
 
   margin-bottom: 28px;
   padding: 16px 18px;
@@ -138,11 +139,11 @@
   position: relative;
   z-index: 2;
 
-  min-height: 100px;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 /* =========================
@@ -254,11 +255,13 @@
   border: none;
   border-radius: 50%;
 
-  background: color-mix(in srgb, var(--text) 100%, transparent);
+  background: var(--text);
   color: var(--page-bg);
 
   transition:
     transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
     opacity 0.25s ease;
 }
 
@@ -294,12 +297,88 @@
 }
 
 /* =========================
+   IZITOAST
+========================= */
+
+.iziToast {
+  font-family: "Space Grotesk", sans-serif !important;
+
+  background: var(--toast-bg) !important;
+  border: 1px solid var(--toast-text) !important;
+
+  color: var(--toast-text) !important;
+
+  box-shadow: none !important;
+}
+
+.iziToast .iziToast-body {
+  color: var(--toast-text) !important;
+}
+
+.iziToast .iziToast-title {
+  color: var(--toast-text) !important;
+
+  font-size: 11px !important;
+  font-weight: 700 !important;
+
+  letter-spacing: 0.02em;
+}
+
+.iziToast .iziToast-message {
+  color: var(--toast-muted) !important;
+
+  font-size: 10px !important;
+  font-weight: 400 !important;
+
+  opacity: 1 !important;
+}
+
+.iziToast .iziToast-progressbar {
+  background: var(--toast-text) !important;
+}
+
+.iziToast.iziToast-color-blue {
+  background: var(--toast-bg) !important;
+}
+
+.iziToast .iziToast-icon {
+  color: var(--toast-muted) !important;
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+[data-theme="dark"] .iziToast {
+  background: #fff !important;
+  border-color: #111 !important;
+  color: #111 !important;
+}
+
+[data-theme="dark"] .iziToast .iziToast-body,
+[data-theme="dark"] .iziToast .iziToast-title {
+  color: #111 !important;
+}
+
+[data-theme="dark"] .iziToast .iziToast-message {
+  color: #666 !important;
+}
+
+[data-theme="dark"] .iziToast .iziToast-progressbar {
+  background: #111 !important;
+}
+
+[data-theme="dark"] .iziToast .iziToast-icon {
+  color: #666 !important;
+}
+
+/* =========================
    MOBILE
 ========================= */
 
 @media (max-width: 480px) {
   .ex-review-banner {
-    min-height: 126px;
+    min-height: 165px;
 
     padding: 15px 16px;
 
@@ -314,19 +393,8 @@
     background-position: center;
   }
 
-  .ex-review-banner__image::after {
-    background: linear-gradient(
-      90deg,
-      var(--ex-review-bg) 0%,
-      var(--ex-review-bg) 15%,
-      color-mix(in srgb, var(--ex-review-bg) 88%, transparent) 40%,
-      color-mix(in srgb, var(--ex-review-bg) 30%, transparent) 70%,
-      transparent 100%
-    );
-  }
-
   .ex-review-banner__content {
-    min-height: 96px;
+    width: 100%;
   }
 
   .ex-review-banner__main {
@@ -336,7 +404,7 @@
   }
 
   .ex-review-banner h2 {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .ex-review-banner__info {
