@@ -10,8 +10,6 @@ const PageTransition = ({ theme, onComplete }) => {
   const currentLogo = theme === "light" ? logoBlack : logo;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     const leaveTimer = setTimeout(() => {
       setIsLeaving(true);
     }, 1200);
@@ -25,7 +23,7 @@ const PageTransition = ({ theme, onComplete }) => {
       clearTimeout(leaveTimer);
       clearTimeout(removeTimer);
     };
-  }, [onComplete]);
+  }, []);
 
   if (!isVisible) return null;
 

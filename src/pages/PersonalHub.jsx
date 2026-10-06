@@ -23,9 +23,9 @@ const PersonalHub = ({ theme }) => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-  }, []);
+  /* =========================
+     AOS
+  ========================= */
 
   useEffect(() => {
     if (!transitionDone) return;
@@ -35,9 +35,14 @@ const PersonalHub = ({ theme }) => {
       easing: "ease-out",
       once: true,
       offset: 0,
+      disable: false,
     });
 
-    AOS.refreshHard();
+    AOS.refresh();
+
+    return () => {
+      AOS.refreshHard();
+    };
   }, [transitionDone]);
 
   /* =========================
@@ -51,8 +56,10 @@ const PersonalHub = ({ theme }) => {
       setActiveCTA((current) => (current === 0 ? 1 : 0));
     }, 4000);
 
-    return () => clearInterval(interval);
-  }, [isPaused, activeCTA]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isPaused]);
 
   /* =========================
      MANUAL SLIDE
@@ -83,17 +90,12 @@ const PersonalHub = ({ theme }) => {
 
   const handleTouchEnd = () => {
     const distance = touchStartX.current - touchEndX.current;
-
     const minSwipeDistance = 50;
 
     if (Math.abs(distance) >= minSwipeDistance) {
       toggleSlide();
     }
 
-    /*
-      Sedikit delay supaya setelah finger dilepas
-      slider tidak langsung auto-switch.
-    */
     setTimeout(() => {
       setIsPaused(false);
     }, 100);
@@ -119,10 +121,12 @@ const PersonalHub = ({ theme }) => {
       />
 
       <div className="container">
+        {/* PROFILE */}
         <div data-aos="fade-up">
           <Profile />
         </div>
 
+        {/* SOCIAL LINKS */}
         <div data-aos="fade-up" data-aos-delay="40">
           <SocialLinks />
         </div>
@@ -168,7 +172,10 @@ const PersonalHub = ({ theme }) => {
                   margin: 0,
                   border: 0,
                   borderRadius: "999px",
-                  background: activeCTA === 0 ? "var(--text)" : "var(--muted)",
+                  background:
+                    activeCTA === 0
+                      ? "var(--discount-indicator-active)"
+                      : "var(--discount-indicator);",
                   opacity: activeCTA === 0 ? 1 : 0.3,
                   cursor: "pointer",
                   appearance: "none",
@@ -190,7 +197,10 @@ const PersonalHub = ({ theme }) => {
                   margin: 0,
                   border: 0,
                   borderRadius: "999px",
-                  background: activeCTA === 1 ? "var(--text)" : "var(--muted)",
+                  background:
+                    activeCTA === 0
+                      ? "var(--discount-indicator-active)"
+                      : "var(--discount-indicator);",
                   opacity: activeCTA === 1 ? 1 : 0.3,
                   cursor: "pointer",
                   appearance: "none",
@@ -203,20 +213,24 @@ const PersonalHub = ({ theme }) => {
           </div>
         </div>
 
+        {/* EXCLUSIVE DISCOUNT */}
         <div data-aos="fade-up" data-aos-delay="120">
           <ExclusiveDiscount />
         </div>
 
+        {/* FEATURED PRODUCTS */}
         <div data-aos="fade-up" data-aos-delay="160">
           <FeaturedProducts />
         </div>
 
+        {/* LINKS */}
         <section className="links" data-aos="fade-up" data-aos-delay="200">
           {links.map((link) => (
             <LinkButton key={link.title} title={link.title} url={link.url} />
           ))}
         </section>
 
+        {/* FOOTER */}
         <div data-aos="fade-up" data-aos-delay="240">
           <Footer />
         </div>
