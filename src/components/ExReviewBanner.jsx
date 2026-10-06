@@ -13,7 +13,7 @@ const ExReviewBanner = ({ comingSoon = true }) => {
 
     iziToast.info({
       title: "Coming Soon",
-      message: "Pre-loved gear belum tersedia. Stay tuned!",
+      message: "Pre-loved gear is not available yet. Stay tuned!",
       position: "topCenter",
       timeout: 3000,
       close: false,
