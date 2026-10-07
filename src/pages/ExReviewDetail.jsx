@@ -393,7 +393,7 @@ const ExReviewDetail = ({ theme }) => {
                 <span className="ex-detail__label">NOTES</span>
 
                 <p>
-                  Sebelum aku jual, barangnya udah aku cek dan tes lagi. Untuk
+                  Sebelum dijual, barangnya udah aku cek dan tes lagi. Untuk
                   kondisi, bisa langsung lihat dari foto yang ada yaa.
                 </p>
               </div>
