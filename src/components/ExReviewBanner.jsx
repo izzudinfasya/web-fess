@@ -1,6 +1,6 @@
 import { FiArrowUpRight } from "react-icons/fi";
 
-import { showToast } from "./Toast";
+import { showToast } from "./toast";
 import "./ExReviewBanner.css";
 
 import bannerImage from "../assets/peripherals.png";
