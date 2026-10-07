@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import PersonalHub from "./pages/PersonalHub";
 import ExReview from "./pages/ExReview";
 import ExReviewDetail from "./pages/ExReviewDetail";
-
+import "./components/Toast.css";
 import ThemeToggle from "./components/ThemeToggle";
 
 import "./App.css";

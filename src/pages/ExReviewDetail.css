@@ -737,6 +737,27 @@
   opacity: 0.8;
 }
 
+.ex-detail__action-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.ex-detail__action-content strong {
+  font-size: inherit;
+  line-height: 1;
+}
+
+.ex-detail__action-content small {
+  font-size: 7px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: currentColor;
+  opacity: 0.55;
+}
+
 /* =========================================================
    SOLD BUTTON
 ========================================================= */

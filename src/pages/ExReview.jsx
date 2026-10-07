@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FiArrowLeft, FiArrowUpRight, FiCheck } from "react-icons/fi";
+import { FiArrowLeft, FiArrowUpRight, FiCheck, FiClock } from "react-icons/fi";
 
 import Footer from "../components/Footer";
 import "./ExReview.css";
@@ -29,11 +29,13 @@ const ExReview = ({ theme }) => {
   }, [transitionDone]);
 
   const currentDrops = exReviewDrops.filter((drop) =>
-    drop.items.some((item) => item.qty > 0),
+    drop.items.some((item) => item.status !== "SOLD OUT"),
   );
 
   const archivedDrops = exReviewDrops.filter(
-    (drop) => drop.status === "SOLD OUT",
+    (drop) =>
+      drop.items.length > 0 &&
+      drop.items.every((item) => item.status === "SOLD OUT"),
   );
 
   return (
@@ -73,64 +75,78 @@ const ExReview = ({ theme }) => {
               </div>
 
               <div className="ex-review__grid">
-                {drop.items.map((item) => (
-                  <article
-                    className={`shop-card ${item.qty === 0 ? "shop-card--sold" : ""}`}
-                  >
-                    <div className="shop-card__image">
-                      <img
-                        src={item.images[0]}
-                        alt={`${item.brand} ${item.name}`}
-                      />
+                {drop.items.map((item) => {
+                  const isAvailable = item.status === "AVAILABLE";
+                  const isBooked = item.status === "BOOKED";
+                  const isSold = item.status === "SOLD OUT";
 
-                      {item.qty === 0 && (
-                        <div className="shop-card__sold-overlay">
-                          <span>SOLD OUT</span>
-                        </div>
-                      )}
+                  return (
+                    <article
+                      key={item.slug}
+                      className={`shop-card ${isSold ? "shop-card--sold" : ""}`}
+                    >
+                      <div className="shop-card__image">
+                        <img
+                          src={item.images[0]}
+                          alt={`${item.brand} ${item.name}`}
+                        />
 
-                      {item.qty > 0 && (
-                        <span className="shop-card__status">
-                          <FiCheck />
-                          AVAILABLE
-                        </span>
-                      )}
+                        {isSold && (
+                          <div className="shop-card__sold-overlay">
+                            <span>SOLD OUT</span>
+                          </div>
+                        )}
 
-                      <span className="shop-card__number">{item.id}</span>
-                    </div>
-
-                    <div className="shop-card__content">
-                      <div className="shop-card__top">
-                        <span className="shop-card__brand">{item.brand}</span>
-
-                        <span className="shop-card__type">{item.type}</span>
-                      </div>
-
-                      <h3>{item.name}</h3>
-
-                      <div className="shop-card__footer">
-                        <div className="shop-card__price">
-                          <span>PRICE</span>
-                          <strong>{item.price}</strong>
-                        </div>
-
-                        {item.qty > 0 ? (
-                          <Link
-                            to={`/ex-review/${item.slug}`}
-                            className="shop-card__cta"
-                          >
-                            CHECK DETAIL
-                            <FiArrowUpRight />
-                          </Link>
-                        ) : (
-                          <span className="shop-card__cta shop-card__cta--sold">
-                            SOLD OUT
+                        {isAvailable && (
+                          <span className="shop-card__status">
+                            <FiCheck />
+                            AVAILABLE
                           </span>
                         )}
+
+                        {isBooked && (
+                          <span className="shop-card__status shop-card__status--booked">
+                            <FiClock />
+                            BOOKED
+                          </span>
+                        )}
+
+                        <span className="shop-card__number">{item.id}</span>
                       </div>
-                    </div>
-                  </article>
-                ))}
+
+                      <div className="shop-card__content">
+                        <div className="shop-card__top">
+                          <span className="shop-card__brand">{item.brand}</span>
+
+                          <span className="shop-card__type">{item.type}</span>
+                        </div>
+
+                        <h3>{item.name}</h3>
+
+                        <div className="shop-card__footer">
+                          <div className="shop-card__price">
+                            <span>PRICE</span>
+                            <strong>{item.price}</strong>
+                          </div>
+
+                          {!isSold ? (
+                            <Link
+                              to={`/ex-review/${item.slug}`}
+                              className="shop-card__cta"
+                            >
+                              CHECK DETAIL
+                              <FiArrowUpRight />
+                            </Link>
+                          ) : (
+                            <span className="shop-card__cta shop-card__cta--sold">
+                              SOLD OUT
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
             </section>
           ))}
@@ -178,6 +194,7 @@ const ExReview = ({ theme }) => {
             ) : (
               <div className="ex-review__archive-empty">
                 <span>NO PAST RELEASES YET.</span>
+
                 <p>The archive will be updated after the first drop.</p>
               </div>
             )}

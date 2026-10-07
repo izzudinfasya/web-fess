@@ -319,15 +319,17 @@
 
   padding: 5px 7px;
 
-  border: 1px solid var(--ex-border);
+  border: 1px solid var(--ex-text);
 
-  background: var(--ex-bg);
+  background: var(--ex-text);
 
-  color: #fff;
+  color: var(--ex-bg);
 
   font-family: "Space Grotesk", sans-serif;
   font-size: 10px;
   font-weight: 700;
+
+  line-height: 1;
 
   letter-spacing: 0.08em;
 }
@@ -336,7 +338,19 @@
   width: 9px;
   height: 9px;
 
-  color: var(--ex-text);
+  color: currentColor;
+}
+
+/* =========================================================
+   BOOKED STATUS
+========================================================= */
+
+.shop-card__status--booked {
+  border-color: var(--ex-text);
+
+  background: var(--ex-text);
+
+  color: #ff7a1a;
 }
 
 /* =========================================================

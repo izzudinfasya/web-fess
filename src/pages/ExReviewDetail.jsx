@@ -11,6 +11,7 @@ import {
 
 import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
+import { showToast } from "../components/toast";
 import { exReviewDrops } from "../data/exReview";
 
 import "./ExReviewDetail.css";
@@ -79,7 +80,9 @@ const ExReviewDetail = ({ theme }) => {
   }
 
   const images = product.images?.length ? product.images : [product.image];
-  const isSold = product.qty === 0;
+
+  const isSold = product.status === "SOLD OUT";
+  const isBooked = product.status === "BOOKED";
 
   const nextImage = () => {
     setActiveImage((current) =>
@@ -99,6 +102,21 @@ const ExReviewDetail = ({ theme }) => {
 
   const closeImage = () => {
     setIsImageOpen(false);
+  };
+
+  // =========================================================
+  // BOOKED TOAST
+  // =========================================================
+
+  const handleBookedClick = (event) => {
+    if (!isBooked) return;
+
+    event.preventDefault();
+
+    showToast({
+      title: "Already Booked",
+      message: "This item has already been booked by someone else.",
+    });
   };
 
   // =========================================================
@@ -174,7 +192,6 @@ const ExReviewDetail = ({ theme }) => {
               <div
                 className="ex-detail__image"
                 onClick={(event) => {
-                  // Jangan buka lightbox kalau yang diklik adalah control
                   if (event.target.closest("button")) return;
 
                   openImage();
@@ -363,8 +380,10 @@ const ExReviewDetail = ({ theme }) => {
 
                 <div>
                   <span>AVAILABILITY</span>
-                  <strong className={isSold ? "is-sold" : ""}>
-                    {isSold ? "SOLD OUT" : "AVAILABLE"}
+                  <strong
+                    className={isSold ? "is-sold" : isBooked ? "is-booked" : ""}
+                  >
+                    {isSold ? "SOLD OUT" : isBooked ? "BOOKED" : "AVAILABLE"}
                   </strong>
                 </div>
               </div>
@@ -379,7 +398,7 @@ const ExReviewDetail = ({ theme }) => {
                 </p>
               </div>
 
-              {/* CTA */}
+              {/* REVIEW */}
               {product.reviewUrl && (
                 <a
                   href={product.reviewUrl}
@@ -392,22 +411,29 @@ const ExReviewDetail = ({ theme }) => {
                 </a>
               )}
 
+              {/* CTA */}
               {!isSold ? (
                 <div className="ex-detail__actions">
                   <a
-                    href={product.whatsapp}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={isBooked ? undefined : product.whatsapp}
+                    target={isBooked ? undefined : "_blank"}
+                    rel={isBooked ? undefined : "noreferrer"}
+                    onClick={handleBookedClick}
                     className="ex-detail__action ex-detail__action--checkout"
                   >
                     <FiMessageCircle />
-                    <span>DIRECT BUY</span>
+
+                    <span className="ex-detail__action-content">
+                      <strong>DIRECT BUY</strong>
+                      <small>SHIPPING INCLUDED</small>
+                    </span>
                   </a>
 
                   <a
-                    href={product.shopee}
-                    target="_blank"
-                    rel="noreferrer"
+                    href={isBooked ? undefined : product.shopee}
+                    target={isBooked ? undefined : "_blank"}
+                    rel={isBooked ? undefined : "noreferrer"}
+                    onClick={handleBookedClick}
                     className="ex-detail__action ex-detail__action--shopee"
                   >
                     <FiShoppingBag />

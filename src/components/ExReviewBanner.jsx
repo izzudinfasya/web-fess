@@ -1,6 +1,6 @@
 import { FiArrowUpRight } from "react-icons/fi";
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+
+import { showToast } from "./Toast";
 import "./ExReviewBanner.css";
 
 import bannerImage from "../assets/peripherals.png";
@@ -11,15 +11,9 @@ const ExReviewBanner = ({ comingSoon = true }) => {
 
     e.preventDefault();
 
-    iziToast.info({
+    showToast({
       title: "Coming Soon",
       message: "Pre-loved gear is not available yet. Stay tuned!",
-      position: "topCenter",
-      timeout: 3000,
-      close: false,
-      progressBar: true,
-      transitionIn: "fadeInDown",
-      transitionOut: "fadeOutUp",
     });
   };
 

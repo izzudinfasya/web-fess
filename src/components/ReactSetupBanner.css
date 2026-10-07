@@ -134,7 +134,7 @@
 /* DESCRIPTION */
 
 .react-setup-banner__description {
-  width: 205px;
+  width: 170px;
 
   margin: 9px 0 0;
 
@@ -199,7 +199,7 @@
 .react-setup-banner__image {
   position: absolute;
   top: 18px;
-  right: 38px;
+  right: 28px;
   width: 115px;
   height: 135px;
   overflow: hidden;
@@ -352,7 +352,7 @@
   }
 
   .react-setup-banner__description {
-    width: 180px;
+    width: 150px;
     font-size: 8px;
   }
 
@@ -362,7 +362,7 @@
 
   .react-setup-banner__image {
     top: 17px;
-    right: 28px;
+    right: 18px;
     width: 100px;
     height: 128px;
   }
