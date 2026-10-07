@@ -5,6 +5,7 @@ import PersonalHub from "./pages/PersonalHub";
 import ExReview from "./pages/ExReview";
 import ExReviewDetail from "./pages/ExReviewDetail";
 import "./components/Toast.css";
+import "izitoast/dist/css/iziToast.min.css";
 import ThemeToggle from "./components/ThemeToggle";
 
 import "./App.css";
