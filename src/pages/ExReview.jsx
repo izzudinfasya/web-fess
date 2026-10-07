@@ -15,17 +15,27 @@ const ExReview = ({ theme }) => {
   useEffect(() => {
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
+  }, []);
 
-    if (transitionDone) {
-      AOS.init({
-        duration: 350,
-        easing: "ease-out",
-        once: true,
-        offset: 0,
-      });
+  useEffect(() => {
+    document.title = "Ex-Review — Pre-Loved Gear";
 
-      AOS.refreshHard();
-    }
+    return () => {
+      document.title = "fesnotyours";
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!transitionDone) return;
+
+    AOS.init({
+      duration: 350,
+      easing: "ease-out",
+      once: true,
+      offset: 0,
+    });
+
+    AOS.refreshHard();
   }, [transitionDone]);
 
   const currentDrops = exReviewDrops.filter((drop) =>
