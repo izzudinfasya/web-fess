@@ -1,8 +1,10 @@
 /* =========================
    CTA SLIDER
 ========================= */
+
 .home-cta-slider {
   width: 100%;
+  position: relative;
 }
 
 /* =========================
@@ -16,6 +18,8 @@
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* =========================
@@ -26,8 +30,17 @@
   display: flex;
   width: 300%;
 
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+
+  -webkit-transition: -webkit-transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+
   will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* =========================
@@ -38,10 +51,16 @@
   flex: 0 0 33.333333%;
   width: 33.333333%;
   min-width: 33.333333%;
+
+  box-sizing: border-box;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-/* Remove default spacing from banners
-   because slider controls the spacing */
+/* =========================
+   BANNER SPACING
+========================= */
 
 .home-cta-slider .ex-review-banner,
 .home-cta-slider .react-setup-banner {
@@ -57,24 +76,146 @@
   align-items: center;
   justify-content: center;
 
-  gap: 6px;
   width: 100%;
+  height: 5px;
+  min-height: 5px;
+
   margin-top: 15px;
+  padding: 0;
+
+  gap: 6px;
+
+  box-sizing: border-box;
+  flex-shrink: 0;
+
+  position: relative;
+  z-index: 5;
+
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* =========================
+   DOT BUTTON
+========================= */
 
 .home-cta-slider__dots button {
-  flex: 0 0 auto;
   display: block;
 
+  width: 5px;
+  min-width: 5px;
+  max-width: 16px;
+
+  height: 5px;
+  min-height: 5px;
+  max-height: 5px;
+
+  flex: 0 0 auto;
+
+  padding: 0;
+  margin: 0;
+
   border: 0;
-  outline: none;
+  outline: 0;
+
+  border-radius: 999px;
 
   background: var(--discount-indicator);
+
+  opacity: 0.3;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  box-sizing: border-box;
+
+  font-size: 0;
+  line-height: 0;
+
+  transition:
+    width 0.25s ease,
+    opacity 0.25s ease,
+    background-color 0.25s ease;
+
+  -webkit-transition:
+    width 0.25s ease,
+    opacity 0.25s ease,
+    background-color 0.25s ease;
 }
 
-@media (hover: hover) {
+/* =========================
+   ACTIVE DOT
+========================= */
+
+.home-cta-slider__dots button.active {
+  width: 16px;
+  min-width: 16px;
+  max-width: 16px;
+
+  height: 5px;
+  min-height: 5px;
+  max-height: 5px;
+
+  opacity: 1;
+
+  background: var(--discount-indicator-active);
+}
+
+/* =========================
+   FOCUS
+========================= */
+
+.home-cta-slider__dots button:focus {
+  outline: none;
+}
+
+.home-cta-slider__dots button:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* =========================
+   DESKTOP HOVER
+========================= */
+
+@media (hover: hover) and (pointer: fine) {
   .home-cta-slider__dots button:hover {
-    opacity: 0.75 !important;
+    opacity: 0.75;
+  }
+
+  .home-cta-slider__dots button.active:hover {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   IOS / SAFARI
+========================= */
+
+@supports (-webkit-touch-callout: none) {
+  .home-cta-slider__track {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .home-cta-slider__dots {
+    display: flex;
+    visibility: visible;
+  }
+
+  .home-cta-slider__dots button {
+    display: block;
+    visibility: visible;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    font-size: 0;
+    line-height: 0;
   }
 }
 
@@ -85,5 +226,11 @@
 @media (prefers-reduced-motion: reduce) {
   .home-cta-slider__track {
     transition: none;
+    -webkit-transition: none;
+  }
+
+  .home-cta-slider__dots button {
+    transition: none;
+    -webkit-transition: none;
   }
 }

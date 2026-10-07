@@ -158,7 +158,7 @@ const PersonalHub = ({ theme }) => {
               <div
                 className="home-cta-slider__track"
                 style={{
-                  transform: `translateX(-${activeCTA * 33.333333}%)`,
+                  transform: `translate3d(-${activeCTA * 33.333333}%, 0, 0)`,
                 }}
               >
                 {/* SLIDE 01 */}
@@ -196,25 +196,7 @@ const PersonalHub = ({ theme }) => {
                   type="button"
                   aria-label={slide.label}
                   onClick={() => goToSlide(index)}
-                  style={{
-                    width: activeCTA === index ? "16px" : "5px",
-                    height: "5px",
-                    minWidth: activeCTA === index ? "16px" : "5px",
-                    padding: 0,
-                    margin: 0,
-                    border: 0,
-                    borderRadius: "999px",
-                    background:
-                      activeCTA === index
-                        ? "var(--discount-indicator-active)"
-                        : "var(--discount-indicator)",
-                    opacity: activeCTA === index ? 1 : 0.3,
-                    cursor: "pointer",
-                    appearance: "none",
-                    WebkitAppearance: "none",
-                    transition:
-                      "width 0.25s ease, min-width 0.25s ease, opacity 0.25s ease, background 0.25s ease",
-                  }}
+                  className={activeCTA === index ? "active" : ""}
                 />
               ))}
             </div>
