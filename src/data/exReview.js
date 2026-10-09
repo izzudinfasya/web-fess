@@ -74,7 +74,7 @@ const rawDrops = [
                 name: "ZDP1118",
                 category: "BRACKET MONITOR",
                 type: "PERSONAL",
-                status: "AVAILABLE",
+                status: "BOOKED",
                 usedFor: "Used for 1 years",
                 price: "Rp150.000",
                 shopeePrice: "Rp169.000",
