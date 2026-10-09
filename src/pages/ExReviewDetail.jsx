@@ -437,7 +437,13 @@ const ExReviewDetail = ({ theme }) => {
                     className="ex-detail__action ex-detail__action--shopee"
                   >
                     <FiShoppingBag />
-                    <span>BUY VIA SHOPEE</span>
+
+                    <span className="ex-detail__action-content">
+                      <strong>BUY VIA SHOPEE</strong>
+                      {product.shopeePrice && (
+                        <small>{product.shopeePrice}</small>
+                      )}
+                    </span>
                   </a>
                 </div>
               ) : (
