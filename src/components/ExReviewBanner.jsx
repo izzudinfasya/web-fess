@@ -5,7 +5,7 @@ import "./ExReviewBanner.css";
 
 import bannerImage from "../assets/peripherals.png";
 
-const ExReviewBanner = ({ comingSoon = true }) => {
+const ExReviewBanner = ({ comingSoon = false }) => {
   const handleClick = (e) => {
     if (!comingSoon) return;
 
