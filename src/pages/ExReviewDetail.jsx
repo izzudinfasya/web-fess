@@ -105,7 +105,7 @@ const ExReviewDetail = ({ theme }) => {
   };
 
   // =========================================================
-  // BOOKED TOAST
+  // TOAST
   // =========================================================
 
   const handleBookedClick = (event) => {
@@ -117,6 +117,26 @@ const ExReviewDetail = ({ theme }) => {
       title: "Already Booked",
       message: "This item has already been booked by someone else.",
     });
+  };
+
+  const handleShopeeClick = (event) => {
+    if (isBooked) {
+      handleBookedClick(event);
+      return;
+    }
+
+    const isShopeeAvailable =
+      product.shopee && !product.shopee.includes("your-link");
+
+    if (!isShopeeAvailable) {
+      event.preventDefault();
+
+      showToast({
+        title: "Shopee by Request",
+        message:
+          "Checkout via Shopee is available upon request.</br>Please contact us via WhatsApp.",
+      });
+    }
   };
 
   // =========================================================
@@ -430,10 +450,16 @@ const ExReviewDetail = ({ theme }) => {
                   </a>
 
                   <a
-                    href={isBooked ? undefined : product.shopee}
-                    target={isBooked ? undefined : "_blank"}
-                    rel={isBooked ? undefined : "noreferrer"}
-                    onClick={handleBookedClick}
+                    href={
+                      isBooked ||
+                      !product.shopee ||
+                      product.shopee.includes("your-link")
+                        ? undefined
+                        : product.shopee
+                    }
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={handleShopeeClick}
                     className="ex-detail__action ex-detail__action--shopee"
                   >
                     <FiShoppingBag />

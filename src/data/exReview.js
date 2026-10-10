@@ -51,7 +51,7 @@ const rawDrops = [
                 condition: "9/10",
                 included: "Original box, Keycaps WOB, Accessories",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbqMgrsE/",
             },
             {
@@ -66,7 +66,7 @@ const rawDrops = [
                 condition: "9/10",
                 included: "Original box, Charging Dock, Accessories",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbqMG4BM/",
             },
             {
@@ -81,7 +81,7 @@ const rawDrops = [
                 condition: "9/10",
                 included: "Original box",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbqMusoQ/",
             },
             {
@@ -96,7 +96,7 @@ const rawDrops = [
                 condition: "9/10",
                 included: "Original box, Accessories",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbqrNR7u/",
             },
             {
@@ -111,7 +111,7 @@ const rawDrops = [
                 condition: "8,5/10",
                 included: "Original box, Accessories (no Keycap Puller)",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "",
             },
             {
@@ -126,7 +126,7 @@ const rawDrops = [
                 condition: "8.5/10",
                 included: "Original box, Charging Dock, Accessories",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbtDPDL3/",
             },
             {
@@ -141,7 +141,7 @@ const rawDrops = [
                 condition: "9/10",
                 included: "Original box",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbtD45ev/",
             },
             {
@@ -156,7 +156,7 @@ const rawDrops = [
                 condition: "8/10",
                 included: "Original box",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbqrhueN/",
             },
             {
@@ -171,7 +171,7 @@ const rawDrops = [
                 condition: "9/10",
                 included: "Original box",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbtD4JWM/",
             },
             {
@@ -186,7 +186,7 @@ const rawDrops = [
                 condition: "8,5/10",
                 included: "Original box, Accessories",
                 whatsapp: "https://wa.me/+6285179583850",
-                shopee: "https://shopee.co.id/your-link",
+                shopee: "",
                 reviewUrl: "https://vt.tiktok.com/ZSbtDsGAy/",
             },
         ],
