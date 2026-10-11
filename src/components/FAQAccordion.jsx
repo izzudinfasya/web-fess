@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import { FiPlus, FiMinus, FiArrowUpRight } from "react-icons/fi";
 import "./FAQAccordion.css";
 
 const faqs = [
@@ -98,10 +98,10 @@ export default function FAQAccordion() {
         <a
           href="https://wa.me/6285179583850"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="faq-accordion__contact"
         >
-          CHAT ADMIN <span aria-hidden="true">↗</span>
+          CHAT ADMIN <FiArrowUpRight aria-hidden="true" />
         </a>
       </div>
     </section>
