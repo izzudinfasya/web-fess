@@ -1,22 +1,98 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FiArrowLeft, FiArrowUpRight, FiCheck } from "react-icons/fi";
+import {
+  FiArrowLeft,
+  FiArrowUpRight,
+  FiCheck,
+  FiChevronLeft,
+  FiChevronRight,
+  FiX,
+  FiMaximize2,
+} from "react-icons/fi";
 
 import Footer from "../components/Footer";
 import "./ExReview.css";
 import PageTransition from "../components/PageTransition";
 import { exReviewDrops } from "../data/exReview";
 import { Link } from "react-router-dom";
+import exReviewTestimonials from "../data/exReviewTestimonials";
 
 const ExReview = ({ theme }) => {
   const [transitionDone, setTransitionDone] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(null);
 
+  const testimonialTrackRef = useRef(null);
+
+  const currentDrops = exReviewDrops.filter((drop) =>
+    drop.items.some((item) => item.status !== "SOLD OUT"),
+  );
+
+  // Hanya testimonial yang memiliki gambar yang dapat dibuka.
+  const availableTestimonials = exReviewTestimonials.filter(
+    (testimonial) => testimonial.image,
+  );
+
+  const activeIndex = availableTestimonials.findIndex(
+    (testimonial) => testimonial.id === activeTestimonial,
+  );
+
+  const activeImage =
+    activeIndex >= 0 ? availableTestimonials[activeIndex] : null;
+
+  // Geser slider berdasarkan lebar satu kartu testimonial.
+  const scrollTestimonials = (direction) => {
+    const track = testimonialTrackRef.current;
+    if (!track) return;
+
+    const firstItem = track.querySelector(".ex-review__testimonial");
+    if (!firstItem) return;
+
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const styles = window.getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+
+    track.scrollBy({
+      left: direction * (itemWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
+  const closeTestimonialLightbox = () => {
+    setActiveTestimonial(null);
+  };
+
+  const showPreviousTestimonial = () => {
+    if (availableTestimonials.length < 2 || activeIndex < 0) return;
+
+    const previousIndex =
+      (activeIndex - 1 + availableTestimonials.length) %
+      availableTestimonials.length;
+
+    setActiveTestimonial(availableTestimonials[previousIndex].id);
+  };
+
+  const showNextTestimonial = () => {
+    if (availableTestimonials.length < 2 || activeIndex < 0) return;
+
+    const nextIndex = (activeIndex + 1) % availableTestimonials.length;
+
+    setActiveTestimonial(availableTestimonials[nextIndex].id);
+  };
+
+  // Reset scroll restoration dan posisi halaman.
   useEffect(() => {
+    const previousRestoration = window.history.scrollRestoration;
+
     window.history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
+
+    return () => {
+      window.history.scrollRestoration = previousRestoration;
+    };
   }, []);
 
+  // Update judul tab browser.
   useEffect(() => {
     document.title = "Ex-Review — Pre-Loved Gear";
 
@@ -25,6 +101,7 @@ const ExReview = ({ theme }) => {
     };
   }, []);
 
+  // Inisialisasi AOS setelah page transition selesai.
   useEffect(() => {
     if (!transitionDone) return;
 
@@ -38,15 +115,36 @@ const ExReview = ({ theme }) => {
     AOS.refreshHard();
   }, [transitionDone]);
 
-  const currentDrops = exReviewDrops.filter((drop) =>
-    drop.items.some((item) => item.status !== "SOLD OUT"),
-  );
+  // Keyboard navigation dan scroll lock selama lightbox terbuka.
+  useEffect(() => {
+    if (activeTestimonial === null || !activeImage) return;
 
-  const archivedDrops = exReviewDrops.filter(
-    (drop) =>
-      drop.items.length > 0 &&
-      drop.items.every((item) => item.status === "SOLD OUT"),
-  );
+    const previousOverflow = document.body.style.overflow;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeTestimonialLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showPreviousTestimonial();
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showNextTestimonial();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeTestimonial, activeIndex, availableTestimonials.length]);
 
   return (
     <>
@@ -166,58 +264,183 @@ const ExReview = ({ theme }) => {
             </section>
           ))}
 
-          {/* ARCHIVE */}
-          <section className="ex-review__archive-section">
+          {/* TESTIMONIALS */}
+          <section className="ex-review__testimonials">
             <div className="ex-review__section-top">
               <div>
-                <span className="ex-review__eyebrow">PAST RELEASES</span>
+                <span className="ex-review__eyebrow">BUYER FEEDBACK</span>
 
-                <h2>DROP ARCHIVE</h2>
+                <h2>
+                  REAL REVIEWS<span>.</span>
+                </h2>
               </div>
 
-              <span className="ex-review__archive-count">
-                {String(archivedDrops.length).padStart(2, "0")} DROPS
+              <span className="ex-review__testimonial-count">
+                {String(exReviewTestimonials.length).padStart(2, "0")} REVIEWS
               </span>
             </div>
 
-            {archivedDrops.length > 0 ? (
-              <div className="ex-review__archive">
-                {archivedDrops.map((drop) => (
-                  <a
-                    href={`/ex-review/drop/${drop.id}`}
-                    className="archive-item"
-                    key={drop.id}
+            {/* HORIZONTAL TESTIMONIAL SLIDER */}
+            <div className="ex-review__slider-wrapper">
+              <div
+                className="ex-review__testimonial-slider"
+                ref={testimonialTrackRef}
+              >
+                <div className="ex-review__testimonial-track">
+                  {exReviewTestimonials.map((testimonial) => (
+                    <button
+                      type="button"
+                      className={`ex-review__testimonial ${
+                        testimonial.image ? "is-clickable" : "is-placeholder"
+                      }`}
+                      key={testimonial.id}
+                      onClick={() => {
+                        if (testimonial.image) {
+                          setActiveTestimonial(testimonial.id);
+                        }
+                      }}
+                      disabled={!testimonial.image}
+                      aria-label={
+                        testimonial.image
+                          ? `View buyer feedback ${testimonial.id}`
+                          : `Buyer feedback ${testimonial.id} is not available yet`
+                      }
+                    >
+                      {testimonial.image ? (
+                        <>
+                          <img
+                            src={testimonial.image}
+                            alt={
+                              testimonial.alt ||
+                              `Buyer feedback ${testimonial.id}`
+                            }
+                            className="ex-review__testimonial-image"
+                            loading="lazy"
+                          />
+
+                          <span
+                            className="ex-review__testimonial-zoom"
+                            aria-hidden="true"
+                          >
+                            <FiMaximize2 />
+                          </span>
+                        </>
+                      ) : (
+                        <span className="ex-review__testimonial-placeholder">
+                          <span className="ex-review__placeholder-index">
+                            / {String(testimonial.id).padStart(2, "0")}
+                          </span>
+
+                          <span className="ex-review__placeholder-label">
+                            WHATSAPP SCREENSHOT
+                          </span>
+
+                          <span className="ex-review__placeholder-status">
+                            ASSET PENDING
+                          </span>
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* SLIDER CONTROLS */}
+              <div className="ex-review__slider-controls">
+                <span className="ex-review__slider-hint">DRAG TO EXPLORE</span>
+
+                <div className="ex-review__slider-arrows">
+                  <button
+                    type="button"
+                    className="ex-review__slider-arrow"
+                    onClick={() => scrollTestimonials(-1)}
+                    aria-label="Scroll to previous reviews"
                   >
-                    <span className="archive-item__drop">#{drop.id}</span>
+                    <FiChevronLeft />
+                  </button>
 
-                    <div className="archive-item__info">
-                      <strong>
-                        {String(drop.items.length).padStart(2, "0")} /{" "}
-                        {String(drop.items.length).padStart(2, "0")} SOLD
-                      </strong>
-
-                      <span>{drop.date}</span>
-                    </div>
-
-                    <span className="archive-item__status">
-                      SOLD OUT
-                      <FiArrowUpRight />
-                    </span>
-                  </a>
-                ))}
+                  <button
+                    type="button"
+                    className="ex-review__slider-arrow"
+                    onClick={() => scrollTestimonials(1)}
+                    aria-label="Scroll to next reviews"
+                  >
+                    <FiChevronRight />
+                  </button>
+                </div>
               </div>
-            ) : (
-              <div className="ex-review__archive-empty">
-                <span>NO PAST RELEASES YET.</span>
-
-                <p>The archive will be updated after the first drop.</p>
-              </div>
-            )}
+            </div>
           </section>
 
           <Footer />
         </div>
       </main>
+
+      {/* TESTIMONIAL LIGHTBOX */}
+      {activeImage && (
+        <div
+          className="ex-review__lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Buyer feedback image viewer"
+          onClick={closeTestimonialLightbox}
+        >
+          <button
+            type="button"
+            className="ex-review__lightbox-close"
+            onClick={closeTestimonialLightbox}
+            aria-label="Close image viewer"
+          >
+            <FiX />
+          </button>
+
+          {availableTestimonials.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="ex-review__lightbox-arrow ex-review__lightbox-prev"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showPreviousTestimonial();
+                }}
+                aria-label="Previous image"
+              >
+                <FiChevronLeft />
+              </button>
+
+              <button
+                type="button"
+                className="ex-review__lightbox-arrow ex-review__lightbox-next"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showNextTestimonial();
+                }}
+                aria-label="Next image"
+              >
+                <FiChevronRight />
+              </button>
+            </>
+          )}
+
+          <div
+            className="ex-review__lightbox-content"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              key={activeImage.id}
+              src={activeImage.image}
+              alt={activeImage.alt || `Buyer feedback ${activeImage.id}`}
+              className="ex-review__lightbox-image"
+            />
+
+            <span className="ex-review__lightbox-counter">
+              {String(activeIndex + 1).padStart(2, "0")}
+              {" / "}
+              {String(availableTestimonials.length).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+      )}
     </>
   );
 };
