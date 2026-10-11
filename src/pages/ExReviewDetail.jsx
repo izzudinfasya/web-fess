@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 import { showToast } from "../components/toast";
 import { exReviewDrops } from "../data/exReview";
+import AnnouncementMarquee from "../components/AnnouncementMarquee";
 
 import "./ExReviewDetail.css";
 
@@ -189,6 +190,7 @@ const ExReviewDetail = ({ theme }) => {
         onComplete={() => setTransitionDone(true)}
       />
 
+      <AnnouncementMarquee />
       <main className="ex-detail">
         <div className="ex-detail__noise" />
 

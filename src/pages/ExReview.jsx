@@ -17,6 +17,7 @@ import PageTransition from "../components/PageTransition";
 import { exReviewDrops } from "../data/exReview";
 import { Link } from "react-router-dom";
 import exReviewTestimonials from "../data/exReviewTestimonials";
+import AnnouncementMarquee from "../components/AnnouncementMarquee";
 
 const ExReview = ({ theme }) => {
   const [transitionDone, setTransitionDone] = useState(false);
@@ -153,6 +154,7 @@ const ExReview = ({ theme }) => {
         onComplete={() => setTransitionDone(true)}
       />
 
+      <AnnouncementMarquee />
       <main className="ex-review">
         <div className="ex-review__noise" />
 
