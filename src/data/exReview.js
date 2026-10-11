@@ -104,7 +104,7 @@ const rawDrops = [
                 name: "F75 Pro",
                 category: "MECHANICAL KEYBOARD",
                 type: "PERSONAL",
-                status: "AVAILABLE",
+                status: "BOOKED",
                 usedFor: "Used for 1 years",
                 price: "Rp550.000",
                 shopeePrice: "Rp609.000",
