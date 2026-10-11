@@ -14,6 +14,7 @@ import PageTransition from "../components/PageTransition";
 import { showToast } from "../components/toast";
 import { exReviewDrops } from "../data/exReview";
 import AnnouncementMarquee from "../components/AnnouncementMarquee";
+import FAQAccordion from "../components/FAQAccordion";
 
 import "./ExReviewDetail.css";
 
@@ -199,12 +200,8 @@ const ExReviewDetail = ({ theme }) => {
           <nav className="ex-detail__nav">
             <Link to="/ex-review" className="ex-detail__back">
               <FiArrowLeft />
-              <span>BACK TO EX-REVIEW</span>
+              <span>BACK</span>
             </Link>
-
-            <span className="ex-detail__nav-label">
-              PRE-LOVED / {product.type}
-            </span>
           </nav>
 
           {/* PRODUCT */}
@@ -479,6 +476,8 @@ const ExReviewDetail = ({ theme }) => {
               )}
             </div>
           </section>
+
+          <FAQAccordion />
 
           <Footer />
         </div>

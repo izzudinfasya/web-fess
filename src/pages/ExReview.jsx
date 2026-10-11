@@ -18,6 +18,7 @@ import { exReviewDrops } from "../data/exReview";
 import { Link } from "react-router-dom";
 import exReviewTestimonials from "../data/exReviewTestimonials";
 import AnnouncementMarquee from "../components/AnnouncementMarquee";
+import FAQAccordion from "../components/FAQAccordion";
 
 const ExReview = ({ theme }) => {
   const [transitionDone, setTransitionDone] = useState(false);
@@ -185,7 +186,7 @@ const ExReview = ({ theme }) => {
                   rel="noreferrer"
                   className="ex-review__shop-count ex-review__ask-admin"
                 >
-                  ASK ADMIN
+                  CHAT ADMIN
                   <FiArrowUpRight />
                 </a>
               </div>
@@ -373,6 +374,8 @@ const ExReview = ({ theme }) => {
               </div>
             </div>
           </section>
+
+          <FAQAccordion />
 
           <Footer />
         </div>

@@ -138,7 +138,7 @@
 
   gap: 60px;
 
-  padding: 0 0 90px;
+  padding: 0 0 40px;
 }
 
 /* =========================================================
@@ -1021,7 +1021,7 @@
   .ex-detail__product {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
   }
 
   .ex-detail__image {
@@ -1075,7 +1075,7 @@
   .ex-detail__product {
     gap: 28px;
     padding-top: 0;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 
   .ex-detail__image {
@@ -1301,7 +1301,7 @@
   }
 
   .ex-detail__nav {
-    padding: 0 10px;
+    padding: 0;
   }
 
   .ex-detail__product {
