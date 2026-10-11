@@ -134,7 +134,7 @@ const rawDrops = [
                 name: "C100 - 1080p",
                 category: "WEBCAM",
                 type: "EX-REVIEW",
-                status: "AVAILABLE",
+                status: "BOOKED",
                 usedFor: "Used for review",
                 price: "175.000",
                 shopeePrice: "Rp205.000",
