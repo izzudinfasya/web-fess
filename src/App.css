@@ -922,7 +922,7 @@
 
 @media (max-width: 480px) {
   .page {
-    padding: 32px;
+    padding: 16px;
   }
 
   .theme-toggle {
