@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { FiArrowLeft, FiArrowUpRight, FiCheck, FiClock } from "react-icons/fi";
+import { FiArrowLeft, FiArrowUpRight, FiCheck } from "react-icons/fi";
 
 import Footer from "../components/Footer";
 import "./ExReview.css";
@@ -79,9 +79,15 @@ const ExReview = ({ theme }) => {
                   <h2>DROP #{drop.id}</h2>
                 </div>
 
-                <span className="ex-review__shop-count">
-                  {String(drop.items.length).padStart(2, "0")} ITEMS
-                </span>
+                <a
+                  href="https://wa.me/6285179583850"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ex-review__shop-count ex-review__ask-admin"
+                >
+                  ASK ADMIN
+                  <FiArrowUpRight />
+                </a>
               </div>
 
               <div className="ex-review__grid">
@@ -115,10 +121,9 @@ const ExReview = ({ theme }) => {
                         )}
 
                         {isBooked && (
-                          <span className="shop-card__status shop-card__status--booked">
-                            <FiClock />
-                            BOOKED
-                          </span>
+                          <div className="shop-card__booked-overlay">
+                            <span>BOOKED</span>
+                          </div>
                         )}
 
                         <span className="shop-card__number">{item.id}</span>

@@ -176,14 +176,50 @@
   letter-spacing: -0.055em;
 }
 
-.ex-review__shop-count {
-  color: var(--ex-subtle);
+.ex-review__ask-admin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 
+  padding: 9px 12px;
+  border: 1px solid var(--ex-border);
+  background: transparent;
+
+  color: var(--ex-text);
   font-family: "Space Grotesk", sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
 
-  letter-spacing: 0.12em;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.ex-review__ask-admin:hover {
+  background: var(--ex-text);
+  color: var(--ex-bg);
+  border-color: var(--ex-text);
+}
+
+.ex-review__ask-admin svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ex-review__ask-admin:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.ex-review__ask-admin svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* =========================================================
@@ -656,6 +692,41 @@
 }
 
 /* =========================================================
+   BOOKED / ON HOLD STATE
+========================================================= */
+
+.shop-card__booked-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.12);
+
+  pointer-events: none;
+}
+
+.shop-card__booked-overlay span {
+  padding: 8px 12px;
+
+  border: 1px solid #ff7a1a;
+  background: rgba(0, 0, 0, 0.72);
+
+  color: #ff7a1a;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(14px, 1.8vw, 20px);
+  font-weight: 800;
+  line-height: 1;
+
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+/* =========================================================
    SOLD OUT CTA
 ========================================================= */
 
@@ -1051,14 +1122,6 @@
     font-size: 30px;
 
     letter-spacing: -0.06em;
-  }
-
-  .ex-review__shop-count {
-    padding-bottom: 2px;
-
-    font-size: 7px;
-
-    white-space: nowrap;
   }
 
   /* -------------------------------------------------------
