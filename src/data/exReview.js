@@ -59,7 +59,7 @@ const rawDrops = [
                 name: "AJ139 V2 MC",
                 category: "WIRELESS MOUSE",
                 type: "EX-REVIEW",
-                status: "AVAILABLE",
+                status: "BOOKED",
                 usedFor: "Used for review",
                 price: "Rp250.000",
                 shopeePrice: "Rp279.000",
