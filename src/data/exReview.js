@@ -149,7 +149,7 @@ const rawDrops = [
                 name: "YATAGARASU",
                 category: "MOUSEPAD",
                 type: "EX-REVIEW",
-                status: "AVAILABLE",
+                status: "BOOKED",
                 usedFor: "Used for review",
                 price: "Rp100.000",
                 shopeePrice: "Rp115.000",
