@@ -119,7 +119,7 @@
 
   border-radius: 999px;
 
-  background: #d0d0d0;
+  background: var(--discount-indicator-active);
 
   opacity: 0.3;
 
