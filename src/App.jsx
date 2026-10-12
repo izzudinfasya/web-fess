@@ -38,20 +38,32 @@ const App = () => {
   };
 
   return (
-    <>
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <PersonalHub theme={theme} />
+          </>
+        }
+      />
 
-      <Routes>
-        <Route path="/" element={<PersonalHub theme={theme} />} />
+      <Route
+        path="/ex-review"
+        element={
+          <>
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <ExReview theme={theme} />
+          </>
+        }
+      />
 
-        <Route path="/ex-review" element={<ExReview theme={theme} />} />
-
-        <Route
-          path="/ex-review/:slug"
-          element={<ExReviewDetail theme={theme} />}
-        />
-      </Routes>
-    </>
+      <Route
+        path="/ex-review/:slug"
+        element={<ExReviewDetail theme={theme} onToggleTheme={toggleTheme} />}
+      />
+    </Routes>
   );
 };
 

@@ -13,12 +13,13 @@ import Footer from "../components/Footer";
 import PageTransition from "../components/PageTransition";
 import { showToast } from "../components/toast";
 import { exReviewDrops } from "../data/exReview";
+import ThemeToggle from "../components/ThemeToggle";
 import AnnouncementMarquee from "../components/AnnouncementMarquee";
 import FAQAccordion from "../components/FAQAccordion";
 
 import "./ExReviewDetail.css";
 
-const ExReviewDetail = ({ theme }) => {
+const ExReviewDetail = ({ theme, onToggleTheme }) => {
   const { slug } = useParams();
 
   const [transitionDone, setTransitionDone] = useState(false);
@@ -59,8 +60,10 @@ const ExReviewDetail = ({ theme }) => {
             <nav className="ex-detail__nav">
               <Link to="/ex-review" className="ex-detail__back">
                 <FiArrowLeft />
-                <span>BACK TO EX-REVIEW</span>
+                <span>BACK</span>
               </Link>
+
+              <ThemeToggle theme={theme} onToggle={onToggleTheme} />
             </nav>
 
             <div className="ex-detail__not-found">
@@ -69,7 +72,7 @@ const ExReviewDetail = ({ theme }) => {
               <p>This item may have been removed from the collection.</p>
 
               <Link to="/ex-review" className="ex-detail__return">
-                BACK TO SHOP
+                VIEW COLLECTION
                 <FiArrowUpRight />
               </Link>
             </div>
@@ -202,6 +205,8 @@ const ExReviewDetail = ({ theme }) => {
               <FiArrowLeft />
               <span>BACK</span>
             </Link>
+
+            <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           </nav>
 
           {/* PRODUCT */}

@@ -53,6 +53,11 @@
 /* =========================================================
    NAV
 ========================================================= */
+
+/* =========================================================
+   DETAIL NAV — THEME TOGGLE OVERRIDE
+========================================================= */
+
 .ex-detail__nav {
   position: absolute;
   top: 0;
@@ -68,8 +73,57 @@
   min-height: 64px;
   padding: 0 18px;
 
-  background: transparent;
   pointer-events: none;
+}
+
+.ex-detail__nav .ex-detail__back,
+.ex-detail__nav > * {
+  pointer-events: auto;
+}
+
+.ex-detail__nav .theme-toggle {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  z-index: auto;
+  margin: 0;
+  transform: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 38px;
+  min-height: 35px;
+  padding: 8px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0 !important;
+
+  background: rgba(0, 0, 0, 0.45) !important;
+  color: #fff !important;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  box-shadow: none !important;
+
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+
+  pointer-events: auto;
+}
+
+.ex-detail__nav .theme-toggle:hover {
+  opacity: 0.7;
+}
+
+.ex-detail__nav .theme-toggle * {
+  border-radius: 0 !important;
 }
 
 .ex-detail__back,
