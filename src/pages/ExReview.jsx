@@ -26,9 +26,7 @@ const ExReview = ({ theme }) => {
 
   const testimonialTrackRef = useRef(null);
 
-  const currentDrops = exReviewDrops.filter((drop) =>
-    drop.items.some((item) => item.status !== "SOLD OUT"),
-  );
+  const currentDrops = exReviewDrops;
 
   // Hanya testimonial yang memiliki gambar yang dapat dibuka.
   const availableTestimonials = exReviewTestimonials.filter(
