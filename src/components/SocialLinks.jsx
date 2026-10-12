@@ -8,7 +8,7 @@ import "./sociallinks.css";
 const socialData = {
   TikTok: {
     icon: <FaTiktok />,
-    value: "15.2K",
+    value: "15.3K",
     label: "Followers",
   },
   Instagram: {
