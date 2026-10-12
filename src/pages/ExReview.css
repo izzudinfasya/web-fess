@@ -37,7 +37,10 @@
   mix-blend-mode: overlay;
 }
 
-/* Eyebrow / labels */
+/* =========================================================
+   SHARED LABELS
+========================================================= */
+
 .ex-review__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -49,16 +52,6 @@
   line-height: 1;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.ex-review__eyebrow i {
-  display: block;
-  width: 5px;
-  height: 5px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--ex-text);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ex-text) 8%, transparent);
 }
 
 /* =========================================================
@@ -121,7 +114,8 @@
 }
 
 .ex-review__shop-header h2,
-.ex-review__section-top h2 {
+.ex-review__section-top h2,
+.ex-review__sold-heading h2 {
   margin: 12px 0 0;
   color: var(--ex-text);
   font-family: "Space Grotesk", sans-serif;
@@ -131,10 +125,12 @@
   letter-spacing: -0.055em;
 }
 
-.ex-review__section-top h2 span {
+.ex-review__section-top h2 span,
+.ex-review__sold-heading h2 span {
   color: var(--ex-muted);
 }
 
+/* Admin CTA */
 .ex-review__ask-admin {
   display: inline-flex;
   align-items: center;
@@ -182,7 +178,10 @@
   gap: 10px;
 }
 
-/* Product card */
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
 .shop-card {
   position: relative;
   min-width: 0;
@@ -200,12 +199,7 @@
   border-color: var(--ex-muted);
 }
 
-.shop-card__image-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-}
-
+/* Product image */
 .shop-card__image {
   position: relative;
   overflow: hidden;
@@ -281,12 +275,6 @@
   color: currentColor;
 }
 
-.shop-card__status--booked {
-  border-color: var(--ex-text);
-  background: var(--ex-text);
-  color: #ff7a1a;
-}
-
 .shop-card__number {
   position: absolute;
   right: 10px;
@@ -340,59 +328,6 @@
   font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.045em;
-}
-
-.shop-card__category {
-  display: block;
-  overflow: hidden;
-  color: var(--ex-subtle);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 7px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Product metadata */
-.shop-card__meta {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 18px;
-  border-top: 1px solid var(--ex-border);
-  border-bottom: 1px solid var(--ex-border);
-}
-
-.shop-card__meta div {
-  min-width: 0;
-  padding: 11px 8px 11px 0;
-}
-
-.shop-card__meta div + div {
-  padding-left: 8px;
-  border-left: 1px solid var(--ex-border);
-}
-
-.shop-card__meta span {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--ex-subtle);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 6px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-}
-
-.shop-card__meta strong {
-  display: block;
-  overflow: hidden;
-  color: var(--ex-text);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 8px;
-  font-weight: 500;
-  line-height: 1.35;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* Price and CTA */
@@ -466,10 +401,12 @@
   color: var(--ex-bg);
   cursor: default;
   font-weight: 800;
-  opacity: 1;
 }
 
-/* Sold out overlay */
+/* =========================================================
+   SOLD OUT / BOOKED OVERLAYS
+========================================================= */
+
 .shop-card--sold .shop-card__image img {
   filter: brightness(0.55) grayscale(0.15);
 }
@@ -512,7 +449,7 @@
   transform: scale(1.04);
 }
 
-/* Booked / on hold overlay */
+/* Booked overlay */
 .shop-card__booked-overlay {
   background: rgba(0, 0, 0, 0.12);
 }
@@ -528,6 +465,101 @@
   line-height: 1;
   letter-spacing: 0.12em;
   white-space: nowrap;
+}
+
+/* =========================================================
+   SOLD ITEMS TOGGLE
+========================================================= */
+
+.ex-review__sold {
+  margin-top: 28px;
+  border-top: 1px solid var(--ex-border);
+}
+
+.ex-review__sold-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 0;
+  border: 0;
+  border-bottom: 1px solid var(--ex-border);
+  background: transparent;
+  color: var(--ex-text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.ex-review__sold-toggle > span:first-child {
+  flex: 1;
+}
+
+.ex-review__sold-count {
+  color: var(--ex-muted);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.ex-review__sold-toggle > svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.ex-review__sold-toggle:hover {
+  border-bottom-color: var(--ex-text);
+}
+
+.ex-review__sold-toggle:hover > svg {
+  transform: translate(2px, -2px);
+}
+
+.ex-review__sold-toggle:focus-visible {
+  outline: 2px solid var(--ex-text);
+  outline-offset: 4px;
+}
+
+.ex-review__sold-content {
+  padding-top: 32px;
+}
+
+.ex-review__sold-heading {
+  margin-bottom: 24px;
+}
+
+.ex-review__sold-heading h2 {
+  margin-top: 10px;
+}
+
+.ex-review__sold .ex-review__grid .shop-card {
+  animation: ex-review-sold-in 0.25s ease both;
+}
+
+@keyframes ex-review-sold-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================================
@@ -881,7 +913,6 @@
   right: 20px;
 }
 
-/* Lightbox entrance */
 @keyframes ex-review-lightbox-in {
   from {
     opacity: 0;
@@ -893,109 +924,9 @@
 }
 
 /* =========================================================
-   CTA SECTION
+   FOOTER
 ========================================================= */
 
-.ex-review__cta {
-  position: relative;
-  overflow: hidden;
-  padding: 70px 50px;
-  border: 1px solid var(--ex-border);
-  background:
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(255, 255, 255, 0.07),
-      transparent 45%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.025),
-      rgba(255, 255, 255, 0.005)
-    );
-  text-align: center;
-}
-
-[data-theme="light"] .ex-review__cta {
-  background:
-    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.045), transparent 45%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.005));
-}
-
-.ex-review__cta-glow {
-  position: absolute;
-  top: -250px;
-  left: 50%;
-  width: 400px;
-  height: 400px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  filter: blur(70px);
-  pointer-events: none;
-}
-
-[data-theme="light"] .ex-review__cta-glow {
-  background: rgba(0, 0, 0, 0.035);
-}
-
-.ex-review__cta > *:not(.ex-review__cta-glow) {
-  position: relative;
-  z-index: 1;
-}
-
-.ex-review__cta h2 {
-  margin: 24px 0 18px;
-  color: var(--ex-text);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(38px, 6vw, 72px);
-  font-weight: 500;
-  line-height: 0.94;
-  letter-spacing: -0.06em;
-}
-
-.ex-review__cta h2 span {
-  color: var(--ex-muted);
-}
-
-.ex-review__cta p {
-  max-width: 470px;
-  margin: 0 auto 30px;
-  color: var(--ex-muted);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.ex-review__cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 46px;
-  padding: 0 20px;
-  border: 1px solid var(--ex-text);
-  background: var(--ex-text);
-  color: var(--ex-bg);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
-}
-
-.ex-review__cta-button svg {
-  width: 13px;
-}
-
-.ex-review__cta-button:hover {
-  transform: translateY(-2px);
-  opacity: 0.8;
-}
-
-/* Footer */
 .ex-review > .ex-review__container > footer {
   margin-top: 30px;
 }
@@ -1145,34 +1076,6 @@
     letter-spacing: -0.05em;
   }
 
-  .shop-card__category {
-    margin-top: 5px;
-    font-size: 5.5px;
-    letter-spacing: 0.08em;
-  }
-
-  .shop-card__meta {
-    margin-top: 13px;
-  }
-
-  .shop-card__meta div {
-    padding: 8px 5px 8px 0;
-  }
-
-  .shop-card__meta div + div {
-    padding-left: 5px;
-  }
-
-  .shop-card__meta span {
-    margin-bottom: 3px;
-    font-size: 4.5px;
-  }
-
-  .shop-card__meta strong {
-    font-size: 6.5px;
-    line-height: 1.3;
-  }
-
   .shop-card__footer {
     display: block;
     margin-top: 13px;
@@ -1206,6 +1109,49 @@
     height: 9px;
   }
 
+  .shop-card__sold-overlay span {
+    padding: 7px 8px;
+    font-size: clamp(11px, 3vw, 16px);
+  }
+
+  .shop-card__booked-overlay span {
+    padding: 7px 8px;
+    font-size: clamp(10px, 3vw, 15px);
+  }
+
+  /* Sold items */
+  .ex-review__sold {
+    margin-top: 16px;
+  }
+
+  .ex-review__sold-toggle {
+    gap: 10px;
+    padding: 17px 0;
+    font-size: 9px;
+  }
+
+  .ex-review__sold-count {
+    font-size: 8px;
+  }
+
+  .ex-review__sold-toggle > svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .ex-review__sold-content {
+    padding-top: 24px;
+  }
+
+  .ex-review__sold-heading {
+    margin-bottom: 20px;
+  }
+
+  .ex-review__sold-heading h2 {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+
   /* Shared section headings */
   .ex-review__section-top {
     align-items: flex-end;
@@ -1219,7 +1165,7 @@
     letter-spacing: -0.06em;
   }
 
-  /* Testimonials slider */
+  /* Testimonials */
   .ex-review__testimonials {
     padding: 14px 0 20px;
   }
@@ -1319,19 +1265,7 @@
     right: calc(50% - 50px);
   }
 
-  /* CTA */
-  .ex-review__cta {
-    padding: 54px 24px;
-  }
-
-  .ex-review__cta h2 {
-    font-size: clamp(34px, 9vw, 52px);
-  }
-
-  .ex-review__cta p {
-    font-size: 12px;
-  }
-
+  /* Footer */
   .ex-review > .ex-review__container > footer {
     margin-top: 10px;
   }
@@ -1382,11 +1316,6 @@
     font-size: 17px;
   }
 
-  .shop-card__category {
-    margin-top: 4px;
-    font-size: 5px;
-  }
-
   .shop-card__footer {
     margin-top: 11px;
   }
@@ -1421,6 +1350,19 @@
     inset: 6px;
   }
 
+  .ex-review__sold-toggle {
+    gap: 8px;
+    font-size: 8px;
+  }
+
+  .ex-review__sold-count {
+    font-size: 7px;
+  }
+
+  .ex-review__sold-heading h2 {
+    font-size: 28px;
+  }
+
   .ex-review__section-top h2,
   .ex-review__testimonials .ex-review__section-top h2 {
     font-size: 30px;
@@ -1436,10 +1378,6 @@
 
   .ex-review__testimonial-placeholder {
     min-height: 155px;
-  }
-
-  .ex-review__cta {
-    padding: 44px 18px;
   }
 }
 
@@ -1480,6 +1418,18 @@
 
   .shop-card__status {
     font-size: 4.5px;
+  }
+
+  .shop-card__sold-overlay span {
+    padding: 6px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .shop-card__booked-overlay span {
+    padding: 6px;
+    font-size: 9px;
+    letter-spacing: 0.07em;
   }
 
   .ex-review__shop-header h2 {

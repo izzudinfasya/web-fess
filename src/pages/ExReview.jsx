@@ -23,10 +23,26 @@ import FAQAccordion from "../components/FAQAccordion";
 const ExReview = ({ theme }) => {
   const [transitionDone, setTransitionDone] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(null);
+  const [showSoldItems, setShowSoldItems] = useState(false);
 
   const testimonialTrackRef = useRef(null);
 
-  const currentDrops = exReviewDrops;
+  // Pisahkan barang yang masih tersedia/booked dan yang sudah terjual.
+  const currentDrops = exReviewDrops
+    .map((drop) => ({
+      ...drop,
+      items: drop.items.filter((item) => item.status !== "SOLD OUT"),
+    }))
+    .filter((drop) => drop.items.length > 0);
+
+  const soldItems = exReviewDrops.flatMap((drop) =>
+    drop.items
+      .filter((item) => item.status === "SOLD OUT")
+      .map((item) => ({
+        ...item,
+        dropId: drop.id,
+      })),
+  );
 
   // Hanya testimonial yang memiliki gambar yang dapat dibuka.
   const availableTestimonials = exReviewTestimonials.filter(
@@ -146,6 +162,77 @@ const ExReview = ({ theme }) => {
     };
   }, [activeTestimonial, activeIndex, availableTestimonials.length]);
 
+  // Komponen kartu produk untuk katalog utama dan sold items.
+  const renderProductCard = (item) => {
+    const isAvailable = item.status === "AVAILABLE";
+    const isBooked = item.status === "BOOKED";
+    const isSold = item.status === "SOLD OUT";
+
+    return (
+      <article
+        key={item.slug}
+        className={`shop-card ${isSold ? "shop-card--sold" : ""}`}
+      >
+        <div className="shop-card__image">
+          <img
+            src={item.images[0]}
+            alt={`${item.brand} ${item.name}`}
+            loading="lazy"
+            decoding="async"
+          />
+
+          {isSold && (
+            <div className="shop-card__sold-overlay">
+              <span>SOLD OUT</span>
+            </div>
+          )}
+
+          {isAvailable && (
+            <span className="shop-card__status">
+              <FiCheck />
+              AVAILABLE
+            </span>
+          )}
+
+          {isBooked && (
+            <div className="shop-card__booked-overlay">
+              <span>BOOKED</span>
+            </div>
+          )}
+
+          <span className="shop-card__number">{item.id}</span>
+        </div>
+
+        <div className="shop-card__content">
+          <div className="shop-card__top">
+            <span className="shop-card__brand">{item.brand}</span>
+            <span className="shop-card__type">{item.type}</span>
+          </div>
+
+          <h3>{item.name}</h3>
+
+          <div className="shop-card__footer">
+            <div className="shop-card__price">
+              <span>PRICE</span>
+              <strong>{item.price}</strong>
+            </div>
+
+            {!isSold ? (
+              <Link to={`/ex-review/${item.slug}`} className="shop-card__cta">
+                CHECK DETAIL
+                <FiArrowUpRight />
+              </Link>
+            ) : (
+              <span className="shop-card__cta shop-card__cta--sold">
+                SOLD OUT
+              </span>
+            )}
+          </div>
+        </div>
+      </article>
+    );
+  };
+
   return (
     <>
       <PageTransition
@@ -154,6 +241,7 @@ const ExReview = ({ theme }) => {
       />
 
       <AnnouncementMarquee />
+
       <main className="ex-review">
         <div className="ex-review__noise" />
 
@@ -168,7 +256,7 @@ const ExReview = ({ theme }) => {
             <span className="ex-review__nav-label">PRE-LOVED / 2026</span>
           </nav>
 
-          {/* CURRENT DROPS */}
+          {/* AVAILABLE & BOOKED ITEMS */}
           {currentDrops.map((drop) => (
             <section className="ex-review__shop" key={drop.id}>
               <div className="ex-review__shop-header">
@@ -181,7 +269,7 @@ const ExReview = ({ theme }) => {
                 <a
                   href="https://wa.me/6285179583850"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="ex-review__shop-count ex-review__ask-admin"
                 >
                   CHAT ADMIN
@@ -190,80 +278,50 @@ const ExReview = ({ theme }) => {
               </div>
 
               <div className="ex-review__grid">
-                {drop.items.map((item) => {
-                  const isAvailable = item.status === "AVAILABLE";
-                  const isBooked = item.status === "BOOKED";
-                  const isSold = item.status === "SOLD OUT";
-
-                  return (
-                    <article
-                      key={item.slug}
-                      className={`shop-card ${isSold ? "shop-card--sold" : ""}`}
-                    >
-                      <div className="shop-card__image">
-                        <img
-                          src={item.images[0]}
-                          alt={`${item.brand} ${item.name}`}
-                        />
-
-                        {isSold && (
-                          <div className="shop-card__sold-overlay">
-                            <span>SOLD OUT</span>
-                          </div>
-                        )}
-
-                        {isAvailable && (
-                          <span className="shop-card__status">
-                            <FiCheck />
-                            AVAILABLE
-                          </span>
-                        )}
-
-                        {isBooked && (
-                          <div className="shop-card__booked-overlay">
-                            <span>BOOKED</span>
-                          </div>
-                        )}
-
-                        <span className="shop-card__number">{item.id}</span>
-                      </div>
-
-                      <div className="shop-card__content">
-                        <div className="shop-card__top">
-                          <span className="shop-card__brand">{item.brand}</span>
-
-                          <span className="shop-card__type">{item.type}</span>
-                        </div>
-
-                        <h3>{item.name}</h3>
-
-                        <div className="shop-card__footer">
-                          <div className="shop-card__price">
-                            <span>PRICE</span>
-                            <strong>{item.price}</strong>
-                          </div>
-
-                          {!isSold ? (
-                            <Link
-                              to={`/ex-review/${item.slug}`}
-                              className="shop-card__cta"
-                            >
-                              CHECK DETAIL
-                              <FiArrowUpRight />
-                            </Link>
-                          ) : (
-                            <span className="shop-card__cta shop-card__cta--sold">
-                              SOLD OUT
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
+                {drop.items.map((item) => renderProductCard(item))}
               </div>
             </section>
           ))}
+
+          {/* SOLD ITEMS */}
+          {soldItems.length > 0 && (
+            <section className="ex-review__sold">
+              <button
+                type="button"
+                className="ex-review__sold-toggle"
+                onClick={() => setShowSoldItems((prev) => !prev)}
+                aria-expanded={showSoldItems}
+              >
+                <span>
+                  {showSoldItems ? "HIDE SOLD ITEMS" : "VIEW SOLD ITEMS"}
+                </span>
+
+                <span className="ex-review__sold-count">
+                  {String(soldItems.length).padStart(2, "0")} ITEMS
+                </span>
+
+                {showSoldItems ? <FiX /> : <FiArrowUpRight />}
+              </button>
+
+              {showSoldItems && (
+                <div className="ex-review__sold-content">
+                  <div className="ex-review__sold-heading">
+                    <span className="ex-review__eyebrow">
+                      NO LONGER AVAILABLE
+                    </span>
+
+                    <h2>
+                      SOLD ITEMS<span>.</span>
+                    </h2>
+                  </div>
+
+                  <div className="ex-review__grid">
+                    {soldItems.map((item) => renderProductCard(item))}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
 
           {/* TESTIMONIALS */}
           <section className="ex-review__testimonials">
@@ -317,6 +375,7 @@ const ExReview = ({ theme }) => {
                             }
                             className="ex-review__testimonial-image"
                             loading="lazy"
+                            decoding="async"
                           />
 
                           <span
@@ -434,6 +493,7 @@ const ExReview = ({ theme }) => {
               src={activeImage.image}
               alt={activeImage.alt || `Buyer feedback ${activeImage.id}`}
               className="ex-review__lightbox-image"
+              decoding="async"
             />
 
             <span className="ex-review__lightbox-counter">
