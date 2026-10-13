@@ -164,7 +164,7 @@ const rawDrops = [
                 name: "ATOM HE68",
                 category: "RAPID TRIGGER KEYBOARD",
                 type: "EX-REVIEW",
-                status: "AVAILABLE",
+                status: "BOOKED",
                 usedFor: "Used for review",
                 price: "Rp325.000",
                 shopeePrice: "BY REQUEST",
