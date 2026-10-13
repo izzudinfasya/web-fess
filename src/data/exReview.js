@@ -91,7 +91,7 @@ const rawDrops = [
                 type: "EX-REVIEW",
                 status: "AVAILABLE",
                 usedFor: "Used for review",
-                price: "Rp425.000",
+                price: "Rp400.000",
                 shopeePrice: "BY REQUEST",
                 condition: "9/10",
                 included: "Original box, Accessories",
