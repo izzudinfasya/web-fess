@@ -1595,12 +1595,13 @@
   }
 
   .ex-review__lightbox-prev {
-    right: 58px;
+    right: 104px;
     left: auto;
   }
 
   .ex-review__lightbox-next {
-    right: 104px;
+    right: 58px;
+    left: auto;
   }
 
   /* Footer */
