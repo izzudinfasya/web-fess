@@ -1,4 +1,4 @@
-import fifineK688 from "../assets/fifineK688.png";
+// import fifineK688 from "../assets/fifineK688.png";
 import fifineH9 from "../assets/fifineH9.png";
 import thunderbolt5 from "../assets/thunderbolt5.jpg";
 import Essential60 from "../assets/essential60.png";
@@ -12,13 +12,21 @@ import Win11 from "../assets/win-11-pro.png";
 import Office2021 from "../assets/office-2021.png";
 
 export const products = [
+    // {
+    //     title: "FIFINE K688 Mic",
+    //     discount: "",
+    //     code: "",
+    //     image: fifineK688,
+    //     link:
+    //         "https://link.fifinedesign.com/K688-fesnotyours",
+    // },
     {
-        title: "FIFINE K688 Mic",
-        discount: "",
-        code: "",
-        image: fifineK688,
+        title: "Model-X 2.0 Stand",
+        discount: "10% OFF",
+        code: "FESS10",
+        image: ModelX,
         link:
-            "https://link.fifinedesign.com/K688-fesnotyours",
+            "https://stxnd.com/products/laptop-stand-model-x?variant=45217096859889?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
     {
         title: "FIFINE H9 Headset",
@@ -43,14 +51,6 @@ export const products = [
         image: Essential60,
         link:
             "https://pressplayid.com/products/essential60-he-60-rapid-trigger-mechanical-keyboard",
-    },
-    {
-        title: "Model-X 2.0 Stand",
-        discount: "10% OFF",
-        code: "FESS10",
-        image: ModelX,
-        link:
-            "https://stxnd.com/products/laptop-stand-model-x?variant=45217096859889?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
     {
         title: "CMD-X Keyboard + Mouse",
