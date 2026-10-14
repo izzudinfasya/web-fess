@@ -44,9 +44,11 @@ const ExReview = ({ theme }) => {
       })),
   );
 
-  // Hanya testimonial yang memiliki gambar yang dapat dibuka.
+  // Satu objek testimonial mewakili satu buyer/transaksi.
+  // Foto produk, chat, dan kutipan tetap menjadi satu review.
   const availableTestimonials = exReviewTestimonials.filter(
-    (testimonial) => testimonial.image,
+    (testimonial) =>
+      testimonial.productImage || testimonial.chatImage || testimonial.quote,
   );
 
   const activeIndex = availableTestimonials.findIndex(
@@ -262,7 +264,6 @@ const ExReview = ({ theme }) => {
               <div className="ex-review__shop-header">
                 <div>
                   <span className="ex-review__eyebrow">CURRENT RELEASE</span>
-
                   <h2>DROP #{drop.id}</h2>
                 </div>
 
@@ -335,7 +336,7 @@ const ExReview = ({ theme }) => {
               </div>
 
               <span className="ex-review__testimonial-count">
-                {String(exReviewTestimonials.length).padStart(2, "0")} REVIEWS
+                {String(availableTestimonials.length).padStart(2, "0")} REVIEWS
               </span>
             </div>
 
@@ -346,60 +347,75 @@ const ExReview = ({ theme }) => {
                 ref={testimonialTrackRef}
               >
                 <div className="ex-review__testimonial-track">
-                  {exReviewTestimonials.map((testimonial) => (
+                  {availableTestimonials.map((testimonial) => (
                     <button
                       type="button"
-                      className={`ex-review__testimonial ${
-                        testimonial.image ? "is-clickable" : "is-placeholder"
-                      }`}
+                      className="ex-review__testimonial is-clickable"
                       key={testimonial.id}
-                      onClick={() => {
-                        if (testimonial.image) {
-                          setActiveTestimonial(testimonial.id);
-                        }
-                      }}
-                      disabled={!testimonial.image}
-                      aria-label={
-                        testimonial.image
-                          ? `View buyer feedback ${testimonial.id}`
-                          : `Buyer feedback ${testimonial.id} is not available yet`
-                      }
+                      onClick={() => setActiveTestimonial(testimonial.id)}
+                      aria-label={`View buyer review ${testimonial.id}`}
                     >
-                      {testimonial.image ? (
-                        <>
+                      {/* PRODUCT PHOTO */}
+                      <div className="ex-review__review-media">
+                        {testimonial.productImage ? (
                           <img
-                            src={testimonial.image}
+                            src={testimonial.productImage}
                             alt={
                               testimonial.alt ||
-                              `Buyer feedback ${testimonial.id}`
+                              `${
+                                testimonial.productName || "Product"
+                              } received by buyer`
                             }
                             className="ex-review__testimonial-image"
                             loading="lazy"
                             decoding="async"
                           />
+                        ) : (
+                          <div className="ex-review__review-no-image">
+                            <span>PRODUCT PHOTO</span>
+                            <span>NOT AVAILABLE</span>
+                          </div>
+                        )}
 
-                          <span
-                            className="ex-review__testimonial-zoom"
-                            aria-hidden="true"
-                          >
-                            <FiMaximize2 />
-                          </span>
-                        </>
-                      ) : (
-                        <span className="ex-review__testimonial-placeholder">
-                          <span className="ex-review__placeholder-index">
+                        <span className="ex-review__review-label">
+                          PRODUCT RECEIVED
+                        </span>
+
+                        <span
+                          className="ex-review__testimonial-zoom"
+                          aria-hidden="true"
+                        >
+                          <FiMaximize2 />
+                        </span>
+                      </div>
+
+                      {/* BUYER QUOTE */}
+                      <div className="ex-review__review-info">
+                        <div className="ex-review__review-meta">
+                          <span>
                             / {String(testimonial.id).padStart(2, "0")}
                           </span>
 
-                          <span className="ex-review__placeholder-label">
-                            WHATSAPP SCREENSHOT
-                          </span>
+                          <span>BUYER REVIEW</span>
+                        </div>
 
-                          <span className="ex-review__placeholder-status">
-                            ASSET PENDING
-                          </span>
+                        {testimonial.productName && (
+                          <h3 className="ex-review__review-product">
+                            {testimonial.productName}
+                          </h3>
+                        )}
+
+                        {testimonial.quote && (
+                          <blockquote className="ex-review__review-quote">
+                            “{testimonial.quote}”
+                          </blockquote>
+                        )}
+
+                        <span className="ex-review__review-open">
+                          VIEW FULL REVIEW
+                          <FiArrowUpRight />
                         </span>
-                      )}
+                      </div>
                     </button>
                   ))}
                 </div>
@@ -432,8 +448,10 @@ const ExReview = ({ theme }) => {
             </div>
           </section>
 
+          {/* FAQ */}
           <FAQAccordion />
 
+          {/* FOOTER */}
           <Footer />
         </div>
       </main>
@@ -444,18 +462,19 @@ const ExReview = ({ theme }) => {
           className="ex-review__lightbox"
           role="dialog"
           aria-modal="true"
-          aria-label="Buyer feedback image viewer"
+          aria-label="Buyer review details"
           onClick={closeTestimonialLightbox}
         >
           <button
             type="button"
             className="ex-review__lightbox-close"
             onClick={closeTestimonialLightbox}
-            aria-label="Close image viewer"
+            aria-label="Close review"
           >
             <FiX />
           </button>
 
+          {/* PREVIOUS / NEXT BUYER */}
           {availableTestimonials.length > 1 && (
             <>
               <button
@@ -465,7 +484,7 @@ const ExReview = ({ theme }) => {
                   event.stopPropagation();
                   showPreviousTestimonial();
                 }}
-                aria-label="Previous image"
+                aria-label="Previous buyer review"
               >
                 <FiChevronLeft />
               </button>
@@ -477,7 +496,7 @@ const ExReview = ({ theme }) => {
                   event.stopPropagation();
                   showNextTestimonial();
                 }}
-                aria-label="Next image"
+                aria-label="Next buyer review"
               >
                 <FiChevronRight />
               </button>
@@ -485,21 +504,67 @@ const ExReview = ({ theme }) => {
           )}
 
           <div
-            className="ex-review__lightbox-content"
+            className="ex-review__lightbox-content ex-review__review-detail"
             onClick={(event) => event.stopPropagation()}
           >
-            <img
-              key={activeImage.id}
-              src={activeImage.image}
-              alt={activeImage.alt || `Buyer feedback ${activeImage.id}`}
-              className="ex-review__lightbox-image"
-              decoding="async"
-            />
+            <div className="ex-review__review-detail-header">
+              <span className="ex-review__eyebrow">
+                BUYER REVIEW / {String(activeImage.id).padStart(2, "0")}
+              </span>
+
+              <h2>
+                {activeImage.productName || "PRODUCT REVIEW"}
+                <span>.</span>
+              </h2>
+            </div>
+
+            {/* ORIGINAL BUYER QUOTE */}
+            {activeImage.quote && (
+              <blockquote className="ex-review__detail-quote">
+                “{activeImage.quote}”
+              </blockquote>
+            )}
+
+            {/* PRODUCT PHOTO + WHATSAPP SCREENSHOT
+                Both assets belong to the same buyer review. */}
+            <div className="ex-review__detail-gallery">
+              {activeImage.productImage && (
+                <figure className="ex-review__detail-item">
+                  <figcaption>01 / PRODUCT RECEIVED</figcaption>
+
+                  <img
+                    src={activeImage.productImage}
+                    alt={
+                      activeImage.alt ||
+                      `${
+                        activeImage.productName || "Product"
+                      } received by buyer`
+                    }
+                    className="ex-review__lightbox-image"
+                    decoding="async"
+                  />
+                </figure>
+              )}
+
+              {activeImage.chatImage && (
+                <figure className="ex-review__detail-item">
+                  <figcaption>02 / WHATSAPP FEEDBACK</figcaption>
+
+                  <img
+                    src={activeImage.chatImage}
+                    alt={`WhatsApp feedback for buyer review ${activeImage.id}`}
+                    className="ex-review__lightbox-image"
+                    decoding="async"
+                  />
+                </figure>
+              )}
+            </div>
 
             <span className="ex-review__lightbox-counter">
               {String(activeIndex + 1).padStart(2, "0")}
               {" / "}
               {String(availableTestimonials.length).padStart(2, "0")}
+              {" BUYERS"}
             </span>
           </div>
         </div>
