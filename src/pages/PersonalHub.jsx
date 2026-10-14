@@ -24,7 +24,7 @@ const PersonalHub = ({ theme }) => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const totalSlides = 3;
+  const totalSlides = 2;
 
   /* =========================
      AOS
@@ -101,10 +101,8 @@ const PersonalHub = ({ theme }) => {
 
     if (Math.abs(distance) >= minSwipeDistance) {
       if (distance > 0) {
-        // Swipe left
         toggleSlide("next");
       } else {
-        // Swipe right
         toggleSlide("prev");
       }
     }
@@ -125,6 +123,17 @@ const PersonalHub = ({ theme }) => {
   const handleMouseLeave = () => {
     setIsPaused(false);
   };
+
+  const slides = [
+    {
+      label: "Show collaboration",
+      component: <CollabCTA />,
+    },
+    {
+      label: "Show React setup",
+      component: <ReactSetupBanner />,
+    },
+  ];
 
   return (
     <main className="page">
@@ -158,43 +167,25 @@ const PersonalHub = ({ theme }) => {
               <div
                 className="home-cta-slider__track"
                 style={{
-                  transform: `translate3d(-${activeCTA * 33.333333}%, 0, 0)`,
+                  transform: `translate3d(-${activeCTA * 50}%, 0, 0)`,
                 }}
               >
-                {/* SLIDE 01 */}
-                <div className="home-cta-slider__item">
-                  <CollabCTA />
-                </div>
-
-                {/* SLIDE 02 */}
-                <div className="home-cta-slider__item">
-                  <ExReviewBanner />
-                </div>
-
-                {/* SLIDE 03 */}
-                <div className="home-cta-slider__item">
-                  <ReactSetupBanner />
-                </div>
+                {slides.map((slide) => (
+                  <div className="home-cta-slider__item" key={slide.label}>
+                    {slide.component}
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* DOTS */}
             <div className="home-cta-slider__dots">
-              {[
-                {
-                  label: "Show collaboration",
-                },
-                {
-                  label: "Show pre-loved gear",
-                },
-                {
-                  label: "Show React setup",
-                },
-              ].map((slide, index) => (
+              {slides.map((slide, index) => (
                 <button
                   key={slide.label}
                   type="button"
                   aria-label={slide.label}
+                  aria-current={activeCTA === index ? "true" : undefined}
                   onClick={() => goToSlide(index)}
                   className={activeCTA === index ? "active" : ""}
                 />
@@ -208,13 +199,18 @@ const PersonalHub = ({ theme }) => {
           <ExclusiveDiscount />
         </div>
 
-        {/* FEATURED PRODUCTS */}
+        {/* EX-REVIEW BANNER */}
         <div data-aos="fade-up" data-aos-delay="160">
+          <ExReviewBanner />
+        </div>
+
+        {/* FEATURED PRODUCTS */}
+        <div data-aos="fade-up" data-aos-delay="200">
           <FeaturedProducts />
         </div>
 
         {/* LINKS */}
-        <section className="links" data-aos="fade-up" data-aos-delay="200">
+        <section className="links" data-aos="fade-up" data-aos-delay="240">
           {links.map((link) => (
             <LinkButton
               key={link.title}
@@ -226,7 +222,7 @@ const PersonalHub = ({ theme }) => {
         </section>
 
         {/* FOOTER */}
-        <div data-aos="fade-up" data-aos-delay="240">
+        <div data-aos="fade-up" data-aos-delay="280">
           <Footer />
         </div>
       </div>

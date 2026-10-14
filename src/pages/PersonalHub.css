@@ -28,13 +28,12 @@
 
 .home-cta-slider__track {
   display: flex;
-  width: 300%;
+  width: 200%;
 
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-
   -webkit-transition: -webkit-transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 
   will-change: transform;
@@ -48,9 +47,9 @@
 ========================= */
 
 .home-cta-slider__item {
-  flex: 0 0 33.333333%;
-  width: 33.333333%;
-  min-width: 33.333333%;
+  flex: 0 0 50%;
+  width: 50%;
+  min-width: 50%;
 
   box-sizing: border-box;
 
