@@ -4,7 +4,7 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profile__image">
-        <img src="/profile.jpg" alt="Fess" />
+        <img src="/profile.PNG" alt="Fess" />
       </div>
 
       <div className="profile__name">
