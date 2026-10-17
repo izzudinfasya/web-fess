@@ -1,4 +1,5 @@
-// import fifineK688 from "../assets/fifineK688.png";
+import VXEX3Turbo from "../assets/vxe-x3-turbo.png";
+import fifineK688 from "../assets/fifineK688.png";
 import fifineH9 from "../assets/fifineH9.png";
 import thunderbolt5 from "../assets/thunderbolt5.jpg";
 import Essential60 from "../assets/essential60.png";
@@ -12,14 +13,22 @@ import Win11 from "../assets/win-11-pro.png";
 import Office2021 from "../assets/office-2021.png";
 
 export const products = [
-    // {
-    //     title: "FIFINE K688 Mic",
-    //     discount: "",
-    //     code: "",
-    //     image: fifineK688,
-    //     link:
-    //         "https://link.fifinedesign.com/K688-fesnotyours",
-    // },
+    {
+        title: "VXE X3 Turbo",
+        discount: "5% OFF",
+        code: "FESS",
+        image: VXEX3Turbo,
+        link:
+            "https://www.atk.store/products/vxe-dragonfly-x3-series-lightweight-wireless-mouse?ref=FESS",
+    },
+    {
+        title: "FIFINE K688 Mic",
+        discount: "",
+        code: "",
+        image: fifineK688,
+        link:
+            "https://link.fifinedesign.com/K688-fesnotyours",
+    },
     {
         title: "Model-X 2.0 Stand",
         discount: "10% OFF",
@@ -66,7 +75,7 @@ export const products = [
         code: "FESS",
         image: VXEDragonfly,
         link:
-            "https://shop.beacons.ai/fesnotyours/34e41707-916d-4801-bd74-efcad84db0f1",
+            "https://www.atk.store/products/vxe-dragonfly-v3-series-lightweight-wireless-mouse?ref=FESS",
     },
     {
         title: "ATK Horizon IEM",
@@ -74,7 +83,7 @@ export const products = [
         code: "FESS",
         image: ATKHorizon,
         link:
-            "https://shop.beacons.ai/fesnotyours/e8b39f9b-3228-465e-92bb-5ae38066d6f7",
+            "https://www.atk.store/products/atk-horizon-dsp-gaming-in-ear-earphones?ref=FESS",
     },
     {
         title: "WLMouse Beast X Pro",
@@ -82,7 +91,7 @@ export const products = [
         code: "FESS",
         image: WLMouse,
         link:
-            "https://shop.beacons.ai/fesnotyours/5c10fc71-1ddc-47f2-9b37-2f4298a54895",
+            "https://www.wlmouse.com/products/x-pro?ref=fess",
     },
     {
         title: "Vention Dash Pro",

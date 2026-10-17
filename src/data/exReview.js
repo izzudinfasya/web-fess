@@ -89,7 +89,7 @@ const rawDrops = [
                 name: "Leviousa Aura MCX04",
                 category: "MICROPHONE",
                 type: "EX-REVIEW",
-                status: "AVAILABLE",
+                status: "SOLD OUT",
                 usedFor: "Used for review",
                 price: "Rp350.000",
                 shopeePrice: "BY REQUEST",
