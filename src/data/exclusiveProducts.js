@@ -54,20 +54,20 @@ export const products = [
             "https://www.razer.com/gaming-pc-accessories/razer-thunderbolt-5-dock/RC21-02290100-R3U1?irclickid=RQ8UVTygtxyZWcYXSWRas2onUkr0o909qUmXT00&irgwc=1&afsrc=1&utm_source=Fess&utm_medium=affiliate&utm_content=7545630&utm_term=Fess&utm_sharedid=&cid=Fess-affiliate",
     },
     {
+        title: "WLMouse Beast X Pro",
+        discount: "2% OFF",
+        code: "FESS",
+        image: WLMouse,
+        link:
+            "https://www.wlmouse.com/products/x-pro?ref=fess",
+    },
+    {
         title: "Essential60 HE",
         discount: "NEW ARRIVAL",
         code: "",
         image: Essential60,
         link:
             "https://pressplayid.com/products/essential60-he-60-rapid-trigger-mechanical-keyboard",
-    },
-    {
-        title: "CMD-X Keyboard + Mouse",
-        discount: "10% OFF",
-        code: "FESS10",
-        image: CMDX,
-        link:
-            "https://stxnd.com/products/cmd-x-keyboard-combo?variant=47254584164593?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
     },
     {
         title: "VXE Dragonfly V3 Series",
@@ -78,20 +78,20 @@ export const products = [
             "https://www.atk.store/products/vxe-dragonfly-v3-series-lightweight-wireless-mouse?ref=FESS",
     },
     {
+        title: "CMD-X Keyboard + Mouse",
+        discount: "10% OFF",
+        code: "FESS10",
+        image: CMDX,
+        link:
+            "https://stxnd.com/products/cmd-x-keyboard-combo?variant=47254584164593?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
+    },
+    {
         title: "ATK Horizon IEM",
         discount: "5% OFF",
         code: "FESS",
         image: ATKHorizon,
         link:
             "https://www.atk.store/products/atk-horizon-dsp-gaming-in-ear-earphones?ref=FESS",
-    },
-    {
-        title: "WLMouse Beast X Pro",
-        discount: "2% OFF",
-        code: "FESS",
-        image: WLMouse,
-        link:
-            "https://www.wlmouse.com/products/x-pro?ref=fess",
     },
     {
         title: "Vention Dash Pro",
