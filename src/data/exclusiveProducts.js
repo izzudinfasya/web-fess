@@ -1,3 +1,4 @@
+import PeakPerformance from "../assets/peak-performance.png";
 import VXEX3Turbo from "../assets/vxe-x3-turbo.png";
 import fifineK688 from "../assets/fifineK688.png";
 import fifineH9 from "../assets/fifineH9.png";
@@ -13,6 +14,14 @@ import Win11 from "../assets/win-11-pro.png";
 import Office2021 from "../assets/office-2021.png";
 
 export const products = [
+    {
+        title: "Peak Performance Bundle",
+        discount: "10% OFF",
+        code: "FESS10",
+        image: PeakPerformance,
+        link:
+            "https://stxnd.com/products/peak-ergonomic-performance-bundle?bg_ref=hdMlfoOW4woeFq9e4NzghqEMSQ_aem_BR0hcuvWJ7d4A81leTUBiw",
+    },
     {
         title: "VXE X3 Turbo",
         discount: "5% OFF",
